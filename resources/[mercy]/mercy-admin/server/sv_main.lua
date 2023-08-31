@@ -124,6 +124,7 @@ Citizen.CreateThread(function()
             local ServerId = tonumber(args[1])
             if ServerId then
                 PlayerModule.RefreshPermissions(ServerId)
+                local Name = GetPlayerName(ServerId)
                 print('Refreshed permissions for '..Name..' ('..ServerId..')')
             else
                 print('SYNTAX: refreshpermissions [serverid]')
@@ -272,8 +273,9 @@ Citizen.CreateThread(function()
         elseif string.match(Identifier, "steam:") then
             TPlayer = GetPlayerFromIdentifier('steam', Identifier)
         end
+
         if TPlayer ~= nil then
-            local Steam = CallbackModule.GetIdentifier(TPlayer.PlayerData.Source, "steam")
+            local Steam = FunctionsModule.GetIdentifier(TPlayer.PlayerData.Source, "steam")
             PlayerInfo = {
                 Name = TPlayer.PlayerData.Name,
                 Steam = Steam ~= nil and Steam or 'Not found',
@@ -282,6 +284,8 @@ Citizen.CreateThread(function()
                 CitizenId = TPlayer.PlayerData.CitizenId
             }
             Cb(PlayerInfo)
+        else
+            Cb(false)
         end
     end)
 
