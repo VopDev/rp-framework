@@ -1,4 +1,4 @@
-local ChatOpen, CanReceiveOOC, FunctionsModule = false, true, nil
+local ChatOpen, CanReceiveOOC, FunctionsModule, PlayerModule = false, true, nil, nil
 local SpamFilter = {
     ["e passout"] = 5000,
     ["e passout2"] = 5000,
@@ -13,10 +13,12 @@ local _Ready = false
 AddEventHandler('Modules/client/ready', function()
     TriggerEvent('Modules/client/request-dependencies', {
         'Functions',
+        'Player',
     }, function(Succeeded)
 
         if not Succeeded then return end
         FunctionsModule = exports['mercy-base']:FetchModule('Functions')
+        PlayerModule = exports['mercy-base']:FetchModule('Player')
         _Ready = true
     end)
 end)
@@ -79,6 +81,16 @@ RegisterNetEvent('mercy-chat/client/post-message', function(Title, Message, Clas
         Action = 'PostMessage',
         Message = MessageData
     })
+end)
+
+RegisterNetEvent('mercy-chat/client/send-identification', function(CitizenId, Firstname, Lastname, Date, Sex)
+    local ClosestPlayer = PlayerModule.GetClosestPlayer(nil, 2.0)
+
+    if ClosestPlayer['ClosestPlayerPed'] == -1 and ClosestPlayer['ClosestServer'] == -1 then
+        EventsModule.TriggerServer("mercy-items/server/show-identification", CitizenId, Firstname, Lastname, Date, Sex)
+    else
+        EventsModule.TriggerServer("mercy-items/server/show-identification", CitizenId, Firstname, Lastname, Date, Sex, ClosestPlayer['ClosestServer'])
+    end
 end)
 
 RegisterNetEvent('mercy-chat/client/post-identification', function(CitizenId, Firstname, Lastname, Date, Sex)
