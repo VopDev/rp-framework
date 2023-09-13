@@ -118,15 +118,15 @@ function ListenForKeypress(DoorId)
         Citizen.CreateThread(function()
             local CurrentDoorId, LockState = DoorId, nil
             local Distance = Config.Doors[CurrentDoorId].IsGate and 8.0 or 2.0
-            local CurrentDoorLockState = (Config.Doors[CurrentDoorId].Locked and true or false)
-            local HasDoorKeys, IsHidden = HasDoorAccess(CurrentDoorId), Config.Doors[CurrentDoorId].IsGate
+            local CurrentDoorLockState = ((Config.Doors[CurrentDoorId].Locked or Config.Doors[CurrentDoorId].Locked == 1) and true or false)
+            local HasAccess, IsHidden = HasDoorAccess(CurrentDoorId), Config.Doors[CurrentDoorId].IsGate
             while Listening do
                 Citizen.Wait(4)
                 -- print(CurrentDoorId)
                 if CurrentDoorLockState ~= LockState and not IsHidden then
                     if #(GetEntityCoords(PlayerPedId()) - Config.Doors[CurrentDoorId].Coords) < Distance then
                         LockState = CurrentDoorLockState
-                        exports['mercy-ui']:SetInteraction((HasDoorKeys and "[E] %s" or "%s"):format(LockState and 'Locked' or 'Unlocked'), LockState and 'error' or 'success')
+                        exports['mercy-ui']:SetInteraction((HasAccess and "[E] %s" or "%s"):format(LockState and 'Locked' or 'Unlocked'), LockState and 'error' or 'success')
                     end
                 end
                 if IsControlJustReleased(0, 38) then
