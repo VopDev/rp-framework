@@ -64,10 +64,10 @@ Citizen.CreateThread(function()
 
     EventsModule.RegisterServer('mercy-business/server/create-business', function(Source, BusinessName, StateId, Logo, IsSource) 
         local TPlayer = false
-        local StateId = tonumber(StateId)
+        local StateId = StateId
         -- Check if player is a source or state id
         if IsSource == nil or not IsSource then
-            TPlayer = PlayerModule.GetPlayerByStateId(StateId)
+            TPlayer = PlayerModule.GetPlayerByStateId(tonumber(StateId))
         else
             TPlayer = PlayerModule.GetPlayerBySource(tonumber(IsSource))
             StateId = TPlayer.PlayerData.CitizenId
@@ -482,6 +482,33 @@ function HasBusinessPermission(Player, Name, PermissionName)
     return Citizen.Await(Promise)
 end
 exports('HasBusinessPermission', HasBusinessPermission)
+
+function GetOnlineBusinessEmployees(Name)
+    local Promise = promise:new()
+    local Employees = {}
+    DatabaseModule.Execute("SELECT * FROM player_business WHERE name = ?", {
+        Name
+    }, function(BusinessResult)
+        if BusinessResult[1] ~= nil then
+            local EmployeeList = json.decode(BusinessResult[1].employees)
+            for Employee, Employees in pairs(EmployeeList) do
+                local Player = PlayerModule.GetPlayerByStateId(Employees.CitizenId)
+                if Player then
+                    table.insert(Employees, {
+                        CitizenId = Employees.CitizenId,
+                        Name = Player.PlayerData.CharInfo.Firstname..' '..Player.PlayerData.CharInfo.Lastname,
+                        Rank = Employees.Rank,
+                    })
+                end
+            end
+            Promise:resolve(Employees)
+        else
+            Promise:resolve(false)
+        end
+    end)
+    return Citizen.Await(Promise)
+end
+exports('GetOnlineBusinessEmployees', GetOnlineBusinessEmployees)
 
 function GetBusinessOwnerName(Name)
     local Promise = promise:new()

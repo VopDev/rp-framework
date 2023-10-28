@@ -27,11 +27,6 @@ Citizen.CreateThread(function()
         Citizen.Wait(4) 
     end 
 
-    CommandsModule.Add({"me"}, "Character Expression", {{Name="message", Help="Message"}}, false, function(source, args)
-        local Text = table.concat(args, ' ')
-        TriggerClientEvent('mercy-misc/client/me', -1, source, Text)
-    end)
-
     CommandsModule.Add({"carry"}, "Carry the closest person", {}, false, function(source, args)
         local Player = PlayerModule.GetPlayerBySource(source)
         local Text = args[1]
@@ -109,13 +104,45 @@ Citizen.CreateThread(function()
     end)
     
     EventsModule.RegisterServer('mercy-misc/server/goldpanning/get-loot', function(Source, Multiplier)
-        print('Giving goldpanning loot', Multiplier)
+        print('[DEBUG:Misc]: Giving goldpanning loot. Multiplier: '..Multiplier)
         if Multiplier == 1 then
 
         elseif Multiplier == 2 then
 
         elseif Multiplier == 3 then
 
+        end
+    end)
+
+    EventsModule.RegisterServer('mercy-misc/server/metal-detecting/get-loot', function(Source)
+        print('[DEBUG:Misc]: Giving metal detecting loot.')
+    end)
+
+    EventsModule.RegisterServer('mercy-misc/server/recycle/get-loot', function(Source)
+        print('[DEBUG:Misc]: Giving recycle loot.')
+
+    end)
+
+    EventsModule.RegisterServer('mercy-misc/server/get-tea', function(Source)
+        local Player = PlayerModule.GetPlayerBySource(Source)
+        if not Player then return end
+
+        Player.Functions.AddItem('mugoftea', 1, false, {}, true)
+    end)
+
+    EventsModule.RegisterServer('mercy-misc/server/write-notepad', function(Source, Text)
+        local Player = PlayerModule.GetPlayerBySource(Source)
+        if not Player then return end
+          
+        local Notepad = Player.Functions.GetItemByName('notepad')
+        if Notepad == nil then return end
+
+        if Player.Functions.AddItem('notepad-page', 1, false, {Note = Text}, true) then
+            Notepad.Info.Pages = Notepad.Info.Pages - 1
+            Player.Functions.SetItemBySlotAndKey(Notepad.Slot, "Info", Notepad.Info)
+            if Notepad.Info.Pages <= 0 then
+                Player.Functions.RemoveItem('notepad', 1, Notepad.Slot, true)          
+            end
         end
     end)
 end)

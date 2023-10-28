@@ -41,6 +41,54 @@ end
 
 -- [ Weapons ] --
 
+Shared.ItemList['weapon_mp7'] = {
+    ['ItemName'] = "weapon_mp7",
+	['Label'] = "Tactical SMG",
+	['Weight'] = 4.0,
+	['Type'] = "Weapon",
+	['Metal'] = true,
+	['Melee'] = true,
+	['Image'] = "w_mp7.png",
+	['Unique'] = true,
+	['Combinable'] = nil,
+	['Description'] = "Is this the MP5 but with compensatory behavior?",
+	['DecayRate'] = 2.0,
+	['RemoveWhenDecayed'] = false,
+	['Price'] = 1,
+}
+
+Shared.ItemList['weapon_bats'] = {
+    ['ItemName'] = "weapon_bats",
+	['Label'] = "Metal Bat",
+	['Weight'] = 4.0,
+	['Type'] = "Weapon",
+	['Metal'] = true,
+	['Melee'] = true,
+	['Image'] = "w_bat.png",
+	['Unique'] = true,
+	['Combinable'] = nil,
+	['Description'] = "A metal bat, used for hitting balls, and people..",
+	['DecayRate'] = 2.0,
+	['RemoveWhenDecayed'] = false,
+	['Price'] = 1,
+}
+
+Shared.ItemList['weapon_katanas'] = {
+    ['ItemName'] = "weapon_katanas",
+	['Label'] = "Katana",
+	['Weight'] = 7.0,
+	['Type'] = "Weapon",
+	['Metal'] = true,
+	['Melee'] = true,
+	['Image'] = "w_katana.png",
+	['Unique'] = true,
+	['Combinable'] = nil,
+	['Description'] = "Yuh..",
+	['DecayRate'] = 2.0,
+	['RemoveWhenDecayed'] = false,
+	['Price'] = 1,
+}
+
 Shared.ItemList['weapon_nightstick'] = {
     ['ItemName'] = "weapon_nightstick",
 	['Label'] = "Nightstick",
@@ -379,6 +427,24 @@ Shared.ItemList['weapon_groza'] = {
 	['Prop'] = true,
 	['Price'] = 1,
 }
+
+Shared.ItemList['weapon_ak74'] = {
+    ['ItemName'] = "weapon_ak74",
+	['Label'] = "AK-74",
+	['Weight'] = 17.0,
+	['Type'] = "Weapon",
+	['Metal'] = true,
+	['Melee'] = false,
+	['Image'] = "w_ak47.png",
+	['Unique'] = true,
+	['Combinable'] = nil,
+	['Description'] = "Ratatata am i in the ghetto?",
+	['DecayRate'] = 2.0,
+	['RemoveWhenDecayed'] = true,
+	['Prop'] = true,
+	['Price'] = 1,
+}
+
 
 Shared.ItemList['weapon_ak47'] = {
     ['ItemName'] = "weapon_ak47",
@@ -3346,6 +3412,80 @@ Shared.ItemList["fish-whale"] = {
 	['Price'] = 1,
 }
 
+Shared.ItemList["mugoftea"] = {
+	['ItemName'] = "mugoftea",
+	['Label'] = "Mug of tea",
+	['Weight'] = 0.0,
+	['Type'] = "Item",
+	['Metal'] = true,
+	['Image'] = "mugoftea.png",
+	['Unique'] = false,
+	['Combinable'] = nil,
+	['Description'] = "Slurp, slurp...",
+	['DecayRate'] = 0.0,
+	['RemoveWhenDecayed'] = true,
+	['Price'] = 200,
+}
+
+Shared.ItemList["trowel"] = {
+	['ItemName'] = "trowel",
+	['Label'] = "Trowel",
+	['Weight'] = 2.0,
+	['Type'] = "Item",
+	['Metal'] = true,
+	['Image'] = "trowel.png",
+	['Unique'] = true,
+	['Combinable'] = nil,
+	['Description'] = "Useful for digging holes",
+	['DecayRate'] = 1.0,
+	['RemoveWhenDecayed'] = true,
+	['Price'] = 400,
+}
+
+Shared.ItemList["notepad"] = {
+	['ItemName'] = "notepad",
+	['Label'] = "Notepad",
+	['Weight'] = 0.0,
+	['Type'] = "Item",
+	['Metal'] = true,
+	['Image'] = "notepad.png",
+	['Unique'] = false,
+	['Combinable'] = nil,
+	['Description'] = "A notepad with 10 pages",
+	['DecayRate'] = 1.0,
+	['RemoveWhenDecayed'] = true,
+	['Price'] = 200,
+}
+
+Shared.ItemList["notepad-page"] = {
+	['ItemName'] = "notepad-page",
+	['Label'] = "A Note",
+	['Weight'] = 0.0,
+	['Type'] = "Item",
+	['Metal'] = true,
+	['Image'] = "notepad-page.png",
+	['Unique'] = true,
+	['Combinable'] = nil,
+	['Description'] = "A note with text?",
+	['DecayRate'] = 0.0,
+	['RemoveWhenDecayed'] = true,
+}
+
+Shared.ItemList["metaldetector"] = {
+	['ItemName'] = "metaldetector",
+	['Label'] = "Metaldetector",
+	['Weight'] = 20.0,
+	['Type'] = "Item",
+	['Metal'] = true,
+	['Image'] = "metaldetector.png",
+	['Unique'] = true,
+	['Combinable'] = nil,
+	['Description'] = "If I have to believe the internet, you can find similar gold diggers",
+	['DecayRate'] = 0.5,
+	['RemoveWhenDecayed'] = false,
+	['Price'] = 25000,
+}
+
 Shared.ItemList["pickaxe"] = {
 	['ItemName'] = "pickaxe",
 	['Label'] = "Mining Pickaxe",
@@ -3353,7 +3493,7 @@ Shared.ItemList["pickaxe"] = {
 	['Type'] = "Item",
 	['Metal'] = true,
 	['Image'] = "j_pickaxe.png",
-	['Unique'] = false,
+	['Unique'] = true,
 	['Combinable'] = nil,
 	['Description'] = "Minecwaft?",
 	['DecayRate'] = 0.00277,
