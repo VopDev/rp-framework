@@ -24,7 +24,7 @@ end)
 Citizen.CreateThread(function() 
     while not _Ready do 
         Citizen.Wait(4) 
-    end 
+    end
 
     CallbackModule.CreateCallback('mercy-mdw/server/get-user', function(Source, Cb, CitizenId)
         DatabaseModule.Execute('SELECT * FROM players WHERE CitizenId = ?', {
@@ -229,7 +229,7 @@ Citizen.CreateThread(function()
             ['Licenses']    = {},
             ['Vehicles']    = {},
             ['Housing']     = {},
-            ['Employment'] = {},
+            ['Employment']  = {},
             ['Priors']      = {}
         }
         local RequestedPlayer = PlayerModule.GetPlayerByStateId(CitizenId)
@@ -360,13 +360,13 @@ Citizen.CreateThread(function()
             if PlayerData[1] ~= nil then
                 for _, PData in pairs(PlayerData) do
                     local Licences = json.decode(PData['Licenses'])
-                    for k, v in pairs(Licences) do
-                        if k == Data.License then
-                            local TPlayer = PlayerModule.GetPlayerByStateId(Data.CitizenId)
+                    for LicenseName, LicenseBool in pairs(Licences) do
+                        if LicenseName == Data.License and not LicenseBool then
+                            local TPlayer = PlayerModule.GetPlayerByStateId(tonumber(Data.CitizenId))
                             if TPlayer then
                                 TPlayer.Functions.SetPlayerLicense(Data.License, false)
                             else
-                                Licences[k] = false
+                                Licences[LicenseName] = false
                                 DatabaseModule.Update('UPDATE players SET Licenses = ? WHERE CitizenId = ?', {json.encode(Licences), Data.CitizenId})
                             end
                         end
@@ -679,6 +679,7 @@ Citizen.CreateThread(function()
             if ReportData[1] ~= nil then
                 local Officers = json.decode(ReportData[1].officers)
                 if Officers == nil then Officers = {} end
+                if Data.Officers == nil then Data.Officers = {} end
                 for _, Officer in pairs(Data.Officers) do
                     local Found = false
                     for _, Officer2 in pairs(Officers) do
@@ -705,7 +706,7 @@ Citizen.CreateThread(function()
                 local Officers = json.decode(ReportData[1].officers)
                 for k, v in pairs(Officers) do
                     if v == Data.Officer then
-                        Officers[k] = nil
+                        table.remove(Officers, k)
                         DatabaseModule.Update('UPDATE mdw_reports SET officers = ? WHERE id = ?', {
                             json.encode(Officers),
                             Data.Id,

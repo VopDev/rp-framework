@@ -28,7 +28,7 @@ end)
 
 Citizen.CreateThread(function() 
     while not _Ready do 
-        Citizen.Wait(4) 
+        Citizen.Wait(100) 
     end 
 
     -- [ Callbacks ] --
@@ -516,10 +516,10 @@ RegisterNetEvent("mercy-vehicles/server/set-vehicle-flames", function(VehNet, Bo
     TriggerClientEvent('mercy-vehicles/client/set-vehicle-flames', -1, VehNet, Bool)
 end)
 
--- Trunk
+-- Sirens
 
-RegisterNetEvent("mercy-vehicles/server/mute-default-sirens", function(VehNet)
-    TriggerClientEvent('mercy-vehicles/client/mute-default-sirens', -1, VehNet)
+RegisterNetEvent("mercy-vehicles/server/mute-sirens", function(NetId)
+    TriggerClientEvent('mercy-vehicles/client/mute-sirens', -1, NetId)
 end)
 
 -- Trunks

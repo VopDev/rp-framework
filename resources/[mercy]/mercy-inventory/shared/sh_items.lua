@@ -41,6 +41,22 @@ end
 
 -- [ Weapons ] --
 
+Shared.ItemList['weapon_rocketlauncher'] = {
+    ['ItemName'] = "weapon_rocketlauncher",
+	['Label'] = "Rocket Launcher",
+	['Weight'] = 4.0,
+	['Type'] = "Weapon",
+	['Metal'] = true,
+	['Melee'] = true,
+	['Image'] = "w_mp7.png",
+	['Unique'] = true,
+	['Combinable'] = nil,
+	['Description'] = "Boom?",
+	['DecayRate'] = 2.0,
+	['RemoveWhenDecayed'] = false,
+	['Price'] = 1,
+}
+
 Shared.ItemList['weapon_mp7'] = {
     ['ItemName'] = "weapon_mp7",
 	['Label'] = "Tactical SMG",
@@ -5615,6 +5631,43 @@ Shared.ItemList["spray-vagos"] = {
 		{ Item = 'plastic', Amount = 50 },
 		{ Item = 'aluminum', Amount = 100 },
 	}
+}
+
+-- Heists
+
+Shared.ItemList["security_hacking_device"] = {
+	['ItemName'] = "security_hacking_device",
+	['Label'] = "Security Hacking Device",
+	['Weight'] = 0.0,
+	['Type'] = "Item",
+	['Metal'] = false,
+	['Image'] = "security_hacking_device.png",
+	['Unique'] = true,
+	['Combinable'] = nil,
+	['Description'] = "Marked for seizure.",
+	['DecayRate'] = 1.0,
+	['RemoveWhenDecayed'] = true,
+	['Cost'] = {
+        { Item = 'copper', Amount = 149 },
+        { Item = 'rubber', Amount = 149 },
+        { Item = 'plastic', Amount = 149 },
+        { Item = 'aluminum', Amount = 149 },
+	}
+}
+
+Shared.ItemList["heist-drill-basic"] = {
+	['ItemName'] = "heist-drill-basic",
+	['Label'] = "Basic Drill",
+	['Weight'] = 5.0,
+	['Type'] = "Item",
+	['Metal'] = false,
+	['Image'] = "h_drill_basic.png",
+	['Unique'] = true,
+	['Combinable'] = nil,
+	['Description'] = "Basic drill..",
+	['DecayRate'] = 2.0,
+	['RemoveWhenDecayed'] = false,
+	['Cost'] = {}
 }
 
 -- Boosting
