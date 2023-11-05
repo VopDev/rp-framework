@@ -66,6 +66,11 @@ Citizen.CreateThread(function()
         end
     
         local CurrentQuality = GetQuality(ItemData.ItemName, ItemData.Info.CreateDate)
+        if CurrentQuality == nil then
+            print('[DEBUG:DegenItem]: CurrentQuality is nil. Item will not degrade.')
+            return
+        end
+
         if CurrentQuality == 0 then
             TriggerClientEvent('mercy-inventory/client/on-fully-degen-item', Source, ItemData)
             return
@@ -125,7 +130,7 @@ function ParseDate(dateString)
         return false
     end
     local monthNames = {Jan = 1, Feb = 2, Mar = 3, Apr = 4, May = 5, Jun = 6, Jul = 7, Aug = 8, Sep = 9, Oct = 10, Nov = 11, Dec = 12}
-    local day, month, dayNum, time, year = dateString:match("(%a+) (%a+) (%d+) (%d+:%d+:%d+) (%d+)")
+    local day, month, dayNum, time, year = dateString:match("(%a+) (%a+) (%s?%d+) (%d+:%d+:%d+) (%d+)")
     local monthNum = monthNames[month]
 
     if day and monthNum and dayNum and time and year then
@@ -137,6 +142,7 @@ function ParseDate(dateString)
 end
 
 function GetQuality(ItemName, CreateDate)
+    print('[DEBUG:Degen:GetQuality]: Getting quality of '..ItemName..' with CreateDate: '..CreateDate)
     local StartDate = ParseDate(CreateDate)
 
     if not StartDate then
@@ -153,7 +159,7 @@ function GetQuality(ItemName, CreateDate)
     local TimeExtra = MaxTime * DecayRate
     local Quality = 100 - math.ceil(((os.time() * 1000 - StartDate) / TimeExtra) * 100)
 
-    if DecayRate == 0 then
+    if DecayRate == 0.0 then
         Quality = 100
     end
 
@@ -166,4 +172,12 @@ function GetQuality(ItemName, CreateDate)
     end
 
     return Quality
+end
+
+function DebugPrint(Type, Message, ...)
+    if ... ~= nil then
+        print(('^4[^5Debug^4:^5Inventory^4:^5%s^4]:^7 %s %s'):format(Type, Message, ...))
+    else
+        print(('^4[^5Debug^4:^5Inventory^4:^5%s^4]:^7 %s'):format(Type, Message))
+    end
 end

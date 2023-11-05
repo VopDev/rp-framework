@@ -2,8 +2,24 @@ let DateNow = Date.now();
 let MaxTime = (((1000 * 60) * 60) * 24) * 28
 let DebugEnabled = false;
 
-GetItemImage = function(Image) {
-    return `./img/items/${Image}`;
+async function GetItemImage(ItemName) {
+    // Check if already has prefix
+    let PrefixPath = `./img/items/${ItemName}`;
+    const AlreadyPrefixResponse = await fetch(PrefixPath);
+    if (AlreadyPrefixResponse.status === 200) {
+        return PrefixPath;
+    } else {
+        // If not has prefix look for it.
+        for (let letter = 'a'; letter <= 'z'; letter = String.fromCharCode(letter.charCodeAt(0) + 1)) {
+            const imageName = `${letter}_${ItemName}.png`;
+            let NoPrefixPath = `./img/items/${imageName}`;
+            const PrefixResponse = await fetch(NoPrefixPath);
+            if (PrefixResponse.status === 200) {
+                return NoPrefixPath;
+            }
+        }
+        return `./img/items/f_water.png`;
+    }
 }
 
 GetItemLabel = function(ItemName) {
@@ -211,14 +227,15 @@ HandleInventoryInfo = function (ItemData) {
         $(".info-container").html("");
     }
 
-    if (ItemData["Type"] == "Weapon") {
-        $('#info-weight').html(`${ItemData["Weight"].toFixed( 1 )}`);
+    // Set Item Information
+    if (ItemData["Type"].toLowerCase() === "weapon") {
+        $('#info-weight').html(`${ItemData["Weight"].toFixed(1)}`);
         $('#info-amount').html("1");
-        $('#info-quality').html(`${Math.floor( GetQuality(ItemData["ItemName"], ItemData["Info"]["CreateDate"], ItemData) )}%`);
+        $('#info-quality').html(`${Math.floor(GetQuality(ItemData["ItemName"], ItemData["Info"]["CreateDate"], ItemData))}%`);
     } else {
-        $('#info-weight').html(`${((ItemData["Weight"] * ItemData["Amount"])).toFixed( 1 )}`);
+        $('#info-weight').html(`${((ItemData["Weight"] * ItemData["Amount"])).toFixed(1)}`);
         $('#info-amount').html(`${ItemData["Amount"]}`);
-        $('#info-quality').html(`${Math.floor( GetQuality(ItemData["ItemName"], ItemData["Info"]["CreateDate"], ItemData) )}%`);
+        $('#info-quality').html(`${Math.floor(GetQuality(ItemData["ItemName"], ItemData["Info"]["CreateDate"], ItemData))}%`);
     }
     $(".inventory-item-description").show(150);
 };

@@ -18,7 +18,6 @@ Citizen.CreateThread(function()
                     Fertilizer = PlantData.Fertilizer,
                     Health = PlantData.Health,
                     Pregnant = PlantData.Pregnant,
-                    Progress = PlantData.Progress,
                     Id = Plant.PlantId,
                     Coords = { 
                         X = PlantData.Coords.X,
@@ -40,7 +39,6 @@ Citizen.CreateThread(function()
             Fertilizer = 100,
             Health = 100,
             Pregnant = 'False',
-            Progress = 0,
             Id = NewId,
             Coords = { 
                 X = Coords.x,
@@ -92,12 +90,12 @@ Citizen.CreateThread(function()
                 end
       
                 if Plant['Health'] > 0 then
-                    if Plant['Progress'] < 100 then
+                    if Plant['Stage'] < 100 then
                         local RandomGrowth = math.random(3, 6)
                         Plant['Stage'] = Plant['Stage'] + RandomGrowth
                     end
                 end
-                -- print('[DEBUG:WeedPlants]: Updating Plant Data for plant: ' .. Plant['Id'] .. ' - ' .. Plant['Stage'] .. ' - ' .. Plant['Water'] .. ' - ' .. Plant['Fertilizer'] .. ' - ' .. Plant['Health'] .. ' - ' .. Plant['Pregnant'] .. ' - ' .. json.encode(Plant['Coords']) .. ' - ' .. Plant['Progress'])
+                -- print('[DEBUG:WeedPlants]: Updating Plant Data for plant: ' .. Plant['Id'] .. ' - ' .. Plant['Stage'] .. ' - ' .. Plant['Water'] .. ' - ' .. Plant['Fertilizer'] .. ' - ' .. Plant['Health'] .. ' - ' .. Plant['Pregnant'] .. ' - ' .. json.encode(Plant['Coords']))
                 DatabaseModule.Update('UPDATE player_weedplants SET PlantData = ? WHERE PlantId = ?', {
                     json.encode(Plant),
                     Plant['Id']
@@ -125,6 +123,9 @@ RegisterNetEvent("mercy-illegal/server/do-plant-stuff", function(Type, PlantId, 
         Player.Functions.AddItem('weed-branch', math.random(1, 3), false, false, true)
         if math.random(1,5) <= 2 then
             Player.Functions.AddItem('weed-seed-female', 1, false, false, true)
+        end
+        if Plant.Pregnant == 'True' then
+            Player.Functions.AddItem('weed-seed-male', math.random(1, 3), false, false, true)
         end
     elseif Type == 'Water' then
         if Plant.Water < 100 then
