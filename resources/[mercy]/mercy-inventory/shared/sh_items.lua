@@ -41,6 +41,26 @@ end
 
 -- [ Weapons ] --
 
+Shared.ItemList['digiscanner'] = {
+    ['ItemName'] = "digiscanner",
+	['Label'] = "DigiScanner",
+	['Weight'] = 14.0,
+	['Type'] = "Item",
+	['Metal'] = true,
+	['Melee'] = true,
+	['Image'] = "digiscanner.png",
+	['Unique'] = true,
+	['Combinable'] = nil,
+	['Description'] = "This seems to scan signials and is able to copy them.",
+	['DecayRate'] = 2.0,
+	['RemoveWhenDecayed'] = false,
+	['Price'] = 5500,
+	['Cost'] = {
+		{ Item = 'aluminum', Amount = 75 },
+		{ Item = 'scrapmetal',  Amount = 75 },
+	}
+}
+
 Shared.ItemList['weapon_rocketlauncher'] = {
     ['ItemName'] = "weapon_rocketlauncher",
 	['Label'] = "Rocket Launcher",
@@ -103,6 +123,9 @@ Shared.ItemList['weapon_katanas'] = {
 	['DecayRate'] = 2.0,
 	['RemoveWhenDecayed'] = false,
 	['Price'] = 1,
+	['Cost'] = {
+		{Item = 'steel', Amount = 75},
+	}
 }
 
 Shared.ItemList['weapon_nightstick'] = {
@@ -151,6 +174,11 @@ Shared.ItemList['weapon_knife'] = {
 	['DecayRate'] = 2.0,
 	['RemoveWhenDecayed'] = false,
 	['Price'] = 1,
+	['Cost'] = {
+		{Item = 'bp-knife', Amount = 1},
+		{Item = 'steel', Amount = 80},
+		{Item = 'plastic', Amount = 35},
+	}
 }
 
 Shared.ItemList['weapon_hatchet'] = {
@@ -712,6 +740,11 @@ Shared.ItemList["weapon_heavypistol"] = {
 	['DecayRate'] = 2.0,
 	['RemoveWhenDecayed'] = true,
 	['Price'] = 1,
+	['Cost'] = {
+		{Item = 'bp-appistol', Amount = 1},
+		{Item = 'steel', Amount = 200},
+		{Item = 'aluminum', Amount = 150},
+	}
 }
 
 Shared.ItemList["weapon_glock"] = {
@@ -1526,7 +1559,7 @@ Shared.ItemList["heartstopper"] = {
 	['Description'] = "Sates Hunger and reduces stress.",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = true,
-	['Price'] = 1,
+	['Price'] = 100,
 	['Cost'] = {
 		{Item = 'ingredient-buns', Amount = 1},
 		{Item = 'ingredient-cheese', Amount = 2},
@@ -1547,7 +1580,7 @@ Shared.ItemList["bleeder"] = {
 	['Description'] = "Sates Hunger and reduces stress.",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = true,
-	['Price'] = 1,
+	['Price'] = 85,
 	['Cost'] = {
 		{Item = 'ingredient-buns', Amount = 1},
 		{Item = 'ingredient-patty', Amount = 1},
@@ -1567,7 +1600,7 @@ Shared.ItemList["torpedo"] = {
 	['Description'] = "Sates Hunger and reduces stress.",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = true,
-	['Price'] = 1,
+	['Price'] = 120,
 	['Cost'] = {
 		{Item = 'ingredient-buns', Amount = 1},
 		{Item = 'ingredient-patty', Amount = 2},
@@ -1586,7 +1619,7 @@ Shared.ItemList["moneyshot"] = {
 	['Description'] = "Sates Hunger and reduces stress.",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = true,
-	['Price'] = 1,
+	['Price'] = 110,
 	['Cost'] = {
 		{Item = 'ingredient-buns', Amount = 1},
 		{Item = 'ingredient-cheese', Amount = 2},
@@ -1607,7 +1640,7 @@ Shared.ItemList["fries"] = {
 	['Description'] = "Sates Hunger and reduces stress.",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = true,
-	['Price'] = 1,
+	['Price'] = 55,
 	['Cost'] = {
 		{Item = 'ingredient-potatoes', Amount = 1},
 	}
@@ -1707,7 +1740,7 @@ Shared.ItemList["milkshake"] = {
 	['Description'] = "Hand-scooped for you..",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 100,
 	['Cost'] = {
 		{Item = 'ingredient-milk', Amount = 1},
 		{Item = 'ingredient-icecream', Amount = 1},
@@ -1726,7 +1759,7 @@ Shared.ItemList["softdrink"] = {
 	['Description'] = "..",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 50,
 	['Cost'] = {
 		{Item = 'ingredient-syrup', Amount = 1},
 	}
@@ -2037,6 +2070,10 @@ Shared.ItemList["mochi"] = {
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
 	['Price'] = 1,
+	['Cost'] = {
+		{Item = 'ingredient-milk', Amount = 1},
+		{Item = 'ingredient-icecream', Amount = 1},
+	}
 }
 
 Shared.ItemList["kittyricecake"] = {
@@ -2052,6 +2089,9 @@ Shared.ItemList["kittyricecake"] = {
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
 	['Price'] = 1,
+	['Cost'] = {
+		{Item = 'ingredient-milk', Amount = 1},
+	}
 }
 
 Shared.ItemList["kittydoughnut"] = {
@@ -2067,6 +2107,9 @@ Shared.ItemList["kittydoughnut"] = {
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
 	['Price'] = 1,
+	['Cost'] = {
+		{Item = 'ingredient-milk', Amount = 1},
+	}
 }
 
 Shared.ItemList["kittycupcake"] = {
@@ -2082,6 +2125,9 @@ Shared.ItemList["kittycupcake"] = {
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
 	['Price'] = 1,
+	['Cost'] = {
+		{Item = 'ingredient-milk', Amount = 1},
+	}
 }
 
 Shared.ItemList["kittybrownie"] = {
@@ -2097,6 +2143,9 @@ Shared.ItemList["kittybrownie"] = {
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
 	['Price'] = 1,
+	['Cost'] = {
+		{Item = 'ingredient-milk', Amount = 1},
+	}
 }
 
 Shared.ItemList["kittybentobox"] = {
@@ -2112,6 +2161,11 @@ Shared.ItemList["kittybentobox"] = {
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
 	['Price'] = 1,
+	['Cost'] = {
+		{Item = 'ingredient-lettuce', Amount = 1},
+		{Item = 'ingredient-patty-raw', Amount = 1},
+		{Item = 'ingredient-cheese', Amount = 1},
+	}
 }
 
 Shared.ItemList["katsusalad"] = {
@@ -2127,6 +2181,9 @@ Shared.ItemList["katsusalad"] = {
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
 	['Price'] = 1,
+	['Cost'] = {
+		{Item = 'ingredient-lettuce', Amount = 3},
+	}
 }
 
 Shared.ItemList["katsucurry"] = {
@@ -2142,6 +2199,9 @@ Shared.ItemList["katsucurry"] = {
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
 	['Price'] = 1,
+	['Cost'] = {
+		{Item = 'ingredient-patty-raw', Amount = 2},
+	}
 }
 -- [ Medical ] --
 
@@ -2160,8 +2220,8 @@ Shared.ItemList["ifak"] = {
 	['Price'] = 50,
 }
 
-Shared.ItemList["bandage"] = {
-	['ItemName'] = "bandage",
+Shared.ItemList["firstaidkit"] = {
+	['ItemName'] = "firstaidkit",
 	['Label'] = "First Aid Kit",
 	['Weight'] = 0.25,
 	['Type'] = "Item",
@@ -2170,6 +2230,21 @@ Shared.ItemList["bandage"] = {
 	['Unique'] = false,
 	['Combinable'] = nil,
 	['Description'] = "Are you bleeding?",
+	['DecayRate'] = 0.25,
+	['RemoveWhenDecayed'] = true,
+	['Price'] = 56,
+}
+
+Shared.ItemList["bandage"] = {
+	['ItemName'] = "bandage",
+	['Label'] = "Bandage",
+	['Weight'] = 0.25,
+	['Type'] = "Item",
+	['Metal'] = false,
+	['Image'] = "bandage.png",
+	['Unique'] = false,
+	['Combinable'] = nil,
+	['Description'] = "Seems to heal minor wounds.",
 	['DecayRate'] = 0.25,
 	['RemoveWhenDecayed'] = true,
 	['Price'] = 56,
@@ -2479,11 +2554,11 @@ Shared.ItemList["lockpick"] = {
 	['Description'] = "A lockpick..",
 	['DecayRate'] = 0.1,
 	['RemoveWhenDecayed'] = true,
-	['Price'] = 1,
+	['Price'] = 3500,
 	['Cost'] = {
-		{Item = 'steel', Amount = 23},
-		{Item = 'plastic', Amount = 27},
-		{Item = 'aluminum', Amount = 34},
+		{Item = 'bp-lockpick', Amount = 1},
+		{Item = 'aluminum', Amount = 75},
+		{Item = 'steel', Amount = 20},
 	}
 }
 
@@ -3729,7 +3804,7 @@ Shared.ItemList["scrapmetal"] = {
 	['RemoveWhenDecayed'] = true,
 	['Price'] = 1,
 	['Cost'] = {
-		{ Item = 'recyclablematerial', Amount = 1 },
+		{ Item = 'recyclablematerial', Amount = 5 },
 	}
 }
 
@@ -3747,7 +3822,7 @@ Shared.ItemList["steel"] = {
 	['RemoveWhenDecayed'] = true,
 	['Price'] = 1,
 	['Cost'] = {
-		{ Item = 'recyclablematerial', Amount = 1 },
+		{ Item = 'recyclablematerial', Amount = 5 },
 	}
 }
 
@@ -3765,7 +3840,7 @@ Shared.ItemList["plastic"] = {
 	['RemoveWhenDecayed'] = true,
 	['Price'] = 1,
 	['Cost'] = {
-		{ Item = 'recyclablematerial', Amount = 1 },
+		{ Item = 'recyclablematerial', Amount = 5 },
 	}
 }
 
@@ -3783,7 +3858,7 @@ Shared.ItemList["aluminum"] = {
 	['RemoveWhenDecayed'] = true,
 	['Price'] = 1,
 	['Cost'] = {
-		{ Item = 'recyclablematerial', Amount = 1 },
+		{ Item = 'recyclablematerial', Amount = 5 },
 	}
 }
 
@@ -3801,7 +3876,7 @@ Shared.ItemList["copper"] = {
 	['RemoveWhenDecayed'] = true,
 	['Price'] = 1,
 	['Cost'] = {
-		{ Item = 'recyclablematerial', Amount = 1 },
+		{ Item = 'recyclablematerial', Amount = 5 },
 	}
 }
 
@@ -3819,7 +3894,7 @@ Shared.ItemList["electronics"] = {
 	['RemoveWhenDecayed'] = true,
 	['Price'] = 1,
 	['Cost'] = {
-		{ Item = 'recyclablematerial', Amount = 1 },
+		{ Item = 'recyclablematerial', Amount = 5 },
 	}
 }
 
@@ -3837,7 +3912,7 @@ Shared.ItemList["rubber"] = {
 	['RemoveWhenDecayed'] = true,
 	['Price'] = 1,
 	['Cost'] = {
-		{ Item = 'recyclablematerial', Amount = 1 },
+		{ Item = 'recyclablematerial', Amount = 5 },
 	}
 }
 
@@ -3855,7 +3930,7 @@ Shared.ItemList["glass"] = {
 	['RemoveWhenDecayed'] = true,
 	['Price'] = 12,
 	['Cost'] = {
-		{ Item = 'recyclablematerial', Amount = 1 },
+		{ Item = 'recyclablematerial', Amount = 5 },
 	}
 }
 
@@ -5933,7 +6008,7 @@ Shared.ItemList["methlab_stage_01"] = {
     ['Description'] = "You can build some serious shit with this!",
     ['DecayRate'] = 0.0,
     ['RemoveWhenDecayed'] = false,
-    ['Price'] = 0
+    ['Price'] = 0,
 }
 
 Shared.ItemList["methlab_stage_02"] = {
@@ -5948,7 +6023,7 @@ Shared.ItemList["methlab_stage_02"] = {
     ['Description'] = "You can build some serious shit with this!",
     ['DecayRate'] = 0.0,
     ['RemoveWhenDecayed'] = false,
-    ['Price'] = 0
+    ['Price'] = 0,
 }
 
 Shared.ItemList["methlab_stage_03"] = {
@@ -5963,7 +6038,7 @@ Shared.ItemList["methlab_stage_03"] = {
     ['Description'] = "You can build some serious shit with this!",
     ['DecayRate'] = 0.0,
     ['RemoveWhenDecayed'] = false,
-    ['Price'] = 0
+    ['Price'] = 0,
 }
 
 Shared.ItemList["methlab_stage_04"] = {
@@ -5978,7 +6053,7 @@ Shared.ItemList["methlab_stage_04"] = {
     ['Description'] = "You can build some serious shit with this!",
     ['DecayRate'] = 0.0,
     ['RemoveWhenDecayed'] = false,
-    ['Price'] = 0
+    ['Price'] = 0,
 }
 
 -- Polaroid
@@ -6041,4 +6116,51 @@ Shared.ItemList["mpolaroid-photobook"] = {
     ['DecayRate'] = 0.0,
     ['RemoveWhenDecayed'] = false,
     ['Price'] = 32500,
+}
+
+-- Blueprints
+
+Shared.ItemList["bp-lockpick"] = {
+    ['ItemName'] = "bp-lockpick",
+    ['Label'] = "Blueprint: Lockpick",
+    ['Weight'] = 5.0,
+    ['Type'] = "Item",
+    ['Metal'] = false,
+    ['Image'] = "bp-lockpick.png",
+    ['Unique'] = true,
+    ['Combinable'] = nil,
+    ['Description'] = "A blueprint with an image of a lockpick.",
+    ['DecayRate'] = 0.0,
+    ['RemoveWhenDecayed'] = false,
+    ['Price'] = 15000,
+}
+
+Shared.ItemList["bp-knife"] = {
+    ['ItemName'] = "bp-knife",
+    ['Label'] = "Blueprint: Knife",
+    ['Weight'] = 5.0,
+    ['Type'] = "Item",
+    ['Metal'] = false,
+    ['Image'] = "bp-knife.png",
+    ['Unique'] = true,
+    ['Combinable'] = nil,
+    ['Description'] = "A blueprint with an image of a knife.",
+    ['DecayRate'] = 0.0,
+    ['RemoveWhenDecayed'] = false,
+    ['Price'] = 5000,
+}
+
+Shared.ItemList["bp-appistol"] = {
+    ['ItemName'] = "bp-appistol",
+    ['Label'] = "Blueprint: AP Pistol",
+    ['Weight'] = 5.0,
+    ['Type'] = "Item",
+    ['Metal'] = false,
+    ['Image'] = "bp-appistol.png",
+    ['Unique'] = true,
+    ['Combinable'] = nil,
+    ['Description'] = "A blueprint with an image of an AP Pistol.",
+    ['DecayRate'] = 0.0,
+    ['RemoveWhenDecayed'] = false,
+    ['Price'] = 55000,
 }

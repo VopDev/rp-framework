@@ -22,7 +22,7 @@ Citizen.CreateThread(function()
                 Player.Functions.AddMoney('Cash', math.random(650, 1000))
             elseif v.ItemName == 'hunting-carcass-four' and (CurrentTime >= 20 and CurrentTime <= 24 or CurrentTime >= 0 and CurrentTime <= 5) then
                 Player.Functions.RemoveItem('hunting-carcass-four', v.Amount, v.Slot, true)
-                Player.Functions.AddItem('cash-rolls', math.random(25, 30), false, false, true)
+                Player.Functions.AddItem('cash-rolls', math.random(10, 15), false, false, true)
             end
         end
     end)

@@ -34,6 +34,35 @@ end)
 
 RegisterNetEvent('mercy-base/client/on-login', function()
     SetupPeds()
+    -- Delivery Vehicle
+    local Coords = { X = 930.62, Y = -1221.35, Z = 25.43, Heading = 181.5 }
+        local Plate = 'DELIV000'
+        local Vehicle = VehicleModule.SpawnVehicle('nspeedo', Coords, Plate, false)
+       
+        if Vehicle ~= nil then
+            Citizen.SetTimeout(500, function()
+                FreezeEntityPosition(Vehicle['Vehicle'], true)
+                SetEntityInvincible(Vehicle['Vehicle'], true)
+                SetVehicleDoorsLocked(Vehicle['Vehicle'], 3)
+                VehicleModule.SetVehicleNumberPlate(Vehicle['Vehicle'], Plate)
+                SetVehicleLivery(Vehicle['Vehicle'], 12)
+            end)
+        end
+
+
+         -- Sanitation Vehicle
+    local Coords2 = { X = -356.41, Y = -1530.78, Z = 27.43, Heading = 270.33 }
+    local Plate2 = 'SANI0000'
+    local Vehicle2 = VehicleModule.SpawnVehicle('trash', Coords2, Plate2, false)
+   
+    if Vehicle2 ~= nil then
+        Citizen.SetTimeout(500, function()
+            FreezeEntityPosition(Vehicle2['Vehicle'], true)
+            SetEntityInvincible(Vehicle2['Vehicle'], true)
+            SetVehicleDoorsLocked(Vehicle2['Vehicle'], 3)
+            VehicleModule.SetVehicleNumberPlate(Vehicle2['Vehicle'], Plate2)
+        end)
+    end
 end)
 
 -- [ Code ] --
@@ -100,7 +129,7 @@ function SetupPeds()
                 EventName = 'mercy-jobs/client/hand-receipts',
                 EventParams = {},
                 Enabled = function(Entity)
-                    if exports['mercy-business']:IsPlayerInBusiness('Burger Shot') then
+                    if exports['mercy-business']:IsPlayerInBusiness('Burger Shot') or exports['mercy-business']:IsPlayerInBusiness('UwU Café') then
                         return true
                     else
                         return false
@@ -109,6 +138,75 @@ function SetupPeds()
             }
         }
     })
+
+    exports['mercy-ui']:AddEyeEntry("rentdeliveryvehicle", {
+        Type = 'Zone',
+        SpriteDistance = 1.0,
+        Distance = 4.0,
+        ZoneData = {
+            Center = vector3(930.82, -1224.59, 25.62),
+            Length = 1.2,
+            Width = 1.0,
+            Data = {
+                debugPoly = false,
+                heading = 0,
+                minZ = 26.14,
+                maxZ = 27.94
+            },
+        },
+        Options = {
+            {
+                Name = 'rentdelivery',
+                Icon = 'fas fa-car',
+                Label = 'Rent Vehicle ($100)',
+                EventType = 'Server',
+                EventName = 'mercy-jobs/server/rent-delivery',
+                EventParams = '',
+                Enabled = function(Entity)
+                    if exports['mercy-phone']:IsJobCenterTaskActive('delivery', 1) then
+                        return true
+                    else
+                        return false
+                    end
+                end,
+            }
+        }
+    })
+
+    exports['mercy-ui']:AddEyeEntry("rentsanivehicle", {
+        Type = 'Zone',
+        SpriteDistance = 1.0,
+        Distance = 6.0,
+        ZoneData = {
+            Center = vector3(-351.62, -1530.82, 27.71),
+            Length = 2.2,
+            Width = 2.0,
+            Data = {
+                debugPoly = false,
+                heading = 0,
+                minZ = 25.14,
+                maxZ = 28.94
+            },
+        },
+        Options = {
+            {
+                Name = 'rentdelivery',
+                Icon = 'fas fa-car',
+                Label = 'Rent Vehicle ($100)',
+                EventType = 'Server',
+                EventName = 'mercy-jobs/server/rent-sani',
+                EventParams = '',
+                Enabled = function(Entity)
+                    if exports['mercy-phone']:IsJobCenterTaskActive('sanitation', 1) then
+                        return true
+                    else
+                        return false
+                    end
+                end,
+            }
+        }
+    })
+
     local JobsTable = CallbackModule.SendCallback("mercy-phone/server/jobcenter/get-jobs")
     for k, Job in pairs(JobsTable) do
         exports['mercy-ui']:AddEyeEntry("job_ped_" .. Job['Name'] .. "_" .. k, {
@@ -124,7 +222,7 @@ function SetupPeds()
                 {
                     Name = 'sign_in',
                     Icon = 'fas fa-circle',
-                    Label = 'Check In',
+                    Label = 'Sign In',
                     EventType = 'Server',
                     EventName = 'mercy-phone/server/jobcenter/check-in',
                     EventParams = Job['Name'],
@@ -139,7 +237,7 @@ function SetupPeds()
                 {
                     Name = 'sign_off',
                     Icon = 'fas fa-circle',
-                    Label = 'Check Out',
+                    Label = 'Sign Out',
                     EventType = 'Server',
                     EventName = 'mercy-phone/server/jobcenter/check-out',
                     EventParams = {},

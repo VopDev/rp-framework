@@ -5,14 +5,14 @@ Config = {
 	HostDisplayQueue = true,
 	onlyActiveWhenFull = false,
 	Requirements = { -- A player must have the identifier to be allowed into the server
-		Discord = false,
-		Steam = false
+		Discord = true,
+		Steam = true
 	},
 	WhitelistRequired = false, -- If this option is set to true, a player must have a role in Config.Rankings to be allowed into the server
 	Debug = true,
 	Webhook = 'WEBHOOK_HERE',
 	Displays = {
-		Prefix = '[mercy-queue]',
+		Prefix = '[queue]',
 		ConnectingLoop = { 
 			'🐌', 
 			'🐍',
@@ -70,8 +70,8 @@ Config = {
 
 Config.Rankings = {
 	-- LOWER NUMBER === HIGHER PRIORITY 
-	-- [''] = {25, "You are {QUEUE_NUM}/{QUEUE_MAX} in queue. Please Wait.\n⚜️ See our discord for more information: https://discord.gg/mercy-coll\n FiveM Account: LINKED ✔️\n Priority Queue: Intaker 🎙\n⚠️ If you should have Priority Queue then close your game and wait 5 minutes before reconnecting the server again ⚠️"}, -- Admin
-	-- [''] = {25, "You are {QUEUE_NUM}/{QUEUE_MAX} in queue. Please Wait.\n⚜️ See our discord for more information: https://discord.gg/mercy-coll\n FiveM Account: LINKED ✔️\n Priority Queue: Administrator 🛡\n⚠️ If you should have Priority Queue then close your game and wait 5 minutes before reconnecting the server again ⚠️"}, -- Admin
-	-- [''] = {1, "You are {QUEUE_NUM}/{QUEUE_MAX} in queue. Please Wait.\n⚜️ See our discord for more information: https://discord.gg/mercy-coll\n FiveM Account: LINKED ✔️\n Priority Queue: Developer 🛠\n⚠️ If you should have Priority Queue then close your game and wait 5 minutes before reconnecting the server again ⚠️"}, -- Developers
-	-- [''] = {1, "You are {QUEUE_NUM}/{QUEUE_MAX} in queue. Please Wait.\n⚜️ See our discord for more information: https://discord.gg/mercy-coll\n FiveM Account: LINKED ✔️\n Priority Queue: Owner 💎\n⚠️ If you should have Priority Queue then close your game and wait 5 minutes before reconnecting the server again ⚠️"}, -- Founder
+	 ['978694309299748924'] = {1, "You are {QUEUE_NUM}/{QUEUE_MAX} in queue. Please Wait.\n FiveM Account: LINKED ✔️\n Priority Queue: Developer 🎙\n⚠️ If you should have Priority Queue then close your game and wait 5 minutes before reconnecting the server again ⚠️"}, -- Dev
+	 ['956067318620905472'] = {5, "You are {QUEUE_NUM}/{QUEUE_MAX} in queue. Please Wait.\n FiveM Account: LINKED ✔️\n Priority Queue: Administrator 🛡\n⚠️ If you should have Priority Queue then close your game and wait 5 minutes before reconnecting the server again ⚠️"}, -- Admin
+	 ['978694338131419176', '978694350282301531'] = {50, "You are {QUEUE_NUM}/{QUEUE_MAX} in queue. Please Wait.\n FiveM Account: LINKED ✔️\n Priority Queue: Police/EMS 🛡\n⚠️ If you should have Priority Queue then close your game and wait 5 minutes before reconnecting the server again ⚠️"}, -- Police/EMS
+	 ['978694359971135619'] = {100, "You are {QUEUE_NUM}/{QUEUE_MAX} in queue. Please Wait.\n FiveM Account: LINKED ✔️\n Priority Queue: Standard 🛡\n⚠️ If you should have Priority Queue then close your game and wait 5 minutes before reconnecting the server again ⚠️"}, -- Admin
 }

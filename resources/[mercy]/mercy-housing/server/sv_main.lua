@@ -113,7 +113,7 @@ Citizen.CreateThread(function()
     CommandsModule.Add("addhouse", "Add a house", {}, true, function(source, args)
         local Player = PlayerModule.GetPlayerBySource(source)
         if not Player then return end
-        if Player.PlayerData.Job.Name == "realestate" then
+        if Player.PlayerData.Job.Name == "judge" then
             TriggerClientEvent("mercy-housing/client/try-add-new-house", source)
         end
     end)

@@ -25,10 +25,13 @@ RegisterNetEvent('mercy-polyzone/client/leave-polyzone', function(PolyData, Coor
 end)
 
 RegisterNetEvent('mercy-illegal/client/open-crafting-bench', function()
-    if exports['mercy-inventory']:CanOpenInventory() then
+   -- if IsContainerWhitelisted() then
         EventsModule.TriggerServer('mercy-inventory/server/open-other-inventory', 'Bench Crafting', 'Crafting', 0, 0, Config.BenchCrafting)
-    end
+    --else
+    --    TriggerEvent('mercy-ui/client/notify', "dontknowhow", "You dont know how to make anything here!", 'error', 3000)
+   -- end
 end)
+
 
 -- [ Functions ] --
 
@@ -37,13 +40,13 @@ function IsInsideBenchContainer()
 end
 exports("IsInsideBenchContainer", IsInsideBenchContainer)
 
--- function IsContainerWhitelisted()
---     local CitizenId = PlayerModule.GetPlayerData().CitizenId
---     for k, v in pairs(Config.ContainerWhitelist) do
---         if CitizenId == v then
---             return true
---         end
---     end
---     return false
--- end
--- exports("IsContainerWhitelisted", IsContainerWhitelisted)
+ function IsContainerWhitelisted()
+     local CitizenId = PlayerModule.GetPlayerData().CitizenId
+     for k, v in pairs(Config.ContainerWhitelist) do
+         if CitizenId == v then
+             return true
+         end
+     end
+     return false
+ end
+ exports("IsContainerWhitelisted", IsContainerWhitelisted)

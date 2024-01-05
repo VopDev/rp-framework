@@ -262,6 +262,7 @@ Config.Models = {
     "sirenhead",
 
     "ig_lennylarge",
+    "RatBoy",
 }
 
 Config.WeatherTypes = {

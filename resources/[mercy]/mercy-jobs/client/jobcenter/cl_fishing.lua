@@ -1,5 +1,5 @@
 Jobs.Fishing = {
-    CurrentFishingSpot = vector3(0, 0, 0),
+    CurrentFishingSpot = vector3(0,0,0),
     HasRodAnim = false,
     CanSell = true,
 }
@@ -17,7 +17,7 @@ Citizen.CreateThread(function()
 
     Jobs.Fishing.CurrentFishingSpot = CallbackModule.SendCallback("mercy-jobs/server/fishing/get-current-spot")
     Citizen.SetTimeout(1500, function()
-        BlipModule.CreateBlip('fishing-spot', Jobs.Fishing.CurrentFishingSpot, 'Fishing Spot', 540, 26, false, 0.43)
+        BlipModule.CreateBlip('fishing-spot', vector3(1299.07, 4216.56, 33.91), 'Fishing Spot', 540, 26, false, 0.43)
         BlipModule.CreateBlip('fishing-sell', vector3(-1847.07, -1191.11, 14.32), 'Fishing Sales', 356, 26, false, 0.43)
     end)
 
@@ -64,9 +64,9 @@ RegisterNetEvent('mercy-jobs/client/fishing/try-sell', function()
 end)
 
 RegisterNetEvent('mercy-jobs/client/fishing/set-fishing-spot', function(FishingCoords)
-    Jobs.Fishing.CurrentFishingSpot = FishingCoords
+    FishingCoords = vector3(1299.07, 4216.56, 33.91)
     while BlipModule == nil do Citizen.Wait(100) end
-    BlipModule.CreateBlip('fishing-spot', Jobs.Fishing.CurrentFishingSpot, 'Fishing Spot', 540, 26, false, 0.43)
+    BlipModule.CreateBlip('fishing-spot', vector3(1299.07, 4216.56, 33.91), 'Fishing Spot', 540, 26, false, 0.43)
 end)
 
 RegisterNetEvent('mercy-items/client/used/fishing-rod', function()
@@ -122,7 +122,8 @@ RegisterNetEvent('mercy-phone/client/jobcenter/on-job-start', function(Job, Lead
     if Leader == PlayerModule.GetPlayerData().CitizenId then
         Citizen.CreateThread(function()
             while true do
-                if #(Config.MeetupPoints['fishing'] - GetEntityCoords(PlayerPedId())) < 10.0 then
+                exports['76b-ui']:Show("Fishing Worker", "Supply yourself with a fishing rod.")
+                if exports['mercy-inventory']:HasEnoughOfItem('fishingrod', 1) then
                     TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 1, true)
                     break
                 end
@@ -138,9 +139,11 @@ RegisterNetEvent('mercy-phone/client/jobcenter/on-task-done', function(Job, Fini
 
     if Leader == PlayerModule.GetPlayerData().CitizenId then
         if NextTaskId == 2 then -- Go to the fishing spot
+            exports['76b-ui']:Show("Fishing Worker", "Head to the fishing spot.")
             Citizen.CreateThread(function()
                 while true do
                     if NearFishingZone() then
+                        exports['76b-ui']:Show("Fishing Worker", "Cast your rod and catch those fish.")
                         TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 2, true)
                         break
                     end
@@ -151,6 +154,7 @@ RegisterNetEvent('mercy-phone/client/jobcenter/on-task-done', function(Job, Fini
         elseif NextTaskId == 4 then -- Go tell them the spot is good
             Citizen.CreateThread(function()
                 while true do
+                    exports['76b-ui']:Show("Fishing Worker", "Return to the fisherman with your haul.")
                     if #(Config.MeetupPoints['fishing'] - GetEntityCoords(PlayerPedId())) < 10.0 then
                         TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 4, true)
                         break
@@ -199,7 +203,7 @@ end
 
 function NearFishingZone()
     local Coords = GetEntityCoords(PlayerPedId())
-    local Distance = #(Coords - Jobs.Fishing.CurrentFishingSpot)
+    local Distance = #(Coords - vector3(1299.07, 4216.56, 33.91))
     if Distance < 65.0 then
         return true
     end

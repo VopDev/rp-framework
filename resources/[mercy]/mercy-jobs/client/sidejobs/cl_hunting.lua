@@ -89,7 +89,7 @@ end)
 
 RegisterNetEvent('mercy-items/client/used-hunting-bait', function()
     if InsideHuntingZone() then
-        if BaitLastPlaced == 0 or GetGameTimer() > (BaitLastPlaced + (60000 * 10)) then
+        if BaitLastPlaced == 0 or GetGameTimer() > (BaitLastPlaced + (60000 * 2)) then
             ClearPedTasks(PlayerPedId())
             TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
             exports['mercy-inventory']:SetBusyState(true)

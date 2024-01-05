@@ -53,7 +53,7 @@ ServerConfig.RandomNames = {
 
 ServerConfig.Jobs = {
     ["sanitation"] = {
-        ["Rate"] = 1,
+        ["Rate"] = 3,
         ["Icon"] = 'fas fa-trash-alt',
         ["Label"] = "Los Santos Sanitation",
         ["Name"] = "sanitation",
@@ -130,13 +130,13 @@ ServerConfig.Jobs = {
         ["Props"] = {},
     },
     ["delivery"] = {
-        ["Rate"] = 5,
-        ["Icon"] = 'fas fa-truck-loading',
-        ["Label"] = "24/7 Deliveries",
-        ["Name"] = "delivery",
+        ["Rate"] = 3,
+        ["Icon"] = 'fas fa-truck',
+        ["Label"] = "Store Deliveries",
+        ["Name"] = "store delivery",
         ["Location"] = vector4(929.94, -1249.29, 24.5, 34.19),
         ["RequiresVPN"] = false,
-        ['Money'] = math.random(2500, 2900),
+        ['Money'] = math.random(200, 400),
         ['MaxGroupCount'] = 5,
         ['MaxMembers'] = 2,
         -- Don't touch
@@ -158,7 +158,7 @@ ServerConfig.DarkItems = {
         Label = 'VPN',
         Hidden = false,
         Payment = {
-            Amount = 20,
+            Amount = 30,
             Label = 'Shungite'
         },
         DropOffs = {

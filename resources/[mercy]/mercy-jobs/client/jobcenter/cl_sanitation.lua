@@ -123,6 +123,7 @@ RegisterNetEvent('mercy-threads/entered-vehicle', function()
 
     if exports['mercy-phone']:IsJobCenterTaskActive('sanitation', 2) then
         TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 2, true)
+        exports['76b-ui']:Show("Sanitation Worker", "Head to your assigned area.")
     end
 end)
 
@@ -133,42 +134,51 @@ RegisterNetEvent('mercy-phone/client/jobcenter/on-job-start', function(Job, Lead
         local ShowingAnything = false
         local CitizenId = PlayerModule.GetPlayerData().CitizenId
         while exports['mercy-phone']:IsJobCenterTaskActive('sanitation', 1) do
-            DrawMarker(20, -352.17, -1545.7, 28.9, 0, 0, 0, 180.0, 0, 0, 0.5, 0.5, 0.5, 138, 43, 226, 150, true, true, false, false, false, false, false)
             
-            if Leader == CitizenId then
-                if #(GetEntityCoords(PlayerPedId()) - vector3(-352.17, -1545.7, 27.72)) < 1.5 then
+        
+                if #(GetEntityCoords(PlayerPedId()) - vector3(vector3(-349.37, -1541.47, 27.72))) < 30 then
                     if not ShowingAnything then
                         ShowingAnything = true
-                        exports['mercy-ui']:SetInteraction("[E] Ask the foreman for a vehicle")
+                        exports['76b-ui']:Show("Sanitation Worker", "Rent a sanitation vehicle.")
                     end
-    
-                    if IsControlJustPressed(0, 38) then
-                        if not VehicleModule.CanVehicleSpawnAtCoords(vector3(927.02, -1232.79, 25.58), 1.85) then return exports['mercy-ui']:Notify("delivery-error", "Something is in the way..", "error") end
-                        exports['mercy-ui']:HideInteraction()
-                        TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 1, true)
-                        if FunctionsModule.RequestModel('trash') then
-                            local Coords = { X = -335.41, Y = -1564.36, Z = 24.95, Heading = 60.2 }
-                            local Plate = 'SAN' .. math.random(11111, 99999)
-                            local Vehicle = VehicleModule.SpawnVehicle('trash', Coords, Plate, false)
-                            if Vehicle ~= nil then
-                                Citizen.SetTimeout(500, function()
-                                    VehicleModule.SetVehicleNumberPlate(Vehicle.Vehicle, Plate)
-                                    exports['mercy-vehicles']:SetVehicleKeys(Plate, true, false)
-                                    exports['mercy-vehicles']:SetFuelLevel(Vehicle.Vehicle, 100)
-                                end)
-                            end
-                        end
-                    end
+
                 elseif ShowingAnything then
                     ShowingAnything = false
-                    exports['mercy-ui']:HideInteraction()
+                    exports['76b-ui']:Close()
                 end
-            end
+ 
 
             Citizen.Wait(4)
         end
     end)
 end)
+
+RegisterNetEvent('mercy-phone/client/jobcenter/sani-rented', function(Job)
+    SpawnSaniVehicle()
+end)
+
+function SpawnSaniVehicle()
+    if not VehicleModule.CanVehicleSpawnAtCoords(vector3(-316.06, -1536.58, 27.37), 1.6) then return exports['mercy-ui']:Notify("delivery-error", "Something is in the way..", "error") end
+    
+    exports['mercy-ui']:HideInteraction()
+    TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 1, true)
+    exports['76b-ui']:Show("Delivery Driver", "Get in your sanitation vehicle.")
+    if FunctionsModule.RequestModel('trash') then
+        local Coords = { X = -316.06, Y = -1536.58, Z = 27.37, Heading = 335.97 }
+        local Plate = 'SANI' .. math.random(0000, 9999)
+        local Vehicle = VehicleModule.SpawnVehicle('trash', Coords, Plate, false)
+        if Vehicle ~= nil then
+            Citizen.SetTimeout(500, function()
+                exports['mercy-vehicles']:SetVehicleKeys(Plate, true, false)
+                exports['mercy-vehicles']:SetFuelLevel(Vehicle.Vehicle, 100)
+                VehicleModule.SetVehicleNumberPlate(Vehicle.Vehicle, Plate)
+            end)
+        end
+
+    end
+end
+
+
 
 RegisterNetEvent('mercy-phone/client/jobcenter/on-task-done', function(Job, FinishedTaskId, NextTaskId, Leader)
     if Job ~= 'sanitation' then return end

@@ -195,22 +195,22 @@ Citizen.CreateThread(function()
 end)
 
 -- Blacklist
--- Citizen.CreateThread(function()
---     while true do
--- 		Citizen.Wait(4)
--- 		if LocalPlayer.state.LoggedIn then
--- 			for _, sctyp in next, Config.BlacklistedScenarios['TYPES'] do
--- 				SetScenarioTypeEnabled(sctyp, false)
--- 			end
--- 			for _, scgrp in next, Config.BlacklistedScenarios['GROUPS'] do
--- 				SetScenarioGroupEnabled(scgrp, false)
--- 			end
--- 			Citizen.Wait(10000)
--- 		else
--- 			Citizen.Wait(450)
--- 		end
---     end
--- end)
+ Citizen.CreateThread(function()
+     while true do
+ 		Citizen.Wait(4)
+ 		if LocalPlayer.state.LoggedIn then
+ 			for _, sctyp in next, Config.BlacklistedScenarios['TYPES'] do
+ 				SetScenarioTypeEnabled(sctyp, false)
+ 			end
+ 			for _, scgrp in next, Config.BlacklistedScenarios['GROUPS'] do
+ 				SetScenarioGroupEnabled(scgrp, false)
+ 			end
+ 			Citizen.Wait(10000)
+ 		else
+ 			Citizen.Wait(450)
+ 		end
+     end
+ end)
 
 -- Look at player talking
 Citizen.CreateThread(function()

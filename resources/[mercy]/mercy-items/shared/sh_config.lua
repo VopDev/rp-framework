@@ -1,7 +1,6 @@
 Config = Config or {}
 
 Config.RandomPresentItems = {
-    'lockpick',
     'bandage',
     'bread',
     'water',

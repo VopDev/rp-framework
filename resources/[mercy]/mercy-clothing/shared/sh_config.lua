@@ -1209,5 +1209,6 @@ Config.ManPlayerModels = {
     'ig_car3guy1_m',
     'tony',
     'g_m_m_chigoon_02_m',
-    'a_m_o_acult_01'
+    'a_m_o_acult_01',
+    'RatBoy'
 }

@@ -37,13 +37,13 @@ Citizen.CreateThread(function()
         local Player = PlayerModule.GetPlayerBySource(Source)
         local RandomValue = math.random(1, 100)
         if RandomValue <= 10 then
-            Player.Functions.AddItem('2ctchain', math.random(6,10), false, false, true)
+            Player.Functions.AddItem('2ctchain', math.random(1,3), false, false, true)
         elseif RandomValue >= 11 and RandomValue <= 35 then
-            Player.Functions.AddItem('ring', math.random(5,7), false, false, true)
+            Player.Functions.AddItem('ring', math.random(2,4), false, false, true)
         elseif RandomValue >= 36 and RandomValue <= 45 then
-            Player.Functions.AddItem('rolexwatch', math.random(5,7), false, false, true)
+            Player.Functions.AddItem('rolexwatch', math.random(1,2), false, false, true)
         elseif RandomValue >= 46 and RandomValue <= 65 then
-            Player.Functions.AddItem('5ctchain', math.random(4,6), false, false, true)
+            Player.Functions.AddItem('5ctchain', math.random(1,3), false, false, true)
         elseif RandomValue >= 66 and RandomValue <= 75 then
             Player.Functions.AddItem('8ctchain', math.random(2,4), false, false, true)
         else

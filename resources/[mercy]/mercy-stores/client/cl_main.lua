@@ -36,7 +36,7 @@ end)
 RegisterNetEvent('mercy-stores/client/open-store', function(ShopType)
     if Config.StoreItems[ShopType] ~= nil then
         if exports['mercy-inventory']:CanOpenInventory() then
-            if Config.RequireWeaponLicense and ((ShopType == 'Weapons' or ShopType == 'Hunting') and not HasWeaponLicense()) then
+            if Config.RequireWeaponLicense and ((ShopType == 'Weapons') and not HasWeaponLicense()) then
                 exports['mercy-ui']:Notify("no-license", "You don't have a weapons license..", "error")
                 return
             end

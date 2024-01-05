@@ -167,3 +167,8 @@ RegisterNUICallback('Vehicle/Action', function(Data, Cb)
     end
     Cb('Ok')
 end)
+
+RegisterCommand("trunk", function()
+    TriggerEvent('mercy-vehicles/client/toggle-door', 5, true)
+
+end, false)

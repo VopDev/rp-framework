@@ -208,7 +208,7 @@ Config.EyeEntries = {
                 Enabled = function(Entity)
                     if not exports['mercy-phone']:IsJobCenterTaskActive('sanitation', 7) then return false end
 
-                    if GetEntityModel(Entity) == GetHashKey("trash") and #(GetEntityCoords(Entity) - vector3(-349.49, -1541.75, 27.72)) < 25.0 then
+                    if GetEntityModel(Entity) == GetHashKey("trash") and #(GetEntityCoords(Entity) - vector3(-329.56, -1526.32, 27.53)) < 25.0 then
                         return true
                     else
                         return false
@@ -224,7 +224,7 @@ Config.EyeEntries = {
                 EventName = 'mercy-jobs/client/delivery/grab-goods',
                 EventParams = {},
                 Enabled = function(Entity)
-                    if GetEntityModel(Entity) == GetHashKey("benson") and exports['mercy-phone']:IsJobCenterTaskActive('delivery', 4) then
+                    if GetEntityModel(Entity) == GetHashKey("nspeedo") and exports['mercy-phone']:IsJobCenterTaskActive('delivery', 4) then
                         return true
                     else
                         return false
@@ -233,7 +233,7 @@ Config.EyeEntries = {
             },
             {
                 Name = 'delivery_return_vehicle',
-                Label = 'Return Vehicle',
+                Label = 'Pick Up New Load',
                 Icon = 'fas fa-circle',
                 EventType = 'Client',
                 EventName = 'mercy-jobs/client/delivery/return-veh',
@@ -241,7 +241,7 @@ Config.EyeEntries = {
                 Enabled = function(Entity)
                     if not exports['mercy-phone']:IsJobCenterTaskActive('delivery', 5) then return false end
 
-                    if GetEntityModel(Entity) == GetHashKey("benson") and #(GetEntityCoords(Entity) - vector3(929.94, -1249.29, 25.5)) < 25.0 then
+                    if GetEntityModel(Entity) == GetHashKey("nspeedo") and #(GetEntityCoords(Entity) - vector3(929.94, -1249.29, 25.5)) < 25.0 then
                         return true
                     else
                         return false
@@ -536,6 +536,7 @@ Config.CustomSkins = {
     ['ig_jason'] = true,
     ['ig_meyers'] = true,
     ['ig_freddy'] = true,
+    ['RatBoy'] = true,
 }
 
 -- Preferences

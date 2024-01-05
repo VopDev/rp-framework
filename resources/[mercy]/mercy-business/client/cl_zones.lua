@@ -532,7 +532,12 @@ function InitFoodzones()
                     EventName = 'mercy-business/client/foodchain/pay-menu',
                     EventParams = { Foodchain = "Burger Shot", RegisterId = 1 },
                     Enabled = function(Entity)
-                        return true
+                        local ClockedInEmployees = CallbackModule.SendCallback("mercy-business/server/get-clocked-in-employees", "Burger Shot")
+                        if #ClockedInEmployees >= 1 then
+                            return true
+                        else
+                            return false
+                        end
                     end,
                 },
                 {
@@ -550,7 +555,24 @@ function InitFoodzones()
                             return false
                         end
                     end,
+                },
+                {
+                    Name = 'burgershot_teller_option_3',
+                    Icon = 'fas fa-credit-card',
+                    Label = 'Open Shop',
+                    EventType = 'Client',
+                    EventName = 'mercy-stores/client/open-store',
+                    EventParams = 'BurgershotAuto',
+                    Enabled = function(Entity)
+                        local ClockedInEmployees = CallbackModule.SendCallback("mercy-business/server/get-clocked-in-employees", "Burger Shot")
+                        if #ClockedInEmployees >= 1 then
+                            return false
+                        else
+                            return true
+                        end
+                    end,
                 }
+
             }
         })
         exports['mercy-ui']:AddEyeEntry("burgershot_teller2", {
@@ -577,7 +599,12 @@ function InitFoodzones()
                     EventName = 'mercy-business/client/foodchain/pay-menu',
                     EventParams = { Foodchain = "Burger Shot", RegisterId = 2 },
                     Enabled = function(Entity)
-                        return true
+                        local ClockedInEmployees = CallbackModule.SendCallback("mercy-business/server/get-clocked-in-employees", "Burger Shot")
+                        if #ClockedInEmployees >= 1 then
+                            return true
+                        else
+                            return false
+                        end
                     end,
                 },
                 {
@@ -593,6 +620,22 @@ function InitFoodzones()
                             return true
                         else
                             return false
+                        end
+                    end,
+                },
+                {
+                    Name = 'burgershot_teller_option_3',
+                    Icon = 'fas fa-credit-card',
+                    Label = 'Open Shop',
+                    EventType = 'Client',
+                    EventName = 'mercy-stores/client/open-store',
+                    EventParams = 'BurgershotAuto',
+                    Enabled = function(Entity)
+                        local ClockedInEmployees = CallbackModule.SendCallback("mercy-business/server/get-clocked-in-employees", "Burger Shot")
+                        if #ClockedInEmployees >= 1 then
+                            return false
+                        else
+                            return true
                         end
                     end,
                 }
@@ -748,7 +791,7 @@ function InitFoodzones()
             {
                 Name = 'uwu1',
                 Icon = 'fas fa-wine-bottle',
-                Label = 'Coffee Machine',
+                Label = 'Entrees',
                 EventType = 'Client',
                 EventName = 'mercy-business/client/foodchain/prepare-meal',
                 EventParams = 'Main',
@@ -782,7 +825,7 @@ function InitFoodzones()
             {
                 Name = 'uwu2',
                 Icon = 'fas fa-wine-bottle',
-                Label = 'Coffee Machine',
+                Label = 'Sides',
                 EventType = 'Client',
                 EventName = 'mercy-business/client/foodchain/prepare-meal',
                 EventParams = 'Side',
@@ -816,7 +859,7 @@ function InitFoodzones()
             {
                 Name = 'uwu2',
                 Icon = 'fas fa-wine-bottle',
-                Label = 'Coffee Machine',
+                Label = 'Beverage Machine',
                 EventType = 'Client',
                 EventName = 'mercy-business/client/foodchain/prepare-meal',
                 EventParams = 'Drink',
@@ -850,10 +893,44 @@ function InitFoodzones()
             {
                 Name = 'uwu4',
                 Icon = 'fas fa-wine-bottle',
-                Label = 'Coffee Machine',
+                Label = 'Desserts',
                 EventType = 'Client',
                 EventName = 'mercy-business/client/foodchain/prepare-meal',
-                EventParams = 'uwu_dessert',
+                EventParams = 'Dessert',
+                Enabled = function(Entity)
+                    local ClockData = exports['mercy-business']:GetClockedData()
+                    if ClockData.Business == 'UwU Café' and ClockData.Clocked and exports['mercy-business']:HasPlayerBusinessPermission('UwU Café', 'craft_access') then
+                        return true
+                    else
+                        return false
+                    end
+                end,
+            }
+        }
+    })
+    exports['mercy-ui']:AddEyeEntry("uwu_supplyorder", {
+        Type = 'Zone',
+        SpriteDistance = 5.0,
+        Distance = 3.0,
+        ZoneData = {
+            Center = vector3(-599.83, -1067.57, 22.34),
+            Length = 1.2,
+            Width = 1.0,
+            Data = {
+                debugPoly = false,
+                heading = 0,
+                minZ = 21.34,
+                maxZ = 23.74
+            },
+        },
+        Options = {
+            {
+                Name = 'uwu_supplyorder',
+                Icon = 'fas fa-shopping-cart',
+                Label = 'Order Supplies',
+                EventType = 'Client',
+                EventName = 'mercy-stores/client/open-store',
+                EventParams = 'uwusupplies',
                 Enabled = function(Entity)
                     local ClockData = exports['mercy-business']:GetClockedData()
                     if ClockData.Business == 'UwU Café' and ClockData.Clocked and exports['mercy-business']:HasPlayerBusinessPermission('UwU Café', 'craft_access') then
@@ -887,9 +964,14 @@ function InitFoodzones()
                 Label = 'Make Payment',
                 EventType = 'Client',
                 EventName = 'mercy-business/client/foodchain/pay-menu',
-                EventParams = { Foodchain = "UwU Cafe", RegisterId = 1 },
+                EventParams = { Foodchain = "UwU Café", RegisterId = 1 },
                 Enabled = function(Entity)
-                    return true
+                    local ClockedInEmployees = CallbackModule.SendCallback("mercy-business/server/get-clocked-in-employees", "UwU Café")
+                    if #ClockedInEmployees >= 1 then
+                        return true
+                    else
+                        return false
+                    end
                 end,
             },
             {
@@ -905,6 +987,22 @@ function InitFoodzones()
                         return true
                     else
                         return false
+                    end
+                end,
+            },
+            {
+                Name = 'uwu_teller_option_3',
+                Icon = 'fas fa-credit-card',
+                Label = 'Open Shop',
+                EventType = 'Client',
+                EventName = 'mercy-stores/client/open-store',
+                EventParams = 'uwuAuto',
+                Enabled = function(Entity)
+                    local ClockedInEmployees = CallbackModule.SendCallback("mercy-business/server/get-clocked-in-employees", "UwU Café")
+                    if #ClockedInEmployees >= 1 then
+                        return false
+                    else
+                        return true
                     end
                 end,
             }
@@ -932,9 +1030,14 @@ function InitFoodzones()
                 Label = 'Make Payment',
                 EventType = 'Client',
                 EventName = 'mercy-business/client/foodchain/pay-menu',
-                EventParams = { Foodchain = "UwU Cafe", RegisterId = 2 },
+                EventParams = { Foodchain = "UwU Café", RegisterId = 2 },
                 Enabled = function(Entity)
-                    return true
+                    local ClockedInEmployees = CallbackModule.SendCallback("mercy-business/server/get-clocked-in-employees", "UwU Café")
+                        if #ClockedInEmployees >= 1 then
+                            return true
+                        else
+                            return false
+                        end
                 end,
             },
             {
@@ -950,6 +1053,22 @@ function InitFoodzones()
                         return true
                     else
                         return false
+                    end
+                end,
+            },
+            {
+                Name = 'uwu_teller_option_32',
+                Icon = 'fas fa-credit-card',
+                Label = 'Open Shop',
+                EventType = 'Client',
+                EventName = 'mercy-stores/client/open-store',
+                EventParams = 'uwuAuto',
+                Enabled = function(Entity)
+                    local ClockedInEmployees = CallbackModule.SendCallback("mercy-business/server/get-clocked-in-employees", "UwU Café")
+                    if #ClockedInEmployees >= 1 then
+                        return false
+                    else
+                        return true
                     end
                 end,
             }

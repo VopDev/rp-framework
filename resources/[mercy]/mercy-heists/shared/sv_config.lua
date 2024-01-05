@@ -1,29 +1,43 @@
 ServerConfig = ServerConfig or {}
 
+
 Config.HeistRewards = {
     ['Housing'] = {
         ['Kitchen'] = {
             ['Min'] = 1, -- Minimum amount of items
             ['Max'] = 3, -- Maximum amount of items
             ['Items'] = {
+                'apple',
+                'banana',
+                'cherry',
+                'coconut',
+                'grapes',
                 'water',
-                'phone'
+                'beer',
+                'milkshake'
             }
         },
         ['House'] = {
             ['Min'] = 1, -- Minimum amount of items
             ['Max'] = 3, -- Maximum amount of items
             ['Items'] = {
-                'water',
-                'phone'
+                'rolexwatch',
+                'ring',
+                '2ctchain',
+                '5ctchain',
+                '8ctchain'
+                
             }
         },
         ['Bed'] = {
             ['Min'] = 1, -- Minimum amount of items
             ['Max'] = 3, -- Maximum amount of items
             ['Items'] = {
-                'water',
-                'phone'
+                'goldtrophy',
+                '2ctchain',
+                '5ctchain',
+                'oxy',
+                'binoculars'
             }
         },
         ['Shower'] = {
@@ -31,16 +45,18 @@ Config.HeistRewards = {
             ['Max'] = 3, -- Maximum amount of items
             ['Items'] = {
                 'water',
-                'phone'
+                'oxy',
+                'weed-dried-bud-one'
             }
         },
     },
     ['Bobcat'] = {
-        ['Min'] = 14, -- Minimum amount of items
-        ['Max'] = 35, -- Maximum amount of items
+        ['Min'] = 2, -- Minimum amount of items
+        ['Max'] = 4, -- Maximum amount of items
         ['Items'] = {
-            'water',
-            'phone'
+            'thermite',
+            'lockpick',
+            'advancedvpn'
         }
     }
 }

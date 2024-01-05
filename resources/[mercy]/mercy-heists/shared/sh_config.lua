@@ -4,12 +4,12 @@ Config = Config or {}
 
 Config.ResetTimes = { -- In minutes
     ['Bobcat'] = 300, -- 5 hours
-    ['Banktruck'] = 30, -- 30 Mins
-    ['Jewellery'] = 30, -- 30 Mins
-    ['Stores'] = 10, -- 10 Mins
+    ['Banktruck'] = 60, -- 30 Mins
+    ['Jewellery'] = 60, -- 30 Mins
+    ['Stores'] = 25, -- 10 Mins
 }
 
-Config.StoreCops, Config.BankCops, Config.VaultCops, Config.JewelleryCops, Config.BanktruckCops, Config.BobcatCops = 0, 0, 0, 0, 0, 0 -- 2, 3, 6, 3, 3, 4
+Config.StoreCops, Config.BankCops, Config.VaultCops, Config.JewelleryCops, Config.BanktruckCops, Config.BobcatCops = 1, 3, 4, 2, 2, 4 -- 2, 3, 6, 3, 3, 4
 
 Config.GemTypes = {'Jade', 'Ruby', 'Onyx', 'Diamond', 'Sapphire', 'Aquamarine'}
 

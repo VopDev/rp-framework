@@ -1,6 +1,6 @@
 Config = Config or {}
 
-Config.RequireWeaponLicense = false
+Config.RequireWeaponLicense = true
 
 Config.VendingMachines = {
     { Prop = "prop_vend_coffe_01", Vending = "Coffee" },
@@ -634,13 +634,13 @@ Config.StoreItems = {
     },
     ['Weapons'] = {
         {
-            ['ItemName'] = 'weapon_colt',
+            ['ItemName'] = 'weapon_knife',
             ['Amount'] = 1,
             ['Slot'] = 1,
             ['Info'] = {}
         },
         {
-            ['ItemName'] = 'weapon_beretta',
+            ['ItemName'] = 'weapon_colt',
             ['Amount'] = 1,
             ['Slot'] = 2,
             ['Info'] = {}
@@ -748,6 +748,104 @@ Config.StoreItems = {
             ['Amount'] = 10,
             ['Slot'] = 2,
             ['Info'] = {}
+        },
+    },
+    ['BurgershotAuto'] = {
+        {
+            ['ItemName'] = 'moneyshot',
+            ['Amount'] = 10,
+            ['Slot'] = 1,
+            ['Info'] = {}
+        },
+        {
+            ['ItemName'] = 'bleeder',
+            ['Amount'] = 10,
+            ['Slot'] = 2,
+            ['Info'] = {}
+        },
+        {
+            ['ItemName'] = 'torpedo',
+            ['Amount'] = 10,
+            ['Slot'] = 3,
+            ['Info'] = {}
+        },
+        {
+            ['ItemName'] = 'fries',
+            ['Amount'] = 10,
+            ['Slot'] = 4,
+            ['Info'] = {}
+        },
+        {
+            ['ItemName'] = 'milkshake',
+            ['Amount'] = 10,
+            ['Slot'] = 5,
+            ['Info'] = {}
+        },
+        {
+            ['ItemName'] = 'softdrink',
+            ['Amount'] = 10,
+            ['Slot'] = 6,
+            ['Info'] = {}
+        },
+
+    },
+    ['uwusupplies'] = {
+        {
+            ['ItemName'] = 'water',
+            ['Amount'] = 50,
+            ['Slot'] = 1,
+        },
+        {
+            ['ItemName'] = 'ingredient-syrup',
+            ['Amount'] = 50,
+            ['Slot'] = 2,
+        },
+        {
+            ['ItemName'] = 'ingredient-icecream',
+            ['Amount'] = 50,
+            ['Slot'] = 3,
+        },
+        {
+            ['ItemName'] = 'ingredient-milk',
+            ['Amount'] = 50,
+            ['Slot'] = 4,
+        },
+        {
+            ['ItemName'] = 'ingredient-patty-raw',
+            ['Amount'] = 50,
+            ['Slot'] = 5,
+        },
+        {
+            ['ItemName'] = 'ingredient-lettuce',
+            ['Amount'] = 50,
+            ['Slot'] = 6,
+        },
+        {
+            ['ItemName'] = 'ingredient-buns',
+            ['Amount'] = 50,
+            ['Slot'] = 7,
+        },
+        {
+            ['ItemName'] = 'ingredient-beans',
+            ['Amount'] = 50,
+            ['Slot'] = 8,
+        },
+        {
+            ['ItemName'] = 'ingredient-potatoes',
+            ['Amount'] = 50,
+            ['Slot'] = 9,
+        },
+        {
+            ['ItemName'] = 'ingredient-cheese',
+            ['Amount'] = 50,
+            ['Slot'] = 10,
+        },
+    },
+    ['keyscanning'] = {
+        {
+            ['ItemName'] = 'digiscanner',
+            ['Amount'] = 1,
+            ['Slot'] = 1,
         },
     }
 }

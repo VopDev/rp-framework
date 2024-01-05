@@ -170,10 +170,9 @@ ServerConfig.DeliveryVehicles = {
 -- Mining
 
 ServerConfig.MiningMaterials = {
-    'metalscrap', 
+    'scrapmetal', 
     'copper', 
-    'aluminum', 
-    'iron', 
+    'aluminum',  
     'steel'
 }
 
@@ -181,19 +180,9 @@ ServerConfig.MiningMaterials = {
 
 ServerConfig.FishingSpots = {
     [1] = vector3(241.00, 3993.00, 30.40),
-    [2] = vector3(1252.38, 3928.29, 30.8),
-    [3] = vector3(2237.00, 4046.41, 31.6),
-    [4] = vector3(1255.98, 3846.79, 31.9),
-    [5] = vector3(1960.00, 4255.00, 30.55),
-    [6] = vector3(1011.30, 3805.20, 31.55),
-    [7] = vector3(598.80, 3723.56, 31.45),
-    [8] = vector3(636.74, 4073.77, 31.45),
-    [9] = vector3(-55.77, 4056.46, 31.2),
-    [10] = vector3(1612.92, 4066.92, 31.8),
-    [11] = vector3(-63.36, 4180.44, 31.8),
 }
 
-ServerConfig.CurrentFishSpot = vector3(241.00, 3993.00, 30.40)
+ServerConfig.CurrentFishSpot = vector3(1298.97, 4217.11, 33.91)
 
 ServerConfig.FishSellItems = {
     ['fish-blue'] = {

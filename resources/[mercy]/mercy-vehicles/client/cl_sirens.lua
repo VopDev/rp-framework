@@ -10,7 +10,7 @@ function CanUseEmergencyLights(IsPressed)
     end
 
     local Vehicle = GetVehiclePedIsIn(PlayerPedId())
-    if GetVehicleClass(Vehicle) ~= 18 and not IsGovVehicle(Vehicle) then
+    if GetVehicleClass(Vehicle) ~= 18 then
         return false
     end
 

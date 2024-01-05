@@ -5,7 +5,7 @@ var Config = {
     ],
     ProfileTags: {
         0: {Text: 'Gang Related', Color: '#c93e3e'},
-        1: {Text: 'Gang 1', Color: '#53c93e'},
+        1: {Text: 'ESB', Color: '#53c93e'},
         2: {Text: 'Gang 2', Color: '#326fa8'},
         3: {Text: 'Gang 3', Color: '#b93ec9'},
         4: {Text: 'DOJ (Department of Justice)', Color: '#6d32a8'},
@@ -29,7 +29,7 @@ var Config = {
         Categories: [ "Investigative Reports", "Incident Report" ],
         Tags: {
             0: {Text: 'Gang Related', Color: '#c93e3e'},
-            1: {Text: 'Gang 1', Color: '#53c93e'},
+            1: {Text: 'ESB', Color: '#53c93e'},
             2: {Text: 'Gang 2', Color: '#326fa8'},
             3: {Text: 'Gang 3', Color: '#b93ec9'},
             4: {Text: 'Terrorism', Color: '#c22929'},

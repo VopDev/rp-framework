@@ -54,12 +54,12 @@ Citizen.CreateThread(function()
             local IsRunning = IsPedRunning(PlayerPedId())
 
             if IsRunning then
-                if math.random(1, 100) < 50 then
+                if math.random(1, 100) < 30 then
                     DoBleed = true
                     TriggerEvent('mercy-ui/client/notify', "hospital-blood", 'You notice blood oozing from your body the more you move.', 'error', 4500)
                 end
             else
-                if math.random(1, 100) < 20 then
+                if math.random(1, 100) < 10 then
                     DoBleed = true
                     TriggerEvent('mercy-ui/client/notify', "hospital-blood", 'You notice blood oozing from your body.', 'error', 4500)
                 end
@@ -195,7 +195,9 @@ function ApplyBodyPartDamage(BoneId)
                 local CurrentHealth = GetEntityHealth(PlayerPedId())
                 local MinAmount = OnOxy and math.random(1, 2) or math.random(2, 4)
                 SetEntityHealth(PlayerPedId(), (CurrentHealth - MinAmount))
+                if Config.BodyHealth[BodyPart].Health < 60 then
                 TriggerEvent('mercy-ui/client/notify', "hospital-pain", 'You\'re '..Config.BodyHealth[BodyPart].Name..' feels painful.', 'error', 4500)
+                end
             end
         end
         

@@ -1,6 +1,6 @@
 Config = Config or {}
 
-Config.IdPrice = 500
+Config.IdPrice = 100
 
 Config.Licenses = {
     'Drivers',

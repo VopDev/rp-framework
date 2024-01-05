@@ -25,7 +25,7 @@ end
 
 Shared.Tax = {
     ['Property'] = 15, -- +15% of the price
-    ['Vehicle'] = 49, -- +49% of the price
+    ['Vehicle'] = 20, -- +20% of the price
     ['Goods'] = 15, -- +15% of the price
     ['Clothes'] = 15, -- +15% of the prices,
     ['Gas'] = 17, -- +17% of the price
@@ -44,7 +44,7 @@ Shared.Cryptos = {
         ['Label'] = 'Shungite',
         ['Name'] = 'shungite',
         ['Short'] = 'sge',
-        ['Worth'] = 2.00,
+        ['Worth'] = 250.00,
         ['Purcashable'] = true,
         ['Exchangable'] = true,
     },
@@ -54,7 +54,7 @@ Shared.Cryptos = {
         ['Label'] = 'Guinea',
         ['Name'] = 'guinea',
         ['Short'] = 'gne',
-        ['Worth'] = 2.00,
+        ['Worth'] = 500.00,
         ['Purcashable'] = true,
         ['Exchangable'] = true,
     },
@@ -64,7 +64,7 @@ Shared.Jobs = {
     ['unemployed'] = {
         Name = 'unemployed',
         Label = 'Unemployed',
-        Salary = 10,
+        Salary = 25,
         Duty = false,
         Student = false,
         HighCommand = false
@@ -72,7 +72,7 @@ Shared.Jobs = {
     ['police'] = {
         Name = 'police',
         Label = 'Police',
-        Salary = 145,
+        Salary = 200,
         Duty = false,
         Callsign = 'XXX',
         Student = false,
@@ -82,7 +82,7 @@ Shared.Jobs = {
     ['ems'] = {
         Name = 'ems',
         Label = 'EMS',
-        Salary = 145,
+        Salary = 300,
         Duty = false,
         Callsign = 'XXX',
         Student = false,
@@ -91,7 +91,7 @@ Shared.Jobs = {
     ['judge'] = {
         Name = 'judge',
         Label = 'Judge',
-        Salary = 200,
+        Salary = 400,
         Duty = false,
         Student = false,
         HighCommand = false,
@@ -99,19 +99,19 @@ Shared.Jobs = {
     ['lawyer'] = {
         Name = 'lawyer',
         Label = 'Lawyer',
-        Salary = 50,
+        Salary = 300,
         Duty = false,
     },
     ['prosecutor'] = {
         Name = 'prosecutor',
         Label = 'Prosecutor',
-        Salary = 50,
+        Salary = 300,
         Duty = false,
     },
     ['realestate'] = {
         Name = 'realestate',
         Label = 'Real Estate',
-        Salary = 50,
+        Salary = 300,
         Duty = false,
     },
 }
@@ -1716,6 +1716,28 @@ Shared.Vehicles = {
         ['Price'] = 230000,
     },
     -- POLICE
+    [GetHashKey('nkcruiser')] = {
+        ['Vehicle'] = 'nkcruiser',
+        ['Model'] = 'Vapid',
+        ['Name'] = 'Pol Cruiser',
+        ['ShopClass'] = 'Police',
+        ['Class'] = 'A',
+        ['Picture'] = 'None',
+        ['Type'] = 'Car',
+        ['Siren'] = 'VEHICLES_HORNS_SIREN_1',
+        ['Price'] = 100000,
+    },
+    [GetHashKey('nkscout')] = {
+        ['Vehicle'] = 'nkscout',
+        ['Model'] = 'Vapid',
+        ['Name'] = 'Pol Scout',
+        ['ShopClass'] = 'Police',
+        ['Class'] = 'A',
+        ['Picture'] = 'None',
+        ['Type'] = 'Car',
+        ['Siren'] = 'VEHICLES_HORNS_SIREN_1',
+        ['Price'] = 100000,
+    },
     [GetHashKey('polvic')] = {
         ['Vehicle'] = 'polvic',
         ['Model'] = 'Ford',
@@ -1849,6 +1871,75 @@ Shared.Vehicles = {
         ['Siren'] = 'VEHICLES_HORNS_SIREN_1',
         ['Price'] = 100000,
     },
+
+    -- Police LF
+
+    [GetHashKey('polbuffalo')] = {
+        ['Vehicle'] = 'polbuffalo',
+        ['Model'] = 'Police',
+        ['Name'] = 'Buffalo',
+        ['ShopClass'] = 'Police',
+        ['Class'] = 'A',
+        ['Picture'] = 'None',
+        ['Type'] = 'Car',
+        ['Siren'] = 'VEHICLES_HORNS_SIREN_1',
+        ['Price'] = 60000,
+    },
+    [GetHashKey('polstainer')] = {
+        ['Vehicle'] = 'polstainer',
+        ['Model'] = 'Police',
+        ['Name'] = 'Stainer',
+        ['ShopClass'] = 'Police',
+        ['Class'] = 'A',
+        ['Picture'] = 'None',
+        ['Type'] = 'Car',
+        ['Siren'] = 'VEHICLES_HORNS_SIREN_1',
+        ['Price'] = 100000,
+    },
+    [GetHashKey('polscout')] = {
+        ['Vehicle'] = 'polscout',
+        ['Model'] = 'Police',
+        ['Name'] = 'Scout',
+        ['ShopClass'] = 'Police',
+        ['Class'] = 'A',
+        ['Picture'] = 'None',
+        ['Type'] = 'Car',
+        ['Siren'] = 'VEHICLES_HORNS_SIREN_1',
+        ['Price'] = 100000,
+    },
+    [GetHashKey('polvigero')] = {
+        ['Vehicle'] = 'polvigero',
+        ['Model'] = 'Police',
+        ['Name'] = 'Vigero',
+        ['ShopClass'] = 'Police',
+        ['Class'] = 'A',
+        ['Picture'] = 'None',
+        ['Type'] = 'Car',
+        ['Siren'] = 'VEHICLES_HORNS_SIREN_1',
+        ['Price'] = 160000,
+    },
+    [GetHashKey('polgranger')] = {
+        ['Vehicle'] = 'polgranger',
+        ['Model'] = 'Police',
+        ['Name'] = 'Ranger',
+        ['ShopClass'] = 'Police',
+        ['Class'] = 'A',
+        ['Picture'] = 'None',
+        ['Type'] = 'Car',
+        ['Siren'] = 'VEHICLES_HORNS_SIREN_1',
+        ['Price'] = 100000,
+    },
+    [GetHashKey('polstalker')] = {
+        ['Vehicle'] = 'polstalker',
+        ['Model'] = 'Police',
+        ['Name'] = 'Stalker',
+        ['ShopClass'] = 'Police',
+        ['Class'] = 'A',
+        ['Picture'] = 'None',
+        ['Type'] = 'Car',
+        ['Siren'] = 'VEHICLES_HORNS_SIREN_1',
+        ['Price'] = 100000,
+    },
     -- EMS
     [GetHashKey('emsspeedo')] = {
         ['Vehicle'] = 'emsspeedo',
@@ -1880,7 +1971,30 @@ Shared.Vehicles = {
         ['Picture'] = 'None',
         ['Type'] = 'Car',
         ['Price'] = 29500,
-    }
+    },
+
+    -- LF Vehicles
+    [GetHashKey('arias')] = {
+        ['Vehicle'] = 'arias',
+        ['Model'] = 'Arias',
+        ['Name'] = 'Arias',
+        ['ShopClass'] = '',
+        ['Class'] = 'C',
+        ['Picture'] = 'None',
+        ['Type'] = 'Car',
+        ['Price'] = 32000,
+    },
+
+    [GetHashKey('stardust')] = {
+        ['Vehicle'] = 'stardust',
+        ['Model'] = 'Stardust',
+        ['Name'] = 'Pfister',
+        ['ShopClass'] = '',
+        ['Class'] = 'C',
+        ['Picture'] = 'None',
+        ['Type'] = 'Car',
+        ['Price'] = 41500,
+    },
 }
 
 Shared.VehicleColors = {

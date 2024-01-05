@@ -134,7 +134,7 @@ Config.EmsStore = {
         ['Slot'] = 2,
     },
     {
-        ['ItemName'] = 'bandage',
+        ['ItemName'] = 'firstaidkit',
         ['Amount'] = 50,
         ['Slot'] = 3,
     },

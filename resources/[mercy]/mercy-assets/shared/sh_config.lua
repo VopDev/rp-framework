@@ -21,21 +21,21 @@ Config.Effects = {
 
 Config.DiscordSettings = {
     ['AppId'] = 1234,
-    ['Text'] = 'Mercy Collective',
+    ['Text'] = 'RPFrogs 3.0',
 }
 
--- Config.BlacklistedScenarios = {
---     ['TYPES'] = {
---         "WORLD_VEHICLE_MILITARY_PLANES_SMALL",
---         "WORLD_VEHICLE_MILITARY_PLANES_BIG",
---     },
---     ['GROUPS'] = {
---         2017590552,
---         2141866469,
---         1409640232,
---         GetHashKey('ng_planes'),
---     }
--- }
+ Config.BlacklistedScenarios = {
+     ['TYPES'] = {
+         "WORLD_VEHICLE_MILITARY_PLANES_SMALL",
+         "WORLD_VEHICLE_MILITARY_PLANES_BIG",
+     },
+     ['GROUPS'] = {
+         2017590552,
+         2141866469,
+         1409640232,
+         GetHashKey('ng_planes'),
+     }
+ }
 
 Config.BlacklistedEntitys = {
 	-- Vehicles
@@ -955,7 +955,7 @@ Config.AttachBackProps = {
 	{
 		Type = 3,
 		Id = 'hunting-carcass-one',
-		Name = 'Bank Bag',
+		Name = 'Hunting Pelt',
 		Model = 'hunting_pelt_01_a',
 		PropCoords = {
 			X = 0.0,
@@ -974,7 +974,7 @@ Config.AttachBackProps = {
 	{
 		Type = 3,
 		Id = 'hunting-carcass-two',
-		Name = 'Bank Bag',
+		Name = 'Hunting Pelt',
 		Model = 'hunting_pelt_01_a',
 		PropCoords = {
 			X = 0.0,
@@ -993,7 +993,7 @@ Config.AttachBackProps = {
 	{
 		Type = 3,
 		Id = 'hunting-carcass-three',
-		Name = 'Bank Bag',
+		Name = 'Hunting Pelt',
 		Model = 'hunting_pelt_01_a',
 		PropCoords = {
 			X = 0.0,
@@ -1012,7 +1012,7 @@ Config.AttachBackProps = {
 	{
 		Type = 3,
 		Id = 'hunting-carcass-four',
-		Name = 'Bank Bag',
+		Name = 'Hunting Pelt',
 		Model = 'hunting_pelt_01_a',
 		PropCoords = {
 			X = 0.0,

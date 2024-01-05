@@ -95,7 +95,7 @@ RegisterNetEvent('mercy-phone/client/jobcenter/check-in', function(Job)
     if exports['mercy-inventory']:HasEnoughOfItem('phone', 1) then
         exports['mercy-ui']:SendUIMessage('Phone', 'Notification', {
             Title = "Job Center",
-            Message = "Checked In as a " .. (Job:gsub("^%l", string.upper)) .. " Worker",
+            Message = "Signed In as a " .. (Job:gsub("^%l", string.upper)) .. " Worker",
             Icon = "fas fa-house",
             IconBgColor = "#171717",
             IconColor = "white",
@@ -322,7 +322,7 @@ end)
 RegisterNetEvent('mercy-phone/client/jobcenter/quit-task', function()
     TriggerEvent('mercy-phone/client/hide-notification', JobCenter.CurrentTaskNotify)
     TriggerEvent('mercy-phone/client/jobcenter/job-tasks-done', JobCenter.CurrentJob, JobCenter.CurrentGroup)
-
+    exports['76b-ui']:Close()
     exports['mercy-ui']:SendUIMessage("Phone", "SetJobCenterAppPage", {
         Jobs = false,
         Groups = false,
@@ -336,12 +336,12 @@ end)
 RegisterNetEvent('mercy-phone/client/jobcenter/check-for-jobs', function(IsSearching, IsLeader)
     exports['mercy-ui']:SendUIMessage("Phone", "SetJobCenterSearchJobs", IsSearching)
     JobCenter.IsSearching = IsSearching
-
     if IsLeader and JobCenter.IsSearching then
+        exports['76b-ui']:Show("Waiting for job offer...", "Check your phone for updates.")
         Citizen.CreateThread(function()
             JobCenter.HasJobOffer = false
             while JobCenter.CurrentJob ~= nil and JobCenter.IsSearching do
-                local WaitTime = math.random(2000, 4000) -- math.random(15000, 120000)
+                local WaitTime = math.random(10000, 60000) -- math.random(15000, 120000)
                 Citizen.Wait(WaitTime)
                 if JobCenter.Jobs and JobCenter.CurrentJob and JobCenter.Jobs[JobCenter.CurrentJob] and JobCenter.Jobs[JobCenter.CurrentJob].IsAvailable and (JobCenter.IsSearching and not JobCenter.HasJobOffer) then
                     JobCenter.HasJobOffer = true
@@ -375,6 +375,9 @@ RegisterNetEvent('mercy-phone/client/jobcenter/check-for-jobs', function(IsSearc
                 end
             end
         end)
+
+    else
+        exports['76b-ui']:Close()
     end
 end)
 
@@ -398,7 +401,7 @@ RegisterNUICallback("JobCenter/CheckOut", function(Data, Cb)
         Tasks = false,
         GroupMembers = false,
     })
-
+    exports['76b-ui']:Close()
     Cb('Ok')
 end)
 
@@ -423,6 +426,7 @@ end)
 RegisterNUICallback("JobCenter/ReadyGroup", function(Data, Cb)
     TriggerServerEvent('mercy-phone/server/jobcenter/set-ready', JobCenter.CurrentJob)
     Cb('Ok')
+
 end)
 
 RegisterNUICallback("JobCenter/RequestJoin", function(Data, Cb)
@@ -455,6 +459,7 @@ RegisterNUICallback("JobCenter/DisbandGroup", function(Data, Cb)
 end)
 
 RegisterNUICallback("JobCenter/CancelTasks", function(Data, Cb)
+    exports['76b-ui']:Close()
     TriggerServerEvent('mercy-phone/server/jobcenter/cancel-task', JobCenter.CurrentJob)
     if JobCenter.CurrentGroup == PlayerModule.GetPlayerData().CitizenId then
         Citizen.SetTimeout(1000, function()

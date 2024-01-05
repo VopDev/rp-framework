@@ -86,22 +86,23 @@ Config.FoodChainDishes = {
     },
     ['UwU Café'] = {
         ['Main'] = {
-            'uwu-sushi',
-            'uwu-sashamiboat',
-            'uwu-omurice',
+            'kittybentobox',
+            'katsusalad',
+            'katsucurry',
         },
         ['Drink'] = {
-            'uwu-strawberrytea',
-            'uwu-matchatea',
-            'uwu-cataccino-strawberry',
+            'catpuccino',
         },
         ['Side'] = {
-            'uwu-magicdrcandy',
-            'uwu-avocadotoast',
-            'uwu-misosoup',
-            'uwu-seaweedsalad',
-            'uwu-onigiri',
+            'mochi',
+            'kittyricecake',
+
         },
+        ['Dessert'] = {
+            'kittydoughnut',
+            'kittycupcake',
+
+        }
     },
 }
 

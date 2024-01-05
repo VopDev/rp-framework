@@ -197,6 +197,58 @@ Citizen.CreateThread(function()
         end
     end)
 
+    -- UwU Food
+
+    FunctionsModule.CreateUseableItem("katsucurry", function(Source, Item)
+        local Player = PlayerModule.GetPlayerBySource(Source)
+        if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
+            TriggerClientEvent('mercy-items/client/used-food', Source, Item, "Apple")
+        end
+    end)
+
+    FunctionsModule.CreateUseableItem("katsusalad", function(Source, Item)
+        local Player = PlayerModule.GetPlayerBySource(Source)
+        if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
+            TriggerClientEvent('mercy-items/client/used-food', Source, Item, "Apple")
+        end
+    end)
+
+    FunctionsModule.CreateUseableItem("kittybentobox", function(Source, Item)
+        local Player = PlayerModule.GetPlayerBySource(Source)
+        if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
+            TriggerClientEvent('mercy-items/client/used-food', Source, Item, "Apple")
+        end
+    end)
+
+    FunctionsModule.CreateUseableItem("mochi", function(Source, Item)
+        local Player = PlayerModule.GetPlayerBySource(Source)
+        if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
+            TriggerClientEvent('mercy-items/client/used-food', Source, Item, "Apple")
+        end
+    end)
+
+    FunctionsModule.CreateUseableItem("kittyricecake", function(Source, Item)
+        local Player = PlayerModule.GetPlayerBySource(Source)
+        if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
+            TriggerClientEvent('mercy-items/client/used-food', Source, Item, "Apple")
+        end
+    end)
+
+    FunctionsModule.CreateUseableItem("kittydoughnut", function(Source, Item)
+        local Player = PlayerModule.GetPlayerBySource(Source)
+        if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
+            TriggerClientEvent('mercy-items/client/used-food', Source, Item, "Apple")
+        end
+    end)
+    
+    FunctionsModule.CreateUseableItem("kittyricecake", function(Source, Item)
+        local Player = PlayerModule.GetPlayerBySource(Source)
+        if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
+            TriggerClientEvent('mercy-items/client/used-food', Source, Item, "Apple")
+        end
+    end)
+
+
     -- Drinks
 
     FunctionsModule.CreateUseableItem("water", function(Source, Item)
@@ -243,14 +295,21 @@ Citizen.CreateThread(function()
 
     -- Medical
 
-    FunctionsModule.CreateUseableItem("bandage", function(Source, Item)
+    FunctionsModule.CreateUseableItem("firstaidkit", function(Source, Item)
         local Player = PlayerModule.GetPlayerBySource(Source)
         if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
-            TriggerClientEvent('mercy-items/client/used-bandage', Source, false)
+            TriggerClientEvent('mercy-items/client/used-advbandage', Source, false)
         end
     end)
 
     FunctionsModule.CreateUseableItem("ifak", function(Source, Item)
+        local Player = PlayerModule.GetPlayerBySource(Source)
+        if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
+            TriggerClientEvent('mercy-items/client/used-advbandage', Source, true)
+        end
+    end)
+
+    FunctionsModule.CreateUseableItem("bandage", function(Source, Item)
         local Player = PlayerModule.GetPlayerBySource(Source)
         if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
             TriggerClientEvent('mercy-items/client/used-bandage', Source, true)
@@ -363,6 +422,15 @@ Citizen.CreateThread(function()
         local Player = PlayerModule.GetPlayerBySource(Source)
         if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
             TriggerClientEvent('mercy-ui/client/open-walkman', Source)
+        end
+    end)
+
+    -- Chop
+
+    FunctionsModule.CreateUseableItem("digiscanner", function(Source, Item)
+        local Player = PlayerModule.GetPlayerBySource(Source)
+        if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
+            TriggerClientEvent('mercy-illegal/use-scanner', Source)
         end
     end)
 

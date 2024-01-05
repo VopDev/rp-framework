@@ -406,6 +406,7 @@ RegisterNetEvent("mercy-phone/server/jobcenter/set-ready", function(Job, Bool)
     else
         Group["Ready"] = Bool
     end
+    
     -- Sync Ready state for members
     for k, MemberData in pairs(Group['Members']) do
         local MemberPlayer = PlayerModule.GetPlayerBySource(MemberData['Source'])

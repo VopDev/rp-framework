@@ -32,6 +32,12 @@ Config.CustomHorns = {
 }
 
 Config.SirenData = {
+    [GetHashKey("nkcruiser")] = {
+        SirenSounds = { "VEHICLES_HORNS_SIREN_1", "VEHICLES_HORNS_SIREN_2", "VEHICLES_HORNS_POLICE_WARNING" },
+    },
+    [GetHashKey("nkscout")] = {
+        SirenSounds = { "VEHICLES_HORNS_SIREN_1", "VEHICLES_HORNS_SIREN_2", "VEHICLES_HORNS_POLICE_WARNING" },
+    },
     [GetHashKey("polvic")] = {
         SirenSounds = { "VEHICLES_HORNS_SIREN_1", "VEHICLES_HORNS_SIREN_2", "VEHICLES_HORNS_POLICE_WARNING" },
     },

@@ -48,24 +48,24 @@ Config.Tasks = {
         Tasks = {
             {
                 TaskId = 1,
-                Text = 'Go to the meetup point',
+                Text = 'Acquire a fishing rod.',
                 Finished = false,
             },
             {
                 TaskId = 2,
-                Text = 'Go to the fishing spot',
+                Text = 'Head to the fishing spot',
                 Finished = false,
             },
             {
                 TaskId = 3,
                 Text = 'Collect fish',
                 ExtraDone = 0,
-                ExtraRequired = 30,
+                ExtraRequired = 10,
                 Finished = false,
             },
             {
                 TaskId = 4,
-                Text = 'Go tell them the spot is good',
+                Text = 'Return with your haul',
                 Finished = false,
             },
         }
@@ -75,7 +75,7 @@ Config.Tasks = {
         Tasks = {
             {
                 TaskId = 1,
-                Text = 'Find and steal a Bison to use as transport.',
+                Text = 'Find and steal a new vehicle to use as transport.',
                 Finished = false,
             },
             {
@@ -132,28 +132,28 @@ Config.Tasks = {
         }
     },
     ['delivery'] = {
-        Label = '24/7 Deliveries',
+        Label = 'Delivery Driver',
         Tasks = {
             {
                 TaskId = 1,
-                Text = 'Go to the foreman',
+                Text = 'Get a delivery vehicle',
                 Finished = false,
             },
             {
                 TaskId = 2,
-                Text = 'Get in the delivery vehicle',
+                Text = 'Get in your vehicle',
                 Finished = false,
             },
             {
                 TaskId = 3,
-                Text = 'Go to the assigned store',
+                Text = 'Go to the assigned location',
                 Finished = false,
             },
             {
                 TaskId = 4,
-                Text = 'Drop off goods',
+                Text = 'Drop off the goods',
                 ExtraDone = 0,
-                ExtraRequired = 3,
+                ExtraRequired = math.random(2,6),
                 Finished = false,
             },
             {

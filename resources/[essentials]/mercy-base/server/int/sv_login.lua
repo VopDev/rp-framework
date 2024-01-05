@@ -9,8 +9,8 @@ AddEventHandler('playerConnecting', function(playerName, setKickReason, deferral
 	Wait(500)
     -- Name
 	if Config.JoinChecks['Name'] then
-		deferrals.update("📝 Checking Name..")
-		Wait(1000)
+		--deferrals.update("📝 Checking Name..")
+		--Wait(1000)
 		local PlayerName = GetPlayerName(src)
 		if PlayerName == nil then 
 			FunctionsModule.Kick(src, '❌ Don\'t use an empty Steam name.', setKickReason, deferrals)
@@ -30,9 +30,9 @@ AddEventHandler('playerConnecting', function(playerName, setKickReason, deferral
 	end
     -- Discord
 	if Config.JoinChecks['Discord'] then
-		Wait(750)
-		deferrals.update("💻 Checking Discord..")
-		Wait(1000)
+		--Wait(750)
+		--deferrals.update("💻 Checking Discord..")
+		--Wait(1000)
 		local Discord = FunctionsModule.GetIdentifier(src, "discord")
 		if ((Discord:sub(1,8) == "discord:") == false) then
 			FunctionsModule.Kick(src, '❌ You must have Discord on to play.', setKickReason, deferrals)
@@ -42,10 +42,10 @@ AddEventHandler('playerConnecting', function(playerName, setKickReason, deferral
 	end
     -- Identifier
 	if Config.JoinChecks['Identifier'] then
-		Wait(750)
+		--Wait(750)
 		if Config.Server['IdentifierType'] == "steam" then
-			deferrals.update("💻 Checking Steam..")
-			Wait(1000)
+			--deferrals.update("💻 Checking Steam..")
+			--Wait(1000)
 			local Steam = FunctionsModule.GetIdentifier(src, "steam")
 			if Steam == nil then 
 				FunctionsModule.Kick(src, '❌ Error while contacting steam services, please try again.', setKickReason, deferrals)
@@ -58,8 +58,8 @@ AddEventHandler('playerConnecting', function(playerName, setKickReason, deferral
 				return false
 			end
 		elseif Config.Server['IdentifierType'] == "license" then
-			deferrals.update("💻 Checking License..")
-			Wait(1000)
+			--deferrals.update("💻 Checking License..")
+			--Wait(1000)
 			local License = FunctionsModule.GetIdentifier(src, "license")
 			if License == nil then 
 				FunctionsModule.Kick(src, '❌ Error while contacting rockstar services, please try again.', setKickReason, deferrals)
@@ -74,8 +74,8 @@ AddEventHandler('playerConnecting', function(playerName, setKickReason, deferral
 		end
 	end
 	if Config.JoinChecks['Ban'] then
-		Wait(750)
-		deferrals.update("🔒 Checking if you are banned..")
+		--Wait(750)
+		--deferrals.update("🔒 Checking if you are banned..")
 		Wait(1000)
 		local IsBanned, Message = FunctionsModule.IsPlayerBanned(src)
 		if IsBanned then
@@ -84,10 +84,10 @@ AddEventHandler('playerConnecting', function(playerName, setKickReason, deferral
 			return false
 		end
 	end
-	Wait(750)
-	deferrals.update("\n\nWelcome to the Mercy Framework! Please have a moment, we're loading everything in!")
-    Wait(1000)
-	deferrals.update("Everything has succesfully loaded! We are searching a spot for you..")
+	--Wait(750)
+	--deferrals.update("\n\nDont Quit - Finalizing Load...")
+    Wait(4000)
+	--deferrals.update("Welcome to RPFrogs!")
     Citizen.Wait(1250)
     deferrals.done()
 
@@ -114,7 +114,7 @@ RegisterNetEvent("mercy-base/server/load-user", function()
 				SteamIdentifier, 
 				GetPlayerEndpoint(src), 
 				"user",
-				"MERCY-"..math.random(1111, 9999),
+				"rpfrogs-"..math.random(1111, 9999),
 			})
         else
             DatabaseModule.Update("UPDATE server_users SET name = ?, ip = ? WHERE steam = ? ", {GetPlayerName(src), GetPlayerEndpoint(src), SteamIdentifier})

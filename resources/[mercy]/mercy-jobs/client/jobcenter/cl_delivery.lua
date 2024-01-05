@@ -4,10 +4,11 @@
 
 RegisterNetEvent('mercy-threads/entered-vehicle', function()
     local Vehicle = GetVehiclePedIsIn(PlayerPedId())
-    if GetEntityModel(Vehicle) ~= GetHashKey("benson") then return end
+    if GetEntityModel(Vehicle) ~= GetHashKey("nspeedo") then return end
 
     if exports['mercy-phone']:IsJobCenterTaskActive('delivery', 2) then
         TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 2, true)
+        exports['76b-ui']:Show("Delivery Driver", "Head to the assigned store location.")
     end
 end)
 
@@ -39,6 +40,8 @@ RegisterNetEvent('mercy-jobs/client/delivery/deliver-goods', function()
         if DidComplete then
             if exports['mercy-phone']:IsJobCenterTaskActive('delivery', 4) then
                 TriggerEvent('mercy-phone/client/jobcenter/request-task-update', 4, 1)
+                --local TaskData = JobCenter.CurrentJobTasks.Tasks[tonumber(TaskId + 1)]
+                --exports['76b-ui']:Show(TaskData.Text .. (TaskData.ExtraRequired ~= nil and (' (%s/%s)'):format(TaskData.ExtraDone, TaskData.ExtraRequired)))
             end
 
             StopAnimTask(PlayerPedId(), "anim@heists@box_carry@", "idle", 1.0)
@@ -48,7 +51,7 @@ RegisterNetEvent('mercy-jobs/client/delivery/deliver-goods', function()
 end)
 
 RegisterNetEvent('mercy-jobs/client/delivery/return-veh', function(Data, Entity)
-    VehicleModule.DeleteVehicle(Entity)
+    --VehicleModule.DeleteVehicle(Entity)
     TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 5, true)
 end)
 
@@ -59,25 +62,27 @@ RegisterNetEvent('mercy-phone/client/jobcenter/on-job-start', function(Job, Lead
     Citizen.CreateThread(function()
         local ShowingAnything = false
         while exports['mercy-phone']:IsJobCenterTaskActive('delivery', 1) do
-            DrawMarker(20, 929.94, -1249.29, 26.7, 0, 0, 0, 180.0, 0, 0, 0.5, 0.5, 0.5, 138, 43, 226, 150, true, true, false, false, false, false, false)
 
-            if #(GetEntityCoords(PlayerPedId()) - vector3(929.94, -1249.29, 26.7)) < 1.5 then
+            if #(GetEntityCoords(PlayerPedId()) - vector3(929.94, -1249.29, 26.7)) < 30 then
                 if not ShowingAnything then
                     ShowingAnything = true
-                    exports['mercy-ui']:SetInteraction("[E] Ask the foreman for a vehicle")
+                    exports['76b-ui']:Show("Delivery Driver", "Rent a delivery vehicle.")
                 end
 
-                if IsControlJustPressed(0, 38) then
-                    SpawnDeliveryVehicle()
-                end
+            
             elseif ShowingAnything then
                 ShowingAnything = false
                 exports['mercy-ui']:HideInteraction()
+                exports['76b-ui']:Close()
             end
 
             Citizen.Wait(4)
         end
     end)
+end)
+
+RegisterNetEvent('mercy-phone/client/jobcenter/dev-rented', function(Job)
+    SpawnDeliveryVehicle()
 end)
 
 RegisterNetEvent('mercy-phone/client/jobcenter/job-tasks-done', function(Job, Leader)
@@ -91,6 +96,7 @@ RegisterNetEvent('mercy-phone/client/jobcenter/job-tasks-done', function(Job, Le
     Jobs.Delivery.HasPackage = false
     StopAnimTask(PlayerPedId(), "anim@heists@box_carry@", "idle", 1.0)
     FunctionsModule.ClearCustomGpsRoute()
+    exports['76b-ui']:Show("Delivery Driver", "Return to the depot to pick up a new load.")
 end)
 
 RegisterNetEvent('mercy-phone/client/jobcenter/on-crash', function(Job)
@@ -106,6 +112,7 @@ RegisterNetEvent('mercy-phone/client/jobcenter/on-crash', function(Job)
     FunctionsModule.ClearCustomGpsRoute()
 end)
 
+
 RegisterNetEvent('mercy-phone/client/jobcenter/on-task-done', function(Job, FinishedTaskId, NextTaskId, Leader)
     if Job ~= 'delivery' then return end
 
@@ -119,6 +126,7 @@ RegisterNetEvent('mercy-phone/client/jobcenter/on-task-done', function(Job, Fini
                     local Coords = GetEntityCoords(PlayerPedId())
                     if #(Coords - Jobs.Delivery.Location) < 25.0 then
                         TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 3, true)
+                        exports['76b-ui']:Show("Delivery Driver", "Deliver the goods to the store's backroom.")
                     end
     
                     Citizen.Wait(100)
@@ -133,6 +141,7 @@ RegisterNetEvent('mercy-phone/client/jobcenter/on-task-done', function(Job, Fini
             { Coords = Jobs.Delivery.Location }
         }, true)
     elseif NextTaskId == 5 then
+        exports['76b-ui']:Show("Delivery Driver", "Return to the depot to pickup a new load.")
         FunctionsModule.CreateCustomGpsRoute({
             { Coords = GetEntityCoords(PlayerPedId()) },
             { Coords = vector3(927.02, -1232.79, 25.58) }
@@ -143,15 +152,16 @@ end)
 -- [ Functions ] --
 
 function SpawnDeliveryVehicle()
-    if not VehicleModule.CanVehicleSpawnAtCoords(vector3(927.02, -1232.79, 25.58), 1.85) then return exports['mercy-ui']:Notify("delivery-error", "Something is in the way..", "error") end
+    if not VehicleModule.CanVehicleSpawnAtCoords(vector3(911.99, -1220.71, 25.32), 1.6) then return exports['mercy-ui']:Notify("delivery-error", "Something is in the way..", "error") end
     
     exports['mercy-ui']:HideInteraction()
     TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 1, true)
-
-    if FunctionsModule.RequestModel('benson') then
-        local Coords = { X = 927.02, Y = -1232.79, Z = 25.58, Heading = 108.84 }
-        local Plate = '247' .. math.random(11111, 99999)
-        local Vehicle = VehicleModule.SpawnVehicle('benson', Coords, Plate, false)
+    exports['76b-ui']:Show("Delivery Driver", "Get in your delivery vehicle.")
+    if FunctionsModule.RequestModel('nspeedo') then
+        local Coords = { X = 911.99, Y = -1220.71, Z = 25.32, Heading = 182.96 }
+        local Plate = 'DELIV' .. math.random(111, 999)
+        local Vehicle = VehicleModule.SpawnVehicle('nspeedo', Coords, Plate, false)
+        SetVehicleLivery(Vehicle['Vehicle'], 12)
         if Vehicle ~= nil then
             Citizen.SetTimeout(500, function()
                 exports['mercy-vehicles']:SetVehicleKeys(Plate, true, false)
@@ -159,6 +169,7 @@ function SpawnDeliveryVehicle()
                 VehicleModule.SetVehicleNumberPlate(Vehicle.Vehicle, Plate)
             end)
         end
+
     end
 end
 

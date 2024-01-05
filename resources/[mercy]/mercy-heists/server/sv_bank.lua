@@ -10,7 +10,7 @@ Citizen.CreateThread(function()
         local Player = PlayerModule.GetPlayerBySource(Source)
         if Type == 'Fleeca' then
             Player.Functions.AddItem('cash-rolls', math.random(5, 20), false, false, true)
-            Player.Functions.AddItem('markedbills', 1, false, {Worth = math.random(8000, 13000)}, true)
+            Player.Functions.AddItem('markedbills', 1, false, {Worth = math.random(3000, 5500)}, true)
         end
     end)
 

@@ -19,7 +19,7 @@ Citizen.CreateThread(function()
 
     EventsModule.RegisterServer("mercy-heists/server/stores/receive-money", function(Source)    
         local Player = PlayerModule.GetPlayerBySource(Source)
-        Player.Functions.AddMoney('Cash', math.random(250, 450), "Store-Robbery")
+        Player.Functions.AddMoney('Cash', math.random(100, 200), "Store-Robbery")
         Player.Functions.AddItem('cash-rolls', math.random(5, 15), false, false, true)
     end)
 end)

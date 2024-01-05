@@ -48,8 +48,9 @@ Citizen.CreateThread(function()
         if Receipts ~= nil  then
             if Receipts.Info.Money == nil then return Player.Functions.Notify('invalid-receipt', 'Invalid receipt found, can\'t redeem..', 'error') end
             if Receipts.Amount > 0 then
+                cashout = Receipts.Info.Money * 0.25
                 for i = 1, Receipts.Amount do
-                    Player.Functions.AddMoney('Cash', Receipts.Info.Money, Receipts.Info.Business..'-sold-receipt-'..Receipts.Info.Comment)
+                    Player.Functions.AddMoney('Cash', cashout, Receipts.Info.Business..'-sold-receipt-'..Receipts.Info.Comment)
                     Player.Functions.RemoveItem('receipt', 1, false, true)
                     Citizen.Wait(250)
                 end
@@ -97,5 +98,26 @@ RegisterNetEvent("mercy-jobs/server/receive-paycheck", function()
         Player.Functions.SetMetaData('SalaryPayheck', 0)
     else
         Player.Functions.Notify('no-paycheck', 'You have no paycheck..', 'error', 3500)
+    end
+end)
+
+RegisterNetEvent("mercy-jobs/server/rent-delivery", function()
+    local src = source
+    local Player = PlayerModule.GetPlayerBySource(src)
+    if Player.Functions.RemoveMoney('Cash', 100) then
+        TriggerClientEvent('mercy-phone/client/jobcenter/dev-rented', src)
+    else
+        Player.Functions.Notify('not-enough-cash', 'You dont have enough cash.', 'error', 3500)
+    end
+end)
+
+
+RegisterNetEvent("mercy-jobs/server/rent-sani", function()
+    local src = source
+    local Player = PlayerModule.GetPlayerBySource(src)
+    if Player.Functions.RemoveMoney('Cash', 100) then
+        TriggerClientEvent('mercy-phone/client/jobcenter/sani-rented', src)
+    else
+        Player.Functions.Notify('not-enough-cash', 'You dont have enough cash.', 'error', 3500)
     end
 end)

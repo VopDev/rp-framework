@@ -35,6 +35,39 @@ function InitZones()
             }
         })
 
+        exports['mercy-ui']:AddEyeEntry("keyscanner_ped", {
+            Type = 'Entity',
+            EntityType = 'Ped',
+            SpriteDistance = 10.0,
+            Distance = 5.0,
+            Position = vector4(1133.38, -471.76, 61.81, 4.34),
+            Model = 'u_m_y_chip',
+            Options = {
+                {
+                    Name = 'payment_interaction',
+                    Icon = 'fas fa-circle',
+                    Label = 'Ask For Task',
+                    EventType = 'Client',
+                    EventName = 'mercy-illegal/assign-scan-house',
+                    EventParams = '',
+                    Enabled = function(Entity)
+                        return true
+                    end,
+                },
+                {
+                    Name = 'payment_interaction',
+                    Icon = 'fas fa-circle',
+                    Label = 'Purchase Equipment',
+                    EventType = 'Client',
+                    EventName = 'mercy-stores/client/open-store',
+                    EventParams = 'keyscanning',
+                    Enabled = function(Entity)
+                        return true
+                    end,
+                }
+            }
+        })
+
         exports['mercy-ui']:AddEyeEntry("illegal-sells", {
             Type = 'Entity',
             EntityType = 'Ped',

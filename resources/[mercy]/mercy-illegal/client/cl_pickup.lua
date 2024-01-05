@@ -6,19 +6,19 @@ RegisterNetEvent('mercy-illegal/client/open-pickup-store', function()
     local MenuData = {}
     MenuData[#MenuData + 1] = {
         ['Title'] = 'Green Laptop',
-        ['Desc'] = 'Cost: 15 SHUNG; 1 Green USB',
-        ['Data'] = {['Event'] = 'mercy-illegal/client/do-purchase', ['Type'] = 'Client', ['BuyData'] = {Price = 15, Item = 'heist-usb-green', Reward = 'heist-laptop-green'} },
+        ['Desc'] = 'Cost: 75 SHUNG; 1 Green USB',
+        ['Data'] = {['Event'] = 'mercy-illegal/client/do-purchase', ['Type'] = 'Client', ['BuyData'] = {Price = 75, Item = 'heist-usb-green', Reward = 'heist-laptop-green'} },
         ['Disabled'] = false
     }
     MenuData[#MenuData + 1] = {
         ['Title'] = 'Blue Laptop',
-        ['Desc'] = 'Cost: 25 SHUNG; 1 Blue USB',
+        ['Desc'] = 'Cost: 100 SHUNG; 1 Blue USB',
         ['Data'] = {['Event'] = '', ['Type'] = ''},
         ['Disabled'] = true
     }
     MenuData[#MenuData + 1] = {
         ['Title'] = 'Red Laptop',
-        ['Desc'] = 'Cost: 35 SHUNG; 1 Red USB',
+        ['Desc'] = 'Cost: 150 SHUNG; 1 Red USB',
         ['Data'] = {['Event'] = '', ['Type'] = ''},
         ['Disabled'] = true
     }

@@ -151,7 +151,7 @@ RegisterNetEvent('mercy-business/client/foodchain/create-meal', function(Data)
         return 
     end
     
-    if Data.Skip and SkippedMinigames >= 10 then
+    if Data.Skip and SkippedMinigames >= 2 then
         SkippedMinigames = 0
         return
     end

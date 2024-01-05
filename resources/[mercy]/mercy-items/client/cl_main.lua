@@ -119,12 +119,12 @@ RegisterNetEvent('mercy-items/client/used-water', function(ItemData, PropName)
     end)
 end)
 
-RegisterNetEvent('mercy-items/client/used-bandage', function(IsIfak)
+RegisterNetEvent('mercy-items/client/used-advbandage', function(IsIfak)
     Citizen.SetTimeout(450, function()
         exports['mercy-inventory']:SetBusyState(true)
-        exports['mercy-ui']:ProgressBar(IsIfak and 'Applying Ifak..' or 'Healing..', 3000, {['AnimName'] = 'idle_c', ['AnimDict'] = 'amb@world_human_clipboard@male@idle_a', ['AnimFlag'] = 49}, nil, false, true, function(DidComplete)
+        exports['mercy-ui']:ProgressBar(IsIfak and 'Applying Ifak..' or 'Healing..', 6500, {['AnimName'] = 'idle_c', ['AnimDict'] = 'amb@world_human_clipboard@male@idle_a', ['AnimFlag'] = 49}, nil, false, true, function(DidComplete)
             if DidComplete then
-                local DidRemove = CallbackModule.SendCallback('mercy-base/server/remove-item', IsIfak and 'ifak' or 'bandage', 1, false, true)
+                local DidRemove = CallbackModule.SendCallback('mercy-base/server/remove-item', IsIfak and 'ifak' or 'firstaidkit', 1, false, true)
                 if DidRemove then
                     Citizen.SetTimeout(1500, function()
                         for i = 1, 6 do
@@ -144,6 +144,29 @@ RegisterNetEvent('mercy-items/client/used-bandage', function(IsIfak)
                             if exports['mercy-hospital']:IsPlayerBleeding() then
                                 TriggerEvent('mercy-hospital/client/clear-bleeding')
                             end
+                        end
+                    end)
+                end
+            end
+            exports['mercy-inventory']:SetBusyState(false)
+        end)
+    end)
+end)
+
+RegisterNetEvent('mercy-items/client/used-bandage', function(IsIfak)
+    Citizen.SetTimeout(450, function()
+        exports['mercy-inventory']:SetBusyState(true)
+        exports['mercy-ui']:ProgressBar('Using Bandage..', 10000, {['AnimName'] = 'idle_c', ['AnimDict'] = 'amb@world_human_clipboard@male@idle_a', ['AnimFlag'] = 49}, nil, false, true, function(DidComplete)
+            if DidComplete then
+                local DidRemove = CallbackModule.SendCallback('mercy-base/server/remove-item', 'bandage', 1, false, true)
+                if DidRemove then
+                    Citizen.SetTimeout(1500, function()
+                        for i = 1, 3 do
+                            Citizen.Wait(3500)
+                            local CurrentHealth = GetEntityHealth(PlayerPedId())
+                            local NewHealth = CurrentHealth + 4 > 200 and 200 or CurrentHealth + 4
+                            SetEntityHealth(PlayerPedId(), NewHealth)
+
                         end
                     end)
                 end
