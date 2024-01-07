@@ -44,7 +44,7 @@ function SetupVehicles()
     local Vehicle = VehicleModule.SpawnVehicle('nspeedo', Coords, Plate, false)
    
     if Vehicle ~= nil then
-        if VehicleModule.CanVehicleSpawnAtCoords(vector3(930.62, -1221.35, 25.43), 1.8) then
+        if VehicleModule.CanVehicleSpawnAtCoords(vector3(930.62, -1221.35, 25.43), 1.4) then
         Citizen.SetTimeout(500, function()
             FreezeEntityPosition(Vehicle['Vehicle'], true)
             SetEntityInvincible(Vehicle['Vehicle'], true)
@@ -53,7 +53,7 @@ function SetupVehicles()
             SetVehicleLivery(Vehicle['Vehicle'], 12)
         end)
         end     
-    end
+        end
  
      -- Sanitation Vehicle
  local Coords2 = { X = -356.41, Y = -1530.78, Z = 27.43, Heading = 270.33 }
@@ -68,8 +68,8 @@ function SetupVehicles()
         SetVehicleDoorsLocked(Vehicle2['Vehicle'], 3)
         VehicleModule.SetVehicleNumberPlate(Vehicle2['Vehicle'], Plate2)
     end)
-end
- end
+    end
+    end
 
 end
 
