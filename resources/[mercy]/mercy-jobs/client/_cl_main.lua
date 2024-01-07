@@ -44,7 +44,7 @@ function SetupVehicles()
     local Vehicle = VehicleModule.SpawnVehicle('nspeedo', Coords, Plate, false)
    
     if Vehicle ~= nil then
-        if VehicleModule.CanVehicleSpawnAtCoords(vector3(930.62, -1221.35, 25.43), 1.6) then
+        if VehicleModule.CanVehicleSpawnAtCoords(vector3(930.62, -1221.35, 25.43), 1.8) then
         Citizen.SetTimeout(500, function()
             FreezeEntityPosition(Vehicle['Vehicle'], true)
             SetEntityInvincible(Vehicle['Vehicle'], true)
