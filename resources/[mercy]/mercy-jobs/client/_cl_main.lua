@@ -35,8 +35,9 @@ end)
 function SetupVehicles()
    
     while not _Ready do
-        Citizen.Wait(150)
+        Citizen.Wait(1000)
     end
+
     local Player = PlayerModule.GetPlayerData()
     -- Delivery Vehicle
     local Coords = { X = 930.62, Y = -1221.35, Z = 25.43, Heading = 181.5 }
