@@ -60,6 +60,7 @@ Citizen.CreateThread(function()
     end
 
     PlaceCats()
+    PlacePickle()
 end)
 
 Citizen.CreateThread(function()
@@ -177,6 +178,13 @@ function PlaceCats()
             end
         end
 
+    end
+end
+
+function PlacePickle()
+    while true do
+        Citizen.Wait(100)
+
         local Coords = GetEntityCoords(PlayerPedId())
         for k, v in pairs(Pickle) do
             local Dist = #(Coords - v.Coords)
@@ -191,8 +199,10 @@ function PlaceCats()
                 Peds[k] = nil
             end
         end
+
     end
 end
+
 
 function NearPed(Coords, Heading, AnimDict, AnimName, Frozen)
     FunctionsModule.RequestModel(GetHashKey("a_c_cat_01"))
