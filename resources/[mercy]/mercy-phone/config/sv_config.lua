@@ -136,7 +136,7 @@ ServerConfig.Jobs = {
         ["Name"] = "store delivery",
         ["Location"] = vector4(929.94, -1249.29, 24.5, 34.17),
         ["RequiresVPN"] = false,
-        ['Money'] = math.random(200, 400),
+        ['Money'] = 150,
         ['MaxGroupCount'] = 5,
         ['MaxMembers'] = 2,
         -- Don't touch
