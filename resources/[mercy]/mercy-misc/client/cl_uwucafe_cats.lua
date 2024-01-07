@@ -20,7 +20,7 @@ local Cats = {
 }
 
 local Pickle = {
-    { Coords = vector3(-577.14, -1069.22, 22.99), Heading = 0, AnimDict = "creatures@cat@amb@world_cat_sleeping_ground@base", AnimName = "base", Interactable = true, Frozen = true },
+    { Coords = vector3(1405.2, -1498.44, 59.78), Heading = 284.86, AnimDict = "creatures@cat@amb@world_cat_sleeping_ground@base", AnimName = "base", Interactable = true, Frozen = true },
 }
 
 Citizen.CreateThread(function()
