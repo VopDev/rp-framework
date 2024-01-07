@@ -33,6 +33,12 @@ AddEventHandler('Modules/client/ready', function()
 end)
 
 function SetupVehicles()
+    SetEntityAsMissionEntity(Vehicle)
+    DeleteVehicle(Vehicle)
+    SetEntityAsNoLongerNeeded(Vehicle)
+ SetEntityAsMissionEntity(Vehicle2)
+    DeleteVehicle(Vehicle2)
+    SetEntityAsNoLongerNeeded(Vehicle2)
     while not _Ready do
         Citizen.Wait(150)
     end
