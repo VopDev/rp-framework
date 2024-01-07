@@ -32,7 +32,7 @@ AddEventHandler('Modules/client/ready', function()
     end)
 end)
 
-function SetupVehicles
+function SetupVehicles()
     while not _Ready do
         Citizen.Wait(150)
     end
