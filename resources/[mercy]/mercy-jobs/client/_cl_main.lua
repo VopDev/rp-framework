@@ -33,7 +33,9 @@ AddEventHandler('Modules/client/ready', function()
 end)
 
 
+
 AddEventHandler('onResourceStart', function(resource)
+    local Player = PlayerModule.GetPlayerData()
    -- Delivery Vehicle
    local Coords = { X = 930.62, Y = -1221.35, Z = 25.43, Heading = 181.5 }
    local Plate = 'DELIV000'
