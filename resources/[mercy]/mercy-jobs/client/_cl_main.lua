@@ -40,7 +40,7 @@ function SetupVehicles()
 
     local Player = PlayerModule.GetPlayerData()
     -- Delivery Vehicle
-    if VehicleModule.CanVehicleSpawnAtCoords(vector3(930.62, -1221.35, 25.43), 1.4) then
+if VehicleModule.CanVehicleSpawnAtCoords(vector3(930.62, -1221.35, 25.43), 1.6) then
     local Coords = { X = 930.62, Y = -1221.35, Z = 25.43, Heading = 181.5 }
     local Plate = 'DELIV000'
     local Vehicle = VehicleModule.SpawnVehicle('nspeedo', Coords, Plate, false)
@@ -54,7 +54,7 @@ function SetupVehicles()
             SetVehicleLivery(Vehicle['Vehicle'], 12)
         end)
         end     
-        end
+ end
  
      -- Sanitation Vehicle
  if VehicleModule.CanVehicleSpawnAtCoords(vector3(-356.41, -1530.78, 27.43), 1.6) then
@@ -70,7 +70,7 @@ function SetupVehicles()
         VehicleModule.SetVehicleNumberPlate(Vehicle2['Vehicle'], Plate2)
     end)
     end
-    end
+end
 
 end
 
