@@ -19,6 +19,10 @@ local Cats = {
     { Coords = vector3(-571.65, -1057.26, 22.54), Heading = 90.0, AnimDict = "creatures@cat@move", AnimName = "gallop", Interactable = false, Frozen = true },
 }
 
+local Pickle = {
+    { Coords = vector3(-577.14, -1069.22, 22.99), Heading = 0, AnimDict = "creatures@cat@amb@world_cat_sleeping_ground@base", AnimName = "base", Interactable = true, Frozen = true },
+}
+
 Citizen.CreateThread(function()
     for k, v in pairs(Cats) do
         if v.Interactable then
@@ -40,7 +44,7 @@ Citizen.CreateThread(function()
                     {
                         Name = 'pay_payment',
                         Icon = 'fas fa-paw-claws',
-                        Label = 'Tickle Kitty',
+                        Label = 'Pet Kitty',
                         EventType = 'Client',
                         EventName = 'mercy-misc/client/foodchain/uwu/pat',
                         EventParams = {},
@@ -56,6 +60,44 @@ Citizen.CreateThread(function()
     end
 
     PlaceCats()
+end)
+
+Citizen.CreateThread(function()
+    for k, v in pairs(Pickle) do
+        if v.Interactable then
+            exports['mercy-ui']:AddEyeEntry("pickle_" .. k, {
+                Type = 'Zone',
+                SpriteDistance = 10.0,
+                Distance = 1.75,
+                ZoneData = {
+                    Center = vector3(v.Coords.x, v.Coords.y, v.Coords.z - 0.9),
+                    Length = 0.7,
+                    Width = 0.7,
+                    Data = {
+                        heading = 0,
+                        minZ = v.Coords.z - 1.5,
+                        maxZ = v.Coords.z - 0.5
+                    },
+                },
+                Options = {
+                    {
+                        Name = 'pay_payment',
+                        Icon = 'fas fa-paw-claws',
+                        Label = 'Pickle!',
+                        EventType = 'Client',
+                        EventName = 'mercy-misc/client/foodchain/uwu/pat',
+                        EventParams = {},
+                        Enabled = function(Entity)
+                            -- local ClockedInEmployees = CallbackModule.SendCallback("mercy-business/server/get-clocked-in-employees", "UwU Café")
+                            -- return #ClockedInEmployees >= 1
+                            return true
+                        end,
+                    },
+                }
+            })
+        end
+    end
+
 end)
 
 RegisterNetEvent('mercy-misc/client/foodchain/uwu/pat', function()
@@ -122,6 +164,21 @@ function PlaceCats()
 
         local Coords = GetEntityCoords(PlayerPedId())
         for k, v in pairs(Cats) do
+            local Dist = #(Coords - v.Coords)
+
+            if Dist < 40.0 and not Peds[k] then
+                local ped = NearPed(v.Coords, v.Heading, v.AnimDict, v.AnimName, v.Frozen)
+                Peds[k] = {ped = ped}
+            end
+
+            if Dist >= 40.0 and Peds[k] then
+                DeletePed(Peds[k].ped)
+                Peds[k] = nil
+            end
+        end
+
+        local Coords = GetEntityCoords(PlayerPedId())
+        for k, v in pairs(Pickle) do
             local Dist = #(Coords - v.Coords)
 
             if Dist < 40.0 and not Peds[k] then
