@@ -40,14 +40,14 @@ function SetupVehicles()
 
     local Player = PlayerModule.GetPlayerData()
     -- Delivery Vehicle
-if VehicleModule.CanVehicleSpawnAtCoords(vector3(930.62, -1221.35, 25.43), 1.4) then
     local LoadedVehicle = FunctionsModule.RequestModel('nspeedo')
                 if LoadedVehicle then
+    if VehicleModule.CanVehicleSpawnAtCoords(vector3(930.62, -1221.35, 25.43), 1.4) then
     local Coords = { X = 930.62, Y = -1221.35, Z = 25.43, Heading = 181.5 }
     local Plate = 'DELIV000'
     local Vehicle = VehicleModule.SpawnVehicle('nspeedo', Coords, Plate, false)
    
-    if Vehicle ~= nil then
+    if Vehicle ~= nil the
         Citizen.SetTimeout(500, function()
             FreezeEntityPosition(Vehicle['Vehicle'], true)
             SetEntityInvincible(Vehicle['Vehicle'], true)
@@ -56,11 +56,12 @@ if VehicleModule.CanVehicleSpawnAtCoords(vector3(930.62, -1221.35, 25.43), 1.4) 
             SetVehicleLivery(Vehicle['Vehicle'], 12)
         end)
         end     
- end
-end
+        end
+    end
      -- Sanitation Vehicle
+     local LoadedVehicle = FunctionsModule.RequestModel('trash')
+                if LoadedVehicle then
  if VehicleModule.CanVehicleSpawnAtCoords(vector3(-356.41, -1530.78, 27.43), 1.6) then
-    local LoadedVehicle = FunctionsModule.RequestModel('trash')
  local Coords2 = { X = -356.41, Y = -1530.78, Z = 27.43, Heading = 270.33 }
  local Plate2 = 'SANI0000'
  local Vehicle2 = VehicleModule.SpawnVehicle('trash', Coords2, Plate2, false)
@@ -74,9 +75,9 @@ end
     end)
     end
     end
+end
+end
 
-end
-end
 
 RegisterNetEvent('mercy-base/client/on-logout', function()
     SetEntityAsMissionEntity(Vehicle)
