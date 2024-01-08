@@ -452,6 +452,13 @@ Shared.Weapons = {
         ['Modifier'] = 0.2,
         ['MaxAmmo'] = 0,
     },
+    [GetHashKey('weapon_crowbar')] = {
+        ['WeaponID'] = 'weapon_crowbar',  
+        ['AmmoType'] = 'AMMO_NONE',
+        ['SelectFire'] = false,
+        ['Modifier'] = 0.5,
+        ['MaxAmmo'] = 0,
+    },
     -- Weapon : Explosive
     [GetHashKey('weapon_grenade')] = {
         ['WeaponID'] = 'weapon_grenade',  
