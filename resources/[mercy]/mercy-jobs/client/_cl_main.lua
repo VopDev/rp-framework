@@ -32,58 +32,9 @@ AddEventHandler('Modules/client/ready', function()
     end)
 end)
 
-function SetupVehicles()
-    local Player = PlayerModule.GetPlayerData()
-    -- Delivery Vehicle
-    if VehicleModule.CanVehicleSpawnAtCoords(vector3(930.62, -1221.35, 25.43), 10) then
-    local Coords = { X = 930.62, Y = -1221.35, Z = 25.43, Heading = 181.5 }
-    local Plate = 'DELIV000'
-    local Vehicle = VehicleModule.SpawnVehicle('nspeedo', Coords, Plate, false)
-   
-    if Vehicle ~= nil then
-        Citizen.SetTimeout(500, function()
-            FreezeEntityPosition(Vehicle['Vehicle'], true)
-            SetEntityInvincible(Vehicle['Vehicle'], true)
-            SetVehicleDoorsLocked(Vehicle['Vehicle'], 3)
-            VehicleModule.SetVehicleNumberPlate(Vehicle['Vehicle'], Plate)
-            SetVehicleLivery(Vehicle['Vehicle'], 12)
-        end)
-        end     
-        end
- 
-     -- Sanitation Vehicle
- if VehicleModule.CanVehicleSpawnAtCoords(vector3(-356.41, -1530.78, 27.43), 10) then
- local Coords2 = { X = -356.41, Y = -1530.78, Z = 27.43, Heading = 270.33 }
- local Plate2 = 'SANI0000'
- local Vehicle2 = VehicleModule.SpawnVehicle('trash', Coords2, Plate2, false)
- 
- if Vehicle2 ~= nil then
-    Citizen.SetTimeout(500, function()
-        FreezeEntityPosition(Vehicle2['Vehicle'], true)
-        SetEntityInvincible(Vehicle2['Vehicle'], true)
-        SetVehicleDoorsLocked(Vehicle2['Vehicle'], 3)
-        VehicleModule.SetVehicleNumberPlate(Vehicle2['Vehicle'], Plate2)
-    end)
-    end
-    end
-
-end
-
-
-RegisterNetEvent('mercy-base/client/on-logout', function()
-    SetEntityAsMissionEntity(Vehicle)
-    DeleteVehicle(Vehicle)
-    SetEntityAsNoLongerNeeded(Vehicle)
- SetEntityAsMissionEntity(Vehicle2)
-    DeleteVehicle(Vehicle2)
-    SetEntityAsNoLongerNeeded(Vehicle2)
-end)
-
-
 
 RegisterNetEvent('mercy-base/client/on-login', function()
     SetupPeds()
-    SetupVehicles()
 end)
 
 -- [ Code ] --

@@ -134,14 +134,16 @@ RegisterNetEvent('mercy-phone/client/jobcenter/on-job-start', function(Job, Lead
         local ShowingAnything = false
         local CitizenId = PlayerModule.GetPlayerData().CitizenId
         while exports['mercy-phone']:IsJobCenterTaskActive('sanitation', 1) do
-            
+            DrawMarker(20, -352.17, -1545.7, 28.9, 0, 0, 0, 180.0, 0, 0, 0.5, 0.5, 0.5, 138, 43, 226, 150, true, true, false, false, false, false, false)
         
                 if #(GetEntityCoords(PlayerPedId()) - vector3(vector3(-349.37, -1541.47, 27.72))) < 30 then
                     if not ShowingAnything then
                         ShowingAnything = true
-                        exports['76b-ui']:Show("Sanitation Worker", "Rent a sanitation vehicle.")
+                        exports['76b-ui']:Show("Sanitation Worker", "[E] Rent a sanitation vehicle.")
                     end
-
+                    if IsControlJustPressed(0, 38) then
+                        EventsModule.TriggerServer('mercy-jobs/server/rent-sani') -- $100 rent delivery vehicle
+                    end
                 elseif ShowingAnything then
                     ShowingAnything = false
                     exports['76b-ui']:Close()
