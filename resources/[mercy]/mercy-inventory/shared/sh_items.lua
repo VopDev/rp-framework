@@ -181,6 +181,22 @@ Shared.ItemList['weapon_knife'] = {
 	}
 }
 
+Shared.ItemList['weapon_crowbar'] = {
+    ['ItemName'] = "weapon_crowbar",
+	['Label'] = "Crowbar",
+	['Weight'] = 17.0,
+	['Type'] = "Weapon",
+	['Metal'] = true,
+	['Melee'] = true,
+	['Image'] = "w_crowbar.png",
+	['Unique'] = true,
+	['Combinable'] = nil,
+	['Description'] = "Crowbar Placeholder",
+	['DecayRate'] = 2.0,
+	['RemoveWhenDecayed'] = false,
+	['Price'] = 1,
+}
+
 Shared.ItemList['weapon_hatchet'] = {
     ['ItemName'] = "weapon_hatchet",
 	['Label'] = "Hatchet",
