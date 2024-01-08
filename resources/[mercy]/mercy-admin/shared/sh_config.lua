@@ -263,6 +263,8 @@ Config.Models = {
 
     "ig_lennylarge",
     "RatBoy",
+    "a_c_mericaeagle",
+    "ig_cornwood",
 }
 
 Config.WeatherTypes = {

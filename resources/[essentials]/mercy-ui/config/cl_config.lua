@@ -537,6 +537,8 @@ Config.CustomSkins = {
     ['ig_meyers'] = true,
     ['ig_freddy'] = true,
     ['RatBoy'] = true,
+    ['ig_cornwood'] = true,
+    ['a_c_mericaeagle'] = true,
 }
 
 -- Preferences
