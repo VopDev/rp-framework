@@ -63,12 +63,6 @@ Citizen.CreateThread(function()
    
 end)
 
-Citizen.CreateThread(function()
-
- 
-    PlacePickle()
-   
-end)
 
 Citizen.CreateThread(function()
     for k, v in pairs(Pickle) do
