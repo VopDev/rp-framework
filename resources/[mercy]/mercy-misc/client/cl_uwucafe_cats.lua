@@ -64,43 +64,6 @@ Citizen.CreateThread(function()
 end)
 
 
-Citizen.CreateThread(function()
-    for k, v in pairs(Pickle) do
-        if v.Interactable then
-            exports['mercy-ui']:AddEyeEntry("pickle_" .. k, {
-                Type = 'Zone',
-                SpriteDistance = 10.0,
-                Distance = 1.75,
-                ZoneData = {
-                    Center = vector3(v.Coords.x, v.Coords.y, v.Coords.z - 0.9),
-                    Length = 0.7,
-                    Width = 0.7,
-                    Data = {
-                        heading = 0,
-                        minZ = v.Coords.z - 1.5,
-                        maxZ = v.Coords.z - 0.5
-                    },
-                },
-                Options = {
-                    {
-                        Name = 'pay_payment',
-                        Icon = 'fas fa-paw-claws',
-                        Label = 'Pickle!',
-                        EventType = 'Client',
-                        EventName = 'mercy-misc/client/foodchain/uwu/pat',
-                        EventParams = {},
-                        Enabled = function(Entity)
-                            -- local ClockedInEmployees = CallbackModule.SendCallback("mercy-business/server/get-clocked-in-employees", "UwU Café")
-                            -- return #ClockedInEmployees >= 1
-                            return true
-                        end,
-                    },
-                }
-            })
-        end
-    end
-
-end)
 
 RegisterNetEvent('mercy-misc/client/foodchain/uwu/pat', function()
     FunctionsModule.RequestAnimDict("creatures@cat@amb@world_cat_sleeping_ground@exit")
