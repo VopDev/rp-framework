@@ -3,8 +3,24 @@ Config = Config or {}
 -- DO NOT DELETE DOORS, SET `DISABLED` TO TRUE FOR SPECIFIC DOOR IF YOU WANT TO REMOVE IT.
 
 Config.Doors = {
+
+    {
+        Info = 'sewers-1',
+        Coords = vector3(218.6, -1278.67, 28.35),
+        Model = 647538810,
+        Locked = 1,
+        IsGate = false,
+        CanDetcord = true,
+        Disabled = false,
+        Connected = {},
+        Access = {
+            Job = {},
+            CitizenId = {},
+            Business = {},
+            Item = { 'weapon_crowbar' }
+        },
+    },
     -- Crusade Hospital
-    
     {
         Info = 'CRUSADE_HOSP_DOCTOR',
         Coords = vector3(364.45, -1388.66, 32.5),
