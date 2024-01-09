@@ -60,7 +60,14 @@ Citizen.CreateThread(function()
     end
  
     PlaceCats()
+   
+end)
+
+Citizen.CreateThread(function()
+
+ 
     PlacePickle()
+   
 end)
 
 Citizen.CreateThread(function()
