@@ -6226,16 +6226,31 @@ Shared.ItemList["mpolaroid-photobook"] = {
 
 -- Blueprints
 
-Shared.ItemList["bp-lockpick"] = {
-    ['ItemName'] = "bp-lockpick",
-    ['Label'] = "Blueprint: Lockpick",
+Shared.ItemList["bp-crowbar"] = {
+    ['ItemName'] = "bp-crowbar",
+    ['Label'] = "Blueprint",
     ['Weight'] = 5.0,
     ['Type'] = "Item",
     ['Metal'] = false,
-    ['Image'] = "bp-lockpick.png",
+    ['Image'] = "blueprint.png",
     ['Unique'] = true,
     ['Combinable'] = nil,
-    ['Description'] = "A blueprint with an image of a lockpick.",
+    ['Description'] = "A blueprint for a basic crowbar.",
+    ['DecayRate'] = 0.0,
+    ['RemoveWhenDecayed'] = false,
+    ['Price'] = 15000,
+}
+
+Shared.ItemList["bp-lockpick"] = {
+    ['ItemName'] = "bp-lockpick",
+    ['Label'] = "Blueprint",
+    ['Weight'] = 5.0,
+    ['Type'] = "Item",
+    ['Metal'] = false,
+    ['Image'] = "blueprint.png",
+    ['Unique'] = true,
+    ['Combinable'] = nil,
+    ['Description'] = "A blueprint for a basic lockpick that can open basic locks.",
     ['DecayRate'] = 0.0,
     ['RemoveWhenDecayed'] = false,
     ['Price'] = 15000,
@@ -6243,14 +6258,14 @@ Shared.ItemList["bp-lockpick"] = {
 
 Shared.ItemList["bp-knife"] = {
     ['ItemName'] = "bp-knife",
-    ['Label'] = "Blueprint: Knife",
+    ['Label'] = "Blueprint",
     ['Weight'] = 5.0,
     ['Type'] = "Item",
     ['Metal'] = false,
-    ['Image'] = "bp-knife.png",
+    ['Image'] = "blueprint.png",
     ['Unique'] = true,
     ['Combinable'] = nil,
-    ['Description'] = "A blueprint with an image of a knife.",
+    ['Description'] = "A blueprint for a knife.",
     ['DecayRate'] = 0.0,
     ['RemoveWhenDecayed'] = false,
     ['Price'] = 5000,
@@ -6262,7 +6277,7 @@ Shared.ItemList["bp-appistol"] = {
     ['Weight'] = 5.0,
     ['Type'] = "Item",
     ['Metal'] = false,
-    ['Image'] = "bp-appistol.png",
+    ['Image'] = "blueprint.png",
     ['Unique'] = true,
     ['Combinable'] = nil,
     ['Description'] = "A blueprint with an image of an AP Pistol.",

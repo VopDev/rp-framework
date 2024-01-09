@@ -49,7 +49,7 @@ Citizen.CreateThread(function()
 
         if LocalPlayer.state.LoggedIn then
             if Offsets ~= nil then
-                if #(GetEntityCoords(PlayerPedId()) - vector3(Config.Apartment['Pos'].x + Offsets['Exit'].x, Config.Apartment['Pos'].y + Offsets['Exit'].y, (Config.Apartment['Pos'].z - 15.0) + Offsets['Exit'].z)) < 1.5 then
+                if #(GetEntityCoords(PlayerPedId()) - vector3(Config.Apartment['Pos'].x + Offsets['Exit'].x, Config.Apartment['Pos'].y + Offsets['Exit'].y, (Config.Apartment['Pos'].z + 400) + Offsets['Exit'].z)) < 1.5 then
                     if not ShowingInteraction then
                         exports['mercy-ui']:SetInteraction("[E] Leave Apartment")
                         ShowingInteraction = true
@@ -58,7 +58,7 @@ Citizen.CreateThread(function()
                     if IsControlJustReleased(0, 38) then
                         TriggerEvent('mercy-apartment/client/leave-apartment')
                     end
-                elseif #(GetEntityCoords(PlayerPedId()) - vector3(Config.Apartment['Pos'].x + Offsets['Stash'].x, Config.Apartment['Pos'].y + Offsets['Stash'].y, (Config.Apartment['Pos'].z - 15.0) + Offsets['Stash'].z)) < 1.5 then
+                elseif #(GetEntityCoords(PlayerPedId()) - vector3(Config.Apartment['Pos'].x + Offsets['Stash'].x, Config.Apartment['Pos'].y + Offsets['Stash'].y, (Config.Apartment['Pos'].z + 400) + Offsets['Stash'].z)) < 1.5 then
                     if not ShowingInteraction then
                         exports['mercy-ui']:SetInteraction("[E] Storage")
                         ShowingInteraction = true
@@ -77,7 +77,7 @@ Citizen.CreateThread(function()
                             end
                         end
                     end
-                elseif #(GetEntityCoords(PlayerPedId()) - vector3(Config.Apartment['Pos'].x + Offsets['Wardrobe'].x, Config.Apartment['Pos'].y + Offsets['Wardrobe'].y, (Config.Apartment['Pos'].z - 15.0) + Offsets['Wardrobe'].z)) < 1.5 then
+                elseif #(GetEntityCoords(PlayerPedId()) - vector3(Config.Apartment['Pos'].x + Offsets['Wardrobe'].x, Config.Apartment['Pos'].y + Offsets['Wardrobe'].y, (Config.Apartment['Pos'].z + 400) + Offsets['Wardrobe'].z)) < 1.5 then
                     if not ShowingInteraction then
                         exports['mercy-ui']:SetInteraction("[E] Wardrobe")
                         ShowingInteraction = true
@@ -86,7 +86,7 @@ Citizen.CreateThread(function()
                     if IsControlJustReleased(0, 38) then
                         TriggerEvent('mercy-clothing/client/open-wardrobe', true)
                     end
-                elseif #(GetEntityCoords(PlayerPedId()) - vector3(Config.Apartment['Pos'].x + Offsets['Logout'].x, Config.Apartment['Pos'].y + Offsets['Logout'].y, (Config.Apartment['Pos'].z - 15.0) + Offsets['Logout'].z)) < 1.5 then
+                elseif #(GetEntityCoords(PlayerPedId()) - vector3(Config.Apartment['Pos'].x + Offsets['Logout'].x, Config.Apartment['Pos'].y + Offsets['Logout'].y, (Config.Apartment['Pos'].z + 400) + Offsets['Logout'].z)) < 1.5 then
                     if not ShowingInteraction then
                         exports['mercy-ui']:SetInteraction("[E] Sleep")
                         ShowingInteraction = true
@@ -144,7 +144,7 @@ RegisterNetEvent('mercy-apartment/client/spawn-apartment', function(NewChar)
 
     while not IsScreenFadedOut() do Citizen.Wait(1) end
 
-    local Interior = exports['mercy-interiors']:CreateInterior('gabz_pinkcage', vector3(Config.Apartment['Pos'].x, Config.Apartment['Pos'].y, Config.Apartment['Pos'].z - 15.0), false)
+    local Interior = exports['mercy-interiors']:CreateInterior('gabz_pinkcage', vector3(Config.Apartment['Pos'].x, Config.Apartment['Pos'].y, Config.Apartment['Pos'].z + 400), false)
     if NewChar then 
         EventsModule.TriggerServer('mercy-items/server/receive-first-items') 
     else
@@ -162,7 +162,7 @@ RegisterNetEvent('mercy-apartment/client/spawn-apartment', function(NewChar)
     ApartmentObject = Interior[1]
     Offsets = Interior[2]
     
-    SetEntityCoords(PlayerPedId(), Config.Apartment['Pos'].x + Offsets['Sofa'].x, Config.Apartment['Pos'].y + Offsets['Sofa'].y, (Config.Apartment['Pos'].z - 15.0) + Offsets['Sofa'].z)
+    SetEntityCoords(PlayerPedId(), Config.Apartment['Pos'].x + Offsets['Sofa'].x, Config.Apartment['Pos'].y + Offsets['Sofa'].y, (Config.Apartment['Pos'].z + 400) + Offsets['Sofa'].z)
     SetEntityHeading(PlayerPedId(),  Offsets['Sofa'].h)
 
     
@@ -194,11 +194,11 @@ RegisterNetEvent('mercy-apartment/client/enter-apartment', function(Data)
     TriggerEvent('mercy-ui/client/play-sound', 'door-open', 0.75)
     while not IsScreenFadedOut() do Citizen.Wait(1) end
 
-    local Interior = exports['mercy-interiors']:CreateInterior('gabz_pinkcage', vector3(Config.Apartment['Pos'].x, Config.Apartment['Pos'].y, Config.Apartment['Pos'].z - 15.0), false)
+    local Interior = exports['mercy-interiors']:CreateInterior('gabz_pinkcage', vector3(Config.Apartment['Pos'].x, Config.Apartment['Pos'].y, Config.Apartment['Pos'].z + 400), false)
     ApartmentObject = Interior[1]
     Offsets = Interior[2]
 
-    SetEntityCoords(PlayerPedId(), Config.Apartment['Pos'].x + Offsets['Exit'].x, Config.Apartment['Pos'].y + Offsets['Exit'].y, (Config.Apartment['Pos'].z - 15.0) + Offsets['Exit'].z)
+    SetEntityCoords(PlayerPedId(), Config.Apartment['Pos'].x + Offsets['Exit'].x, Config.Apartment['Pos'].y + Offsets['Exit'].y, (Config.Apartment['Pos'].z + 400) + Offsets['Exit'].z)
     EventsModule.TriggerServer('mercy-base/server/bucketmanager/set-routing-bucket', RoomId)
 
     Citizen.SetTimeout(100, function()
