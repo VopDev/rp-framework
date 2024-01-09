@@ -1793,7 +1793,7 @@ Shared.ItemList["coffee"] = {
 	['Description'] = "Tastes like dirt, but has the caffeine you need.",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 50,
 	['Cost'] = {
 		{Item = 'ingredient-beans', Amount = 1},
 	}
@@ -1811,7 +1811,7 @@ Shared.ItemList["catpuccino"] = {
 	['Description'] = "Tastes like miauw, but has the caffeine you need.",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 50,
 	['Cost'] = {
 		{Item = 'ingredient-beans', Amount = 1},
 	}
@@ -1829,7 +1829,7 @@ Shared.ItemList["icedcoffee"] = {
 	['Description'] = "So cold, but has the caffeine you need.",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 110,
 	['Cost'] = {
 		{Item = 'ingredient-beans', Amount = 1},
 	}
@@ -1847,7 +1847,7 @@ Shared.ItemList["matchalatte"] = {
 	['Description'] = "Tasts like miauw , but has the caffeine you need.",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 100,
 	['Cost'] = {
 		{Item = 'ingredient-beans', Amount = 1},
 	}
@@ -1866,7 +1866,7 @@ Shared.ItemList["kittylatte"] = {
 	['Description'] = "Miauw Miauw Miauw",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 150,
 	['Cost'] = {
 		{Item = 'ingredient-beans', Amount = 1},
 	}
@@ -1884,7 +1884,7 @@ Shared.ItemList["bubbleteablueberry"] = {
 	['Description'] = "Tasts like miauw , but has the caffeine you need.",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 185,
 	['Cost'] = {
 		{Item = 'ingredient-beans', Amount = 1},
 	}
@@ -1902,7 +1902,7 @@ Shared.ItemList["bubbleteamint"] = {
 	['Description'] = "Tasts like miauw , but has the caffeine you need.",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 185,
 	['Cost'] = {
 		{Item = 'ingredient-beans', Amount = 1},
 	}
@@ -1920,7 +1920,7 @@ Shared.ItemList["bubbletearose"] = {
 	['Description'] = "Tasts like miauw , but has the caffeine you need.",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 185,
 	['Cost'] = {
 		{Item = 'ingredient-beans', Amount = 1},
 	}
@@ -1938,7 +1938,7 @@ Shared.ItemList["chocotea"] = {
 	['Description'] = "Chocolate Tea, Hmm Nice",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 185,
 	['Cost'] = {
 		{Item = 'ingredient-beans', Amount = 1},
 	}
@@ -1956,7 +1956,7 @@ Shared.ItemList["lemonlimeicedtea"] = {
 	['Description'] = "Cold Lemon Tea, Hmm Nice",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 185,
 	['Cost'] = {
 		{Item = 'ingredient-beans', Amount = 1},
 	}
@@ -1974,7 +1974,7 @@ Shared.ItemList["matchatea"] = {
 	['Description'] = "Matcha, Hmm Nice",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 185,
 	['Cost'] = {
 		{Item = 'ingredient-beans', Amount = 1},
 	}
@@ -1992,7 +1992,7 @@ Shared.ItemList["strawberrytea"] = {
 	['Description'] = "Strawberry's, Hmm Nice",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 185,
 	['Cost'] = {
 		{Item = 'ingredient-beans', Amount = 1},
 	}
@@ -2070,7 +2070,7 @@ Shared.ItemList["uwubentobox"] = {
 	['Description'] = "HIDE THE STUFF!",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 250,
 }
 
 Shared.ItemList["mochi"] = {
@@ -2085,7 +2085,7 @@ Shared.ItemList["mochi"] = {
 	['Description'] = "Eat me!",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 100,
 	['Cost'] = {
 		{Item = 'ingredient-milk', Amount = 1},
 		{Item = 'ingredient-icecream', Amount = 1},
@@ -2104,7 +2104,7 @@ Shared.ItemList["kittyricecake"] = {
 	['Description'] = "Eat me!",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 100,
 	['Cost'] = {
 		{Item = 'ingredient-milk', Amount = 1},
 	}
@@ -2122,7 +2122,7 @@ Shared.ItemList["kittydoughnut"] = {
 	['Description'] = "Eat me!",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 100,
 	['Cost'] = {
 		{Item = 'ingredient-milk', Amount = 1},
 	}
@@ -2140,7 +2140,7 @@ Shared.ItemList["kittycupcake"] = {
 	['Description'] = "Eat me!",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 100,
 	['Cost'] = {
 		{Item = 'ingredient-milk', Amount = 1},
 	}
@@ -2158,7 +2158,7 @@ Shared.ItemList["kittybrownie"] = {
 	['Description'] = "Eat me!",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 100,
 	['Cost'] = {
 		{Item = 'ingredient-milk', Amount = 1},
 	}
@@ -2176,7 +2176,7 @@ Shared.ItemList["kittybentobox"] = {
 	['Description'] = "Eat me!",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 350,
 	['Cost'] = {
 		{Item = 'ingredient-lettuce', Amount = 1},
 		{Item = 'ingredient-patty-raw', Amount = 1},
@@ -2196,7 +2196,7 @@ Shared.ItemList["katsusalad"] = {
 	['Description'] = "You're a wanne be healthy person.",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 250,
 	['Cost'] = {
 		{Item = 'ingredient-lettuce', Amount = 3},
 	}
@@ -2214,7 +2214,7 @@ Shared.ItemList["katsucurry"] = {
 	['Description'] = "You're a wanne be healthy person.",
 	['DecayRate'] = 0.01,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 1,
+	['Price'] = 250,
 	['Cost'] = {
 		{Item = 'ingredient-patty-raw', Amount = 2},
 	}

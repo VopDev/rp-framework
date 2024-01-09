@@ -789,6 +789,45 @@ Config.StoreItems = {
         },
 
     },
+    ['uwuAuto'] = {
+        {
+            ['ItemName'] = 'katsusalad',
+            ['Amount'] = 10,
+            ['Slot'] = 1,
+            ['Info'] = {}
+        },
+        {
+            ['ItemName'] = 'katsucurry',
+            ['Amount'] = 10,
+            ['Slot'] = 2,
+            ['Info'] = {}
+        },
+        {
+            ['ItemName'] = 'catpuccino',
+            ['Amount'] = 10,
+            ['Slot'] = 3,
+            ['Info'] = {}
+        },
+        {
+            ['ItemName'] = 'mochi',
+            ['Amount'] = 10,
+            ['Slot'] = 4,
+            ['Info'] = {}
+        },
+        {
+            ['ItemName'] = 'kittyricecake',
+            ['Amount'] = 10,
+            ['Slot'] = 5,
+            ['Info'] = {}
+        },
+        {
+            ['ItemName'] = 'kittydoughnut',
+            ['Amount'] = 10,
+            ['Slot'] = 6,
+            ['Info'] = {}
+        },
+
+    },
     ['uwusupplies'] = {
         {
             ['ItemName'] = 'water',
