@@ -29,6 +29,7 @@ Config.Doors = {
         CanDetcord = true,
         Disabled = false,
         Connected = {},
+        IsHidden = true,
         Access = {
             Job = {},
             CitizenId = {},
