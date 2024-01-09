@@ -2248,7 +2248,7 @@ Shared.ItemList["firstaidkit"] = {
 	['Description'] = "Are you bleeding?",
 	['DecayRate'] = 0.25,
 	['RemoveWhenDecayed'] = true,
-	['Price'] = 56,
+	['Price'] = 250,
 }
 
 Shared.ItemList["bandage"] = {
@@ -2263,7 +2263,7 @@ Shared.ItemList["bandage"] = {
 	['Description'] = "Seems to heal minor wounds.",
 	['DecayRate'] = 0.25,
 	['RemoveWhenDecayed'] = true,
-	['Price'] = 56,
+	['Price'] = 100,
 }
 
 Shared.ItemList["joint"] = {

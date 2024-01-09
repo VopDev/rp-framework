@@ -58,7 +58,7 @@ Citizen.CreateThread(function()
             })
         end
     end
-    PlacePickle()
+ 
     PlaceCats()
 end)
 
@@ -160,6 +160,7 @@ end)
 
 function PlaceCats()
     while true do
+        PlacePickle()
         Citizen.Wait(100)
 
         local Coords = GetEntityCoords(PlayerPedId())
