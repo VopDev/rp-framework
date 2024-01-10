@@ -1798,7 +1798,7 @@ Shared.Vehicles = {
         ['Picture'] = 'None',
         ['Type'] = 'Car',
         ['Siren'] = 'VEHICLES_HORNS_SIREN_1',
-        ['Price'] = 100000,
+        ['Price'] = 20000,
     },
     [GetHashKey('nkscout')] = {
         ['Vehicle'] = 'nkscout',
@@ -1809,7 +1809,7 @@ Shared.Vehicles = {
         ['Picture'] = 'None',
         ['Type'] = 'Car',
         ['Siren'] = 'VEHICLES_HORNS_SIREN_1',
-        ['Price'] = 100000,
+        ['Price'] = 45000,
     },
     [GetHashKey('polvic')] = {
         ['Vehicle'] = 'polvic',
