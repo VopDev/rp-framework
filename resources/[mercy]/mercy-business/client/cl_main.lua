@@ -99,7 +99,7 @@ RegisterNetEvent('mercy-business/client/send-order', function(Data)
         Citizen.Wait(math.random(5000, 15000))
         local NPCorder = randomLocFoodChain(Data)
         TriggerServerEvent("mercy-phone/server/mails/send-mail", NPCorder.Title, "#A-1001", NPCorder.OrderMail ..' $'.. NPCorder.price)
-        exports['76b-ui']:Show(NPCorder.OrderMail)
+        exports['76b-ui']:Show("Food Delivery", NPCorder.OrderMail)
         FunctionsModule.ClearCustomGpsRoute()
         Citizen.Wait(500)
         GPSRouteFoodChain(NPCorder.center)
@@ -130,6 +130,7 @@ RegisterNetEvent('mercy-business/client/deliver-order', function(Data)
             if DidComplete then
                 EventsModule.TriggerServer('mercy-business/server/give-reward', Data.RequestItem, playerBusiness, CustomerLoc.price)
                 exports['mercy-inventory']:SetBusyState(false)
+                exports['76b-ui']:Close()
                 TriggerEvent('mercy-business/client/send-order', playerBusiness)
             end
         end)
@@ -141,6 +142,7 @@ end)
 RegisterNetEvent('mercy-business/client/end-job', function()
     FunctionsModule.ClearCustomGpsRoute()
     CustomerLoc = nil
+    exports['76b-ui']:Close()
 end)
 
 -- [ Functions ] --
