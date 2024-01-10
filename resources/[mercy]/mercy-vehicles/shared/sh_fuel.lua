@@ -19,6 +19,7 @@ Config.ElectricVehicles = {
     "imorgon",
     "dilettante",
     "khamelion",
+    "arias",
 }
 
 Config.Chargers = {

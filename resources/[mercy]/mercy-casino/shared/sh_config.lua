@@ -16,7 +16,7 @@ Config.Casino = {
     ['Rent'] = 750,
 }
 Config.WheelURL = "http://localhost/" -- URL where you host the wheel here.
-Config.TVImage = "https://i.imgur.com/yUoVJ5M.png" -- Image for TV
+Config.TVImage = "https://twitch.com/xqc" -- Image for TV
 Config.Debug = true
 
 Config.CasinoLocations = {
