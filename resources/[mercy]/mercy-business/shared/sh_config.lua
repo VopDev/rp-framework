@@ -129,7 +129,7 @@ Config.FoodChainOrders = {
                     EventName = 'mercy-business/client/deliver-order',
                     EventParams = { RequestItem = { {Name = 'mochi', Amount = 1}, }, },
                     Enabled = function(Entity)
-                        if not exports['mercy-hospital']:IsDead() and exports['mercy-business']:NearCustomerLoc() and (exports['mercy-business']:IsPlayerInBusiness('UwU Café') or exports['mercy-business']:IsPlayerInBusiness('Burger Shot') or exports['mercy-business']:IsPlayerInBusiness('Pizza This')) then
+                        if not exports['mercy-hospital']:IsDead() and exports['mercy-business']:NearCustomerLoc() and (exports['mercy-business']:IsPlayerInBusiness('UwU Café') or exports['mercy-business']:IsPlayerInBusiness('Burger Shot')) then
                             return true
                         end
                     end,
@@ -156,7 +156,7 @@ Config.FoodChainOrders = {
                     EventName = 'mercy-business/client/deliver-order',
                     EventParams = { RequestItem = { {Name = 'kittydoughnut', Amount = 1}, }, },
                     Enabled = function(Entity)
-                        if not exports['mercy-hospital']:IsDead() and exports['mercy-business']:NearCustomerLoc() and (exports['mercy-business']:IsPlayerInBusiness('UwU Café') or exports['mercy-business']:IsPlayerInBusiness('Burger Shot') or exports['mercy-business']:IsPlayerInBusiness('Pizza This')) then
+                        if not exports['mercy-hospital']:IsDead() and exports['mercy-business']:NearCustomerLoc() and (exports['mercy-business']:IsPlayerInBusiness('UwU Café') or exports['mercy-business']:IsPlayerInBusiness('Burger Shot')) then
                             return true
                         end
                     end,
