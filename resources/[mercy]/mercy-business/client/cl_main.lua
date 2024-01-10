@@ -214,8 +214,9 @@ end
 exports("OnDeliveryRun", function()
    if OnDeliveryRun then 
     return true
-   else return false
    end
+
+   return false
 end)
 
 exports("NearCustomerLoc", function()
