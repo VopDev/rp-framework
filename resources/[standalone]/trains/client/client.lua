@@ -817,6 +817,10 @@ AddEventHandler('playerSpawned', function()
 	end
 end)
 
+RegisterCommand('traintest', function()
+    TriggerServerEvent('FiveM-Trains:PlayerSpawned')
+end)
+
 -- This is added if we restart the ressource.
 -- Needed for the dev. May be I will remove it later.
 -- This remove all train
