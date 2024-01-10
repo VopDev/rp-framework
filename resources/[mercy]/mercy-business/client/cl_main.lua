@@ -1,6 +1,7 @@
 FunctionsModule, CallbackModule, EventsModule, PlayerModule, VehicleModule = nil
 local CustomerLoc, playerBusiness = {}, nil
 ClockedData = {Business = 'None', Clocked = false}
+OnDeliveryRun = false
 
 AddEventHandler('Modules/client/ready', function()
     TriggerEvent('Modules/client/request-dependencies', {
@@ -93,6 +94,7 @@ RegisterNetEvent('mercy-business/client/open-stash', function(Data, Entity)
 end)
 
 RegisterNetEvent('mercy-business/client/send-order', function(Data)
+    OnDeliveryRun = true
     Citizen.CreateThread(function()
         while CallbackModule == nil do Citizen.Wait(100) end
         playerBusiness = Data
@@ -131,6 +133,7 @@ RegisterNetEvent('mercy-business/client/deliver-order', function(Data)
                 EventsModule.TriggerServer('mercy-business/server/give-reward', Data.RequestItem, playerBusiness, CustomerLoc.price)
                 exports['mercy-inventory']:SetBusyState(false)
                 exports['76b-ui']:Close()
+                OnDeliveryRun = false
                 TriggerEvent('mercy-business/client/send-order', playerBusiness)
             end
         end)
@@ -143,6 +146,7 @@ RegisterNetEvent('mercy-business/client/end-job', function()
     FunctionsModule.ClearCustomGpsRoute()
     CustomerLoc = nil
     exports['76b-ui']:Close()
+    OnDeliveryRun = false
 end)
 
 -- [ Functions ] --
@@ -205,6 +209,14 @@ function GPSRouteFoodChain(tCoords)
     }
     FunctionsModule.CreateCustomGpsRoute(CoordsTable, true)
 end
+
+
+exports("OnDeliveryRun", function()
+   if OnDeliveryRun then 
+    return true
+   else return false
+   end
+end)
 
 exports("NearCustomerLoc", function()
     if CustomerLoc == nil then return false end
