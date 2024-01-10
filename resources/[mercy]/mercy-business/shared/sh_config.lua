@@ -111,7 +111,7 @@ Config.FoodChainOrders = {
     ['UwU Café'] = {
         [1] = {
             ['Title'] = 'Customer Order',
-            ['OrderMail'] = '1x Ktasu Salad, 1x Mochi',
+            ['OrderMail'] = '1x Mochi',
             price = 500,
             center = vector3(1060.18, -377.85, 67.85),
             length = 1.0,
@@ -127,7 +127,7 @@ Config.FoodChainOrders = {
                     Label = 'Deliver Orders',
                     EventType = 'Client',
                     EventName = 'mercy-business/client/deliver-order',
-                    EventParams = { RequestItem = { {Name = 'mochi', Amount = 1}, {Name = 'katsusalad', Amount = 1}, }, },
+                    EventParams = { RequestItem = { {Name = 'mochi', Amount = 1}, }, },
                     Enabled = function(Entity)
                         if not exports['mercy-hospital']:IsDead() and exports['mercy-business']:NearCustomerLoc() and (exports['mercy-business']:IsPlayerInBusiness('UwU Café') or exports['mercy-business']:IsPlayerInBusiness('Burger Shot') or exports['mercy-business']:IsPlayerInBusiness('Pizza This')) then
                             return true
