@@ -126,7 +126,7 @@ RegisterNetEvent('mercy-business/client/send-order', function(Data)
 end)
 
 RegisterNetEvent('mercy-business/client/deliver-order', function(Data)
-    if exports['mercy-inventory']:HasEnoughOfItem(Data.RequestItem.Name, 1) then
+    if exports['mercy-inventory']:HasEnoughOfItem(Data.RequestItem, 1) then
         exports['mercy-inventory']:SetBusyState(true)
         exports['mercy-ui']:ProgressBar('Delivering Order...', 4500, false, false, true, true, function(DidComplete)
             if DidComplete then
