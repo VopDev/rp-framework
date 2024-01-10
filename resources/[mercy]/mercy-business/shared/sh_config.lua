@@ -110,8 +110,8 @@ Config.FoodChainOrders = {
     -- A separate title can be created for each business and configured as desired.
     ['UwU Café'] = {
         [1] = {
-            ['Title'] = 'Customer order',
-            ['OrderMail'] = '1x Patates Kızartması, 1x Soft Drink',
+            ['Title'] = 'Customer Order',
+            ['OrderMail'] = '1x Ktasu Salad, 1x Mochi',
             price = 500,
             center = vector3(1060.18, -377.85, 67.85),
             length = 1.0,
@@ -127,7 +127,34 @@ Config.FoodChainOrders = {
                     Label = 'Deliver Orders',
                     EventType = 'Client',
                     EventName = 'mercy-business/client/deliver-order',
-                    EventParams = { RequestItem = { {Name = 'fries', Amount = 1}, {Name = 'softdrink', Amount = 1}, }, },
+                    EventParams = { RequestItem = { {Name = 'mochi', Amount = 1}, {Name = 'katsusalad', Amount = 1}, }, },
+                    Enabled = function(Entity)
+                        if not exports['mercy-hospital']:IsDead() and exports['mercy-business']:NearCustomerLoc() and (exports['mercy-business']:IsPlayerInBusiness('UwU Café') or exports['mercy-business']:IsPlayerInBusiness('Burger Shot') or exports['mercy-business']:IsPlayerInBusiness('Pizza This')) then
+                            return true
+                        end
+                    end,
+                }
+            },
+        },
+        [2] = {
+            ['Title'] = 'Customer Order',
+            ['OrderMail'] = '1x Kitty Doughnut',
+            price = 500,
+            center = vector3(1060.18, -377.85, 67.85),
+            length = 1.0,
+            width = 0.2,
+            name = "order2",
+            heading = 311,
+            minZ = 67.25,
+            maxZ = 69.45,
+            options = {
+                {
+                    Name = 'order_2',
+                    Icon = 'fas fa-circle',
+                    Label = 'Deliver Orders',
+                    EventType = 'Client',
+                    EventName = 'mercy-business/client/deliver-order',
+                    EventParams = { RequestItem = { {Name = 'kittydoughnut', Amount = 1}, }, },
                     Enabled = function(Entity)
                         if not exports['mercy-hospital']:IsDead() and exports['mercy-business']:NearCustomerLoc() and (exports['mercy-business']:IsPlayerInBusiness('UwU Café') or exports['mercy-business']:IsPlayerInBusiness('Burger Shot') or exports['mercy-business']:IsPlayerInBusiness('Pizza This')) then
                             return true
