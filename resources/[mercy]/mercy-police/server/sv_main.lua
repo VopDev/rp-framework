@@ -124,15 +124,18 @@ Citizen.CreateThread(function()
         TriggerClientEvent('mercy-chat/client/post-message', source, 'DEPARTMENT', Player.PlayerData.Job.Department, 'warning')
     end)
     
-    CommandsModule.Add("setdepartment", "Set your department (LSPD/BCSO/SASP)", {{Name="Department", Help="Department"}}, false, function(source, args)
+    CommandsModule.Add("setdepartment", "Set your department (LSPD/BCSO/SASP)", {{Name="ID", Help="ID"}, {Name="Department", Help="Department"}}, false, function(source, args)
         local Player = PlayerModule.GetPlayerBySource(source)
-        local Department = args[1]
-        if Department ~= nil and Department == 'LSPD' or Department == 'BCSO' or Department == 'SASP' then
-            if Player.PlayerData.Job.Name == 'police' and Player.PlayerData.Job.Duty then
-                Player.Functions.SetDepartment(Department)
-                Player.Functions.Notify('sign-changed', 'Department succesfully changed. You now on the '..Department..'  department.', 'success')
-            else
+	    local Target = PlayerModule.GetPlayerBySource(tonumber(args[1]))
+        local Department = args[2]
+        if Player.PlayerData.Job['HighCommand'] then
+            if Department ~= nil and Department == 'LSPD' or Department == 'BCSO' or Department == 'SASP' then
+                if Player.PlayerData.Job.Name == 'police' and Player.PlayerData.Job.Duty then
+                Target.Functions.SetDepartment(Department)
+                Target.Functions.Notify('sign-changed', 'Department succesfully changed. You now on the '..Department..'  department.', 'success')
+                else
                 Player.Functions.Notify('no-perm', 'No Permission..', 'error')
+                end
             end
         end
     end)
