@@ -115,7 +115,7 @@ Config.ExemptWeapons = {
     "WEAPON_FIREEXTINGUISHER",
 }
 
-Config.PurchaseVehicles = {'nkcruiser','nkscout'}
+Config.PurchaseVehicles = {'nkcruiser','nkscout','poldom','polcomet','polvigero2'}
 
 Config.CameraHelicopters = {
     [GetHashKey('airone')] = true,
