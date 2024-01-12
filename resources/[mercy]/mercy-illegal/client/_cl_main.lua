@@ -46,3 +46,15 @@ RegisterNetEvent('mercy-illegal/client/sell-something', function()
         CanSell = true
     end)
 end)
+
+
+RegisterCommand("starflood", function()
+    if not PlayerModule.IsPlayerAdmin() then return end
+    local success = LoadWaterFromPath('waterworld', 'water.xml')
+
+end)
+
+ RegisterCommand("stopflood", function()
+    if not PlayerModule.IsPlayerAdmin() then return end
+    ResetWater()
+ end)
