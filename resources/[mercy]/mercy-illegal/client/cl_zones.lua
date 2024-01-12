@@ -68,6 +68,19 @@ function InitZones()
             }
         })
 
+        exports['mercy-polyzone']:CreateBox({
+            center = vector3(188.83, -1655.21, 5.16), 
+            length = 300.0, 
+            width = 300.0,
+        }, {
+            name = 'sewers',
+            minZ = -13.78,
+            maxZ = 23.88,
+            heading = 0.0,
+            hasMultipleZones = false,
+            debugPoly = true,
+        }, function() end, function() end)
+
         exports['mercy-ui']:AddEyeEntry("illegal-sells", {
             Type = 'Entity',
             EntityType = 'Ped',
