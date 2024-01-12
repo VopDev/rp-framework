@@ -186,7 +186,7 @@ end)
 
 RegisterNetEvent('mercy-misc/client/gopro-blurcamera', function(Data, Entity)
     local GoPro = GetGoProId(Entity)
-    local Outcome = exports['mercy-ui']:StartSkillTest(1, { 1, 5 }, { 12000, 18000 }, false)
+    local Outcome = exports['bl_ui']:KeyCircle(1, math.random(50,75), math.random(2,5))
     if Outcome then
         TriggerServerEvent("mercy-misc/server/gopro-action", GoPro, "SetBlurred", true)
         exports['mercy-ui']:Notify("gopro-error", "Smudged camera!", "success")

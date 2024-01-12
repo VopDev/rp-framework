@@ -83,7 +83,7 @@ RegisterNetEvent('mercy-police/client/getting-cuffed', function()
     if not Config.Handcuffed then
         local GoingToCuff = false
         if math.random(1, 100) >= 33 and math.random(1, 100) <= 66 then
-            local Outcome = exports['mercy-ui']:StartSkillTest(1, { 5, 10 }, { 1000, 2000 }, true)
+            local Outcome = exports['bl_ui']:Progress(1, 90)
             if not Outcome then
                 GoingToCuff = true
                 exports['mercy-ui']:Notify("cuff-error", "Failed..", 'error')

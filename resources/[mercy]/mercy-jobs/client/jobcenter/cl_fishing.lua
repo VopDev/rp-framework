@@ -88,7 +88,7 @@ RegisterNetEvent('mercy-items/client/used/fishing-rod', function()
     SetRodAnimation(true)
 
     Citizen.SetTimeout(math.random(15000, 65000), function()
-        local SkillTimes = 1
+        local SkillTimes = 2
         local CalculatedFish = CalculateFish()
         
         if CalculatedFish == false then
@@ -101,7 +101,7 @@ RegisterNetEvent('mercy-items/client/used/fishing-rod', function()
 
         exports['mercy-ui']:Notify("fishing-fish", "A little nibble...", 'primary')
 
-        local Outcome = exports['mercy-ui']:StartSkillTest(SkillTimes, { 10, 15 }, { 3500, 5500 }, false)
+        local Outcome = exports['bl_ui']:KeySpam(SkillTimes, 70)
         SetRodAnimation(false)
         if not Outcome then
             exports['mercy-ui']:Notify("fisning-error", "It got away!!!!!!!", 'error')

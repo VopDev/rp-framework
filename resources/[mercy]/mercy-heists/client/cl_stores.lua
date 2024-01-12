@@ -26,7 +26,7 @@ RegisterNetEvent('mercy-heists/client/stores-steal-register', function(Data, Ent
             TriggerServerEvent("mercy-police/server/create-evidence", 'Fingerprint')
         end
 
-        local Outcome = exports['mercy-ui']:StartSkillTest(6, { 7, 10 }, { 1500, 3000 }, false)
+        local Outcome = exports['bl_ui']:Progress(math.random(4, 6), 85)
         TriggerEvent('mercy-assets/client/lockpick-animation', false)
         if Outcome then
             TriggerServerEvent('mercy-heists/server/stores/set-state', RegisterId, 'Robbed', true)

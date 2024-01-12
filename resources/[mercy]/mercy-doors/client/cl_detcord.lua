@@ -11,7 +11,7 @@ RegisterNetEvent('mercy-items/client/used-lockpick', function(IsAdvanced)
         local DoorId = GetTargetDoorId(Entity)
         if DoorId ~= nil then
             if Config.Doors[DoorId].CanLockpick then
-                local Outcome = exports['mercy-ui']:StartSkillTest(3, { 7, 10 }, { 1000, 1500 }, false)
+                local Outcome = exports['bl_ui']:Progress(math.random(4, 6), 80)
                 if Outcome then
                     TriggerServerEvent('mercy-doors/server/set-locks', DoorId, 0)
                     TriggerServerEvent('mercy-doors/server/toggle-locks', DoorId, 0)

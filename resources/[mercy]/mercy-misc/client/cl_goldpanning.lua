@@ -12,7 +12,8 @@ RegisterNetEvent("mercy-items/client/used/gold-pan", function(Item)
     if not IsEntityInWater(PlayerPedId()) then return end
     if IsPedSwimming(PlayerPedId()) or IsPedSwimmingUnderWater(PlayerPedId()) then return end
 
-    local Result = exports['mercy-ui']:StartSkillTest(PanConfigs[Item.ItemName].Streak, { 10, 25 }, { 1500, 4500 }, false)
+    local Result = exports['bl_ui']:RapidLines(PanConfigs[Item.ItemName].Streak, math.random(50,75), math.random(2,5))
+    
     if not Result then return end
 
     CurrentlyPanning = true

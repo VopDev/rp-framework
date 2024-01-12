@@ -162,7 +162,7 @@ RegisterNetEvent('mercy-business/client/foodchain/create-meal', function(Data)
         return
     end
 
-    local Outcome = exports['mercy-ui']:StartSkillTest(3, { 7, 10 }, { 1000, 1500 }, false)
+    local Outcome = exports['bl_ui']:RapidLines(1, math.random(50,75), math.random(5,10))
     if Outcome then
         CreateMeal(Data)
     else

@@ -63,7 +63,7 @@ RegisterNetEvent('mercy-items/client/used-pickaxe', function()
                 DoMiningAnim(true)
                 TriggerServerEvent('mercy-jobs/server/mining-set-state', CurrentMiningSpot, 'Busy', true)
                 Citizen.SetTimeout(math.random(1500, 10000), function()
-                    local Outcome = exports['mercy-ui']:StartSkillTest(3, { 10, 15 }, { 3500, 5500 }, false)
+                    local Outcome = exports['bl_ui']:RapidLines(1, math.random(50,75), math.random(4,6))
                     DoMiningAnim(false)
                     if Outcome then
                         TriggerServerEvent('mercy-jobs/server/mining-set-state', CurrentMiningSpot, 'Mined', true)

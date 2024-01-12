@@ -181,7 +181,7 @@ RegisterNetEvent('mercy-items/client/used-lockpick', function(IsAdvanced)
 
     TriggerEvent('mercy-ui/client/play-sound', 'lockpick', 0.7)
     TriggerEvent('mercy-assets/client/lockpick-animation', true)
-    local Outcome = exports['mercy-ui']:StartSkillTest(math.random(5, 8), IsAdvanced and { 1, 2 } or { 5, 10 }, IsAdvanced and { 6000, 12000 } or { 1500, 3000 }, true)
+    local Outcome = exports['bl_ui']:Progress(IsAdvanced and math.random(2, 6) or math.random(5, 8), IsAdvanced and 60 or 85)
     TriggerEvent('mercy-assets/client/lockpick-animation', false)
     if Outcome then
         EventsModule.TriggerServer('mercy-heists/server/housing/sync-house', 'SetLocked', HouseRobberies.CurrentHouse, false)
@@ -196,7 +196,7 @@ end)
 
 RegisterNetEvent('mercy-heists/client/houses/disable-alarm', function()
     TriggerEvent('mercy-animations/client/play-animation', 'code')
-    local Outcome = exports['mercy-ui']:StartSkillTest(math.random(5, 8), { 5, 10 }, { 1500, 3000 }, true)
+    local Outcome = exports['bl_ui']:CircleProgress(math.random(4,7), 75)
     TriggerEvent('mercy-animations/client/clear-animation')
     if Outcome then
         EventsModule.TriggerServer('mercy-heists/server/housing/sync-house', 'SetAlarm', HouseRobberies.CurrentHouse, false)

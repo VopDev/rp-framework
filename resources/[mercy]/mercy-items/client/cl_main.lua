@@ -274,7 +274,7 @@ RegisterNetEvent('mercy-items/client/used-toolbox', function()
         local Entity, EntityType, EntityCoords = FunctionsModule.GetEntityPlayerIsLookingAt(3.0, 0.2, 286, PlayerPedId())
         if EntityType == 2 then
             VehicleModule.SetVehicleDoorOpen(Entity, 4)
-            local Outcome = exports['mercy-ui']:StartSkillTest(1, { 1, 5 }, { 12000, 18000 }, false)
+            local Outcome = exports['bl_ui']:Progress(math.random(4, 6), 70)
             if Outcome then
                 local CurrentEngineHealth = GetVehicleEngineHealth(Entity)
                 local NewEngineHealth = CurrentEngineHealth + 250.0 < 1000.0 and CurrentEngineHealth + 250.0 or 1000.0
@@ -293,7 +293,7 @@ RegisterNetEvent('mercy-items/client/used-tirekit', function()
     Citizen.SetTimeout(450, function()
         local Entity, EntityType, EntityCoords = FunctionsModule.GetEntityPlayerIsLookingAt(3.0, 0.2, 286, PlayerPedId())
         if EntityType == 2 then
-            local Outcome = exports['mercy-ui']:StartSkillTest(1, { 1, 5 }, { 12000, 18000 }, false)
+            local Outcome = exports['bl_ui']:Progress(math.random(4, 6), 70)
             if Outcome then
                 for i = 0, 7, 1 do
                     if i == 6 then
