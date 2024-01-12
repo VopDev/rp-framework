@@ -106,13 +106,13 @@ Citizen.CreateThread(function()
             local IsPoison = false
             local IsRunning = IsPedRunning(PlayerPedId())
 
-            if IsRunning then
+            if IsRunning and GetPedDrawableVariation(PlayerPedId(), 1) == -1 then
                 if math.random(1, 100) < 30 then
                     IsPoison = true
                     TriggerEvent('mercy-ui/client/notify', "sewer-gas", 'The noxious sewer gas burns your lungs..', 'error', 4500)
                 end
             else
-                if math.random(1, 100) < 10 then
+                if math.random(1, 100) < 10 and GetPedDrawableVariation(PlayerPedId(), 1) == -1 then
                     IsPoison = true
                     TriggerEvent('mercy-ui/client/notify', "sewer-gas", 'The noxious sewer gas burns your lungs..', 'error', 4500)
                 end
@@ -120,7 +120,7 @@ Citizen.CreateThread(function()
 
             if IsPoison then
                 local CurrentHealth = GetEntityHealth(PlayerPedId())
-                local MinAmount = OnOxy and math.random(1, 2) or math.random(2, 5)
+                local MinAmount = OnOxy and math.random(5, 10) or math.random(10, 20)
                 SetEntityHealth(PlayerPedId(), (CurrentHealth - MinAmount))
             end
 
