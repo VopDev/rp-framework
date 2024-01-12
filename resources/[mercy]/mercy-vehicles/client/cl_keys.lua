@@ -197,7 +197,7 @@ RegisterNetEvent('mercy-items/client/used-lockpick', function(IsAdvanced, isBank
     local Plate = GetVehicleNumberPlateText(Entity)
     if HasKeysToVehicle(Plate) then return end
 
-    if GetVehicleClass(Entity) == 18 or GetVehicleClass(Entity) == 7 and not IsAdvanced then
+    if not IsAdvanced and GetVehicleClass(Entity) == 18 or GetVehicleClass(Entity) == 7 then
         return exports['mercy-ui']:Notify('stronger-device', "You need a stronger device to do this..", "error") -- Emergency & Sports cars needs advanced lockpick.
     end
 
