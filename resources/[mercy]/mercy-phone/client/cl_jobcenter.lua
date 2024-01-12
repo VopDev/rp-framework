@@ -384,8 +384,11 @@ end)
 -- NUI Callbacks
 RegisterNUICallback("JobCenter/LocateJob", function(Data, Cb)
     if JobCenter.Jobs[Data.Job] ~= nil then
+        if JobCenter.Jobs[Data.Job] ~= 'houses' then
         SetNewWaypoint(JobCenter.Jobs[Data.Job].Location.x, JobCenter.Jobs[Data.Job].Location.y)
         exports['mercy-ui']:Notify("jobcenter-waypoint", "Waypoint set!")
+        else
+            exports['mercy-ui']:Notify("jobcenter-houseerror", "The GPS reads a blank signal...", "error", 10000)
     end
     Cb('ok')
 end)
