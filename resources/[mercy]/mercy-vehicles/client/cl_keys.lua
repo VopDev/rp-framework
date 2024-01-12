@@ -197,8 +197,8 @@ RegisterNetEvent('mercy-items/client/used-lockpick', function(IsAdvanced, isBank
     local Plate = GetVehicleNumberPlateText(Entity)
     if HasKeysToVehicle(Plate) then return end
 
-    if GetVehicleClass(Entity) == 18 then
-        return exports['mercy-ui']:Notify('stronger-device', "You need a stronger device to do this..", "error")
+    if GetVehicleClass(Entity) == 18 or GetVehicleClass(Entity) == 7 and not IsAdvanced then
+        return exports['mercy-ui']:Notify('stronger-device', "You need a stronger device to do this..", "error") -- Emergency & Sports cars needs advanced lockpick.
     end
 
     if LastCartheftAlert ~= Entity then
@@ -215,7 +215,8 @@ RegisterNetEvent('mercy-items/client/used-lockpick', function(IsAdvanced, isBank
         TriggerEvent('mercy-vehicles/client/on-start-lockpick', Entity, Plate)
         EventsModule.TriggerServer('mercy-ui/server/play-sound-in-distance', {['Position'] = {[1] = EntityCoords.x, [2] = EntityCoords.y, [3] = EntityCoords.z}, ['Distance'] = 5.0, ['MaxDistance'] = 0.20, ['Name'] = 'lockpick', ['Volume'] = 0.7, ['Type'] = 'Spatial'})
         LoopAnimation(true, 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@', 'machinic_loop_mechandplayer')
-        local Outcome = exports['mercy-ui']:StartSkillTest(math.random(5, 8), IsAdvanced and { 1, 2 } or { 5, 10 }, IsAdvanced and { 6000, 12000 } or { 1500, 3000 }, true)
+        --local Outcome = exports['mercy-ui']:StartSkillTest(math.random(5, 8), IsAdvanced and { 1, 2 } or { 5, 10 }, IsAdvanced and { 6000, 12000 } or { 1500, 3000 }, true)
+        local Outcome = exports['bl_ui']:Progress(IsAdvanced and math.random(2, 6) or math.random(5, 8), IsAdvanced and 50 or 65)
         LoopAnimation(false)
         if not Outcome then
             exports['mercy-ui']:Notify('keys-error', "Failed attempt..", 'error')
