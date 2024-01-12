@@ -180,7 +180,7 @@ end)
 
 RegisterNetEvent('mercy-phone/client/notification', function(Data)
     if not LocalPlayer.state.LoggedIn then return end
-    if exports['mercy-inventory']:HasEnoughOfItem('phone', 1) then
+    if exports['mercy-inventory']:HasEnoughOfItem('phone', 1) and not InSewers then
         local Preferences = PreferencesModule.GetPreferences()
         if Data.Icon == "fab fa-twitter" and not Preferences.Phone.Notifications.Tweet then return end
         if Data.Icon == "fas fa-comment" and not Preferences.Phone.Notifications.SMS then return end
