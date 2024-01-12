@@ -1,6 +1,7 @@
 LoggerModule, FunctionsModule, EventsModule, KeybindsModule, CallbackModule, PlayerModule, BlipModule, PreferencesModule = nil, nil, nil, nil, nil, nil, nil, nil
 _Ready, InPhone, InCamera, CurrentApp = false, false, false, 'home'
 Phone = {}
+local InSewers = false
 
 AddEventHandler('Modules/client/ready', function()
     if not _Ready then
@@ -98,7 +99,22 @@ function CreateDependencies()
     KeybindsModule.Add('openPhone', 'General', 'Phone', 'M', OpenPhone)
 end
 
+RegisterNetEvent('mercy-polyzone/client/enter-polyzone', function(PolyData, Coords)
+    if PolyData.name == 'sewers' then
+       InSewers = true
+    end
+end)
+
+RegisterNetEvent('mercy-polyzone/client/leave-polyzone', function(PolyData, Coords)
+    if PolyData.name == 'sewers' then
+        InSewers = false
+    end
+end)
+
 function OpenPhone(IsPressed)
+    if InSewers then 
+        exports['mercy-ui']:Notify("sewers-gps", "Your phone doesnt seem to work down here...", "error", 5000)
+        return end
     if not IsPressed then return end
     if not LocalPlayer.state.LoggedIn then return end
     if not exports['mercy-inventory']:HasEnoughOfItem('phone', 1) then return end
