@@ -389,6 +389,7 @@ RegisterNUICallback("JobCenter/LocateJob", function(Data, Cb)
         exports['mercy-ui']:Notify("jobcenter-waypoint", "Waypoint set!")
         else
             exports['mercy-ui']:Notify("jobcenter-houseerror", "The GPS reads a blank signal...", "error", 10000)
+        end
     end
     Cb('ok')
 end)
