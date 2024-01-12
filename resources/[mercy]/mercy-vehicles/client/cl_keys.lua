@@ -217,7 +217,7 @@ RegisterNetEvent('mercy-items/client/used-lockpick', function(IsAdvanced, isBank
         LoopAnimation(true, 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@', 'machinic_loop_mechandplayer')
         exports['mercy-inventory']:SetBusyState(true)
         --local Outcome = exports['mercy-ui']:StartSkillTest(math.random(5, 8), IsAdvanced and { 1, 2 } or { 5, 10 }, IsAdvanced and { 6000, 12000 } or { 1500, 3000 }, true)
-        local Outcome = exports['bl_ui']:Progress(IsAdvanced and math.random(2, 6) or math.random(5, 8), IsAdvanced and 50 or 65)
+        local Outcome = exports['bl_ui']:Progress(IsAdvanced and math.random(2, 6) or math.random(5, 8), IsAdvanced and 60 or 85)
         LoopAnimation(false)
         if not Outcome then
             exports['mercy-ui']:Notify('keys-error', "Failed attempt..", 'error')
