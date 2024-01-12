@@ -1,5 +1,4 @@
 local StealingKeys, Lockpicking, LastCartheftAlert = false, false, nil
-local bl_ui = exports.bl_ui
 -- [ Threads ] --
 
 CreateThread(function()
