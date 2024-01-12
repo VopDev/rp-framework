@@ -388,7 +388,7 @@ RegisterNUICallback("JobCenter/LocateJob", function(Data, Cb)
         SetNewWaypoint(JobCenter.Jobs[Data.Job].Location.x, JobCenter.Jobs[Data.Job].Location.y)
         exports['mercy-ui']:Notify("jobcenter-waypoint", "Waypoint set!")
         else
-            exports['mercy-ui']:Notify("jobcenter-houseerror", "The GPS reads a blank signal...", "error", 10000)
+            exports['mercy-ui']:Notify("jobcenter-houseerror", "Error: GPS signal not available here", "error", 5000)
         end
     end
     Cb('ok')
