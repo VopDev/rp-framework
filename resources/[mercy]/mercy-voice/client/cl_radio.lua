@@ -1,9 +1,14 @@
 
 RadioChannels, IsTalkingOnRadio, RadioVolume, RadioClickVolume, CurrentChannel, CurrentRadioId = {}, false, 0.5, 0.1, nil, 0
 
+
+local InSewers = false
 -- [ Events ] --
 
 RegisterNetEvent("mercy-voice/client/radio-connect", function(RadioId, Subscribers)
+    if InSewers and math.random(1,2) == 1 then
+        exports['mercy-ui']:Notify("radio-sewers", "Weak radio signal - Please restart device.", "error", 1500)
+        return end
     if RadioChannels[RadioId] then return end
 
     local Channel = RadioChannel:New(RadioId)
@@ -58,6 +63,20 @@ RegisterNetEvent("mercy-voice/client/radio-removed", function(RadioId, ServerId)
         if Config.Debug then print( ('[Radio] Subscriber Added | Radio ID: %s | Player: %s'):format(RadioId, ServerId) ) end
     end
 end)
+
+
+RegisterNetEvent('mercy-polyzone/client/enter-polyzone', function(PolyData, Coords)
+    if PolyData.name == 'sewers' then
+       InSewers = true
+    end
+end)
+
+RegisterNetEvent('mercy-polyzone/client/leave-polyzone', function(PolyData, Coords)
+    if PolyData.name == 'sewers' then
+        InSewers = false
+    end
+end)
+
 
 RegisterNetEvent('mercy-hospital/client/on-player-death', function()
     if IsTalkingOnRadio then StopRadioTransmission(true) end

@@ -46,6 +46,20 @@ Citizen.CreateThread(function()
     end
 end)
 
+local InSewers = false
+
+RegisterNetEvent('mercy-polyzone/client/enter-polyzone', function(PolyData, Coords)
+    if PolyData.name == 'sewers' then
+       InSewers = true
+    end
+end)
+
+RegisterNetEvent('mercy-polyzone/client/leave-polyzone', function(PolyData, Coords)
+    if PolyData.name == 'sewers' then
+        InSewers = false
+    end
+end)
+
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(4)
@@ -82,6 +96,39 @@ Citizen.CreateThread(function()
         else
             Citizen.Wait(450)
         end
+    end
+end)
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(4)
+        if LocalPlayer.state.LoggedIn and not Config.Dead and InSewers then
+            local IsPoison = false
+            local IsRunning = IsPedRunning(PlayerPedId())
+
+            if IsRunning then
+                if math.random(1, 100) < 30 then
+                    IsPoison = true
+                    TriggerEvent('mercy-ui/client/notify', "sewer-gas", 'The noxious sewer gas burns your lungs..', 'error', 4500)
+                end
+            else
+                if math.random(1, 100) < 10 then
+                    IsPoison = true
+                    TriggerEvent('mercy-ui/client/notify', "sewer-gas", 'The noxious sewer gas burns your lungs..', 'error', 4500)
+                end
+            end
+
+            if IsPoison then
+                local CurrentHealth = GetEntityHealth(PlayerPedId())
+                local MinAmount = OnOxy and math.random(1, 2) or math.random(2, 5)
+                SetEntityHealth(PlayerPedId(), (CurrentHealth - MinAmount))
+            end
+
+            Citizen.Wait(60000)
+        else
+            Citizen.Wait(450)
+        end
+
     end
 end)
 
