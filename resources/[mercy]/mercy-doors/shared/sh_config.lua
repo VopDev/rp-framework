@@ -3322,6 +3322,108 @@ Config.Doors = {
             Business = {'Diamond Casino'}
         },
     },
+    {
+        Info = 'sewers-1',
+        Coords = vector3(218.6, -1278.67, 28.35),
+        Model = 647538810,
+        Locked = 1,
+        IsGate = false,
+        CanDetcord = true,
+        Disabled = false,
+        Connected = {},
+        IsHidden = true,
+        Access = {
+            Job = {},
+            CitizenId = {},
+            Business = {},
+            Item = { 'weapon_crowbar' }
+        },
+    },
+    {
+        Info = 'sewers-2',
+        Coords = vector3(515.08, -1473.88, 28.3),
+        Model = 647538810,
+        Locked = 1,
+        IsGate = false,
+        CanDetcord = true,
+        Disabled = false,
+        Connected = {},
+        IsHidden = true,
+        Access = {
+            Job = {},
+            CitizenId = {},
+            Business = {},
+            Item = { 'weapon_crowbar' }
+        },
+    },
+    {
+        Info = 'sewers-3',
+        Coords = vector3(470.88, -1698.23, 28.15),
+        Model = 647538810,
+        Locked = 1,
+        IsGate = false,
+        CanDetcord = true,
+        Disabled = false,
+        Connected = {},
+        IsHidden = true,
+        Access = {
+            Job = {},
+            CitizenId = {},
+            Business = {},
+            Item = { 'weapon_crowbar' }
+        },
+    },
+    {
+        Info = 'sewers-4',
+        Coords = vector3(203.08, -2023.24, 17.26),
+        Model = 647538810,
+        Locked = 1,
+        IsGate = false,
+        CanDetcord = true,
+        Disabled = false,
+        Connected = {},
+        IsHidden = true,
+        Access = {
+            Job = {},
+            CitizenId = {},
+            Business = {},
+            Item = { 'weapon_crowbar' }
+        },
+    },
+    {
+        Info = 'sewers-5',
+        Coords = vector3(-5.1, -1847.13, 23.79),
+        Model = 647538810,
+        Locked = 1,
+        IsGate = false,
+        CanDetcord = true,
+        Disabled = false,
+        Connected = {},
+        IsHidden = true,
+        Access = {
+            Job = {},
+            CitizenId = {},
+            Business = {},
+            Item = { 'weapon_crowbar' }
+        },
+    },
+    {
+        Info = 'sewers-6',
+        Coords = vector3(-108.68, -1590.33, 30.92),
+        Model = 647538810,
+        Locked = 1,
+        IsGate = false,
+        CanDetcord = true,
+        Disabled = false,
+        Connected = {},
+        IsHidden = true,
+        Access = {
+            Job = {},
+            CitizenId = {},
+            Business = {},
+            Item = { 'weapon_crowbar' }
+        },
+    },
 
 }
 
@@ -3792,106 +3894,5 @@ Config.ElevatorZones = {
             },
         },
     },
-    {
-        Info = 'sewers-1',
-        Coords = vector3(218.6, -1278.67, 28.35),
-        Model = 647538810,
-        Locked = 1,
-        IsGate = false,
-        CanDetcord = true,
-        Disabled = false,
-        Connected = {},
-        IsHidden = true,
-        Access = {
-            Job = {},
-            CitizenId = {},
-            Business = {},
-            Item = { 'weapon_crowbar' }
-        },
-    },
-    {
-        Info = 'sewers-2',
-        Coords = vector3(515.08, -1473.88, 28.3),
-        Model = 647538810,
-        Locked = 1,
-        IsGate = false,
-        CanDetcord = true,
-        Disabled = false,
-        Connected = {},
-        IsHidden = true,
-        Access = {
-            Job = {},
-            CitizenId = {},
-            Business = {},
-            Item = { 'weapon_crowbar' }
-        },
-    },
-    {
-        Info = 'sewers-3',
-        Coords = vector3(470.88, -1698.23, 28.15),
-        Model = 647538810,
-        Locked = 1,
-        IsGate = false,
-        CanDetcord = true,
-        Disabled = false,
-        Connected = {},
-        IsHidden = true,
-        Access = {
-            Job = {},
-            CitizenId = {},
-            Business = {},
-            Item = { 'weapon_crowbar' }
-        },
-    },
-    {
-        Info = 'sewers-4',
-        Coords = vector3(203.08, -2023.24, 17.26),
-        Model = 647538810,
-        Locked = 1,
-        IsGate = false,
-        CanDetcord = true,
-        Disabled = false,
-        Connected = {},
-        IsHidden = true,
-        Access = {
-            Job = {},
-            CitizenId = {},
-            Business = {},
-            Item = { 'weapon_crowbar' }
-        },
-    },
-    {
-        Info = 'sewers-5',
-        Coords = vector3(-5.1, -1847.13, 23.79),
-        Model = 647538810,
-        Locked = 1,
-        IsGate = false,
-        CanDetcord = true,
-        Disabled = false,
-        Connected = {},
-        IsHidden = true,
-        Access = {
-            Job = {},
-            CitizenId = {},
-            Business = {},
-            Item = { 'weapon_crowbar' }
-        },
-    },
-    {
-        Info = 'sewers-6',
-        Coords = vector3(-108.68, -1590.33, 30.92),
-        Model = 647538810,
-        Locked = 1,
-        IsGate = false,
-        CanDetcord = true,
-        Disabled = false,
-        Connected = {},
-        IsHidden = true,
-        Access = {
-            Job = {},
-            CitizenId = {},
-            Business = {},
-            Item = { 'weapon_crowbar' }
-        },
-    },
+   
 }
