@@ -67,8 +67,8 @@ PlayerModule = {
     RefreshPermissions = function(Source)
         local Functions = exports[GetCurrentResourceName()]:FetchModule('Functions')
         local Database = exports[GetCurrentResourceName()]:FetchModule('Database')
-        local SteamIdentifier = Functions.GetIdentifier(Source, "steam")
-        Database.Execute("SELECT * FROM server_users WHERE steam = ? ", {SteamIdentifier}, function(UserData)
+        local DiscordIdentifier = Functions.GetIdentifier(Source, "discord")
+        Database.Execute("SELECT * FROM server_users WHERE discord = ? ", {DiscordIdentifier}, function(UserData)
             if UserData[1] ~= nil then
                 Config.Server['PermissionList'][Source] = {}
                 Config.Server['PermissionList'][Source].permission = UserData[1].permission
@@ -78,12 +78,12 @@ PlayerModule = {
     GetPermission = function(Source, Cb)
         local Functions = exports[GetCurrentResourceName()]:FetchModule('Functions')
         local Database = exports[GetCurrentResourceName()]:FetchModule('Database')
-        local SteamIdentifier = Functions.GetIdentifier(Source, "steam")
+        local DiscordIdentifier = Functions.GetIdentifier(Source, "discord")
         if Config.Server['PermissionList'][Source] == nil then
             Config.Server['PermissionList'][Source] = {}
         end
         if Config.Server['PermissionList'][Source].permission == nil then
-            Database.Execute("SELECT * FROM server_users WHERE steam = ? ", {SteamIdentifier}, function(UserData)
+            Database.Execute("SELECT * FROM server_users WHERE discord = ? ", {DiscordIdentifier}, function(UserData)
                 if UserData[1] ~= nil then
                     Config.Server['PermissionList'][Source].permission = UserData[1].permission
                 end
@@ -122,11 +122,11 @@ PlayerModule = {
         local Database = exports[GetCurrentResourceName()]:FetchModule('Database')
         local Promise = promise:new()
         local UniqueFound, Cid = false, false
-        local Steam = FunctionsModule.GetIdentifier(Source, "steam")
+        local Discord = FunctionsModule.GetIdentifier(Source, "discord")
         while not UniqueFound do
             for i=1, 6, 1 do
                 Cid = i
-                Database.Execute("SELECT COUNT(*) as count FROM players WHERE Cid = ? AND Identifiers LIKE ? ", {i, "%"..Steam.."%"}, function(UserData)
+                Database.Execute("SELECT COUNT(*) as count FROM players WHERE Cid = ? AND Identifiers LIKE ? ", {i, "%"..Discord.."%"}, function(UserData)
                     if UserData[1].count == 0 and not UniqueFound then
                         PlayerModule.DebugLog('GetAvailableCharId', 'Cid found: '..Cid)
                         UniqueFound = true
@@ -142,8 +142,8 @@ PlayerModule = {
     DeleteCharacter = function(Source, Cid)
         local Database = exports[GetCurrentResourceName()]:FetchModule('Database')    
         local Functions = exports[GetCurrentResourceName()]:FetchModule('Functions')
-        local Steam = Functions.GetIdentifier(Source, "steam")
-        Database.Execute("SELECT * FROM players WHERE Identifiers LIKE ? AND Cid = ? ", {"%"..Steam.."%", Cid}, function(DeleteData)
+        local Discord = Functions.GetIdentifier(Source, "discord")
+        Database.Execute("SELECT * FROM players WHERE Identifiers LIKE ? AND Cid = ? ", {"%"..Discord.."%", Cid}, function(DeleteData)
             if DeleteData[1] ~= nil then
                 local Identifiers = json.decode(DeleteData[1].Identifiers)
                 if Identifiers.steam == Steam then
@@ -833,12 +833,12 @@ PlayerModule = {
     SetPermission = function(Source, Group)
         local Functions = exports[GetCurrentResourceName()]:FetchModule('Functions')
         local Database = exports[GetCurrentResourceName()]:FetchModule('Database')
-        local SteamIdentifier = Functions.GetIdentifier(Source, "steam")
+        local DiscordIdentifier = Functions.GetIdentifier(Source, "discord")
         if Config.Server['PermissionList'][Source] == nil then
             Config.Server['PermissionList'][Source] = {}
         end
         Config.Server['PermissionList'][Source].permission = Group
-        Database.Execute("UPDATE server_users SET permission = ? WHERE steam = ? ", {Group, SteamIdentifier}, function(Result)
+        Database.Execute("UPDATE server_users SET permission = ? WHERE discord = ? ", {Group, DiscordIdentifier}, function(Result)
             PlayerModule.DebugLog('SetPermission', 'Set Permission for '..Source..' to '..Group)
         end, true)
     end,

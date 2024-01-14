@@ -10,7 +10,7 @@ end)
 
 FunctionsModule = {
     GetIdentifier = function(source, idtype)
-        local idtype = idtype ~= nil and idtype or "steam"
+        local idtype = idtype ~= nil and idtype or "discord"
         for _, identifier in pairs(GetPlayerIdentifiers(source)) do
             if string.find(identifier, idtype) then
                 return identifier
