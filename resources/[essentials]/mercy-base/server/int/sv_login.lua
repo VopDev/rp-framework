@@ -106,18 +106,18 @@ end)
 
 RegisterNetEvent("mercy-base/server/load-user", function()
 	local src = source
-    local SteamIdentifier = FunctionsModule.GetIdentifier(src, "steam")
-    DatabaseModule.Execute("SELECT * FROM server_users WHERE steam = ? ", {SteamIdentifier}, function(UserData)
+    local DiscordIdentifier = FunctionsModule.GetIdentifier(src, "discord")
+    DatabaseModule.Execute("SELECT * FROM server_users WHERE steam = ? ", {DiscordIdentifier}, function(UserData)
         if UserData[1] == nil then
             DatabaseModule.Insert("INSERT INTO server_users (name, steam, ip, permission, token) VALUES (?, ?, ?, ?, ?)", {
 				GetPlayerName(src), 
-				SteamIdentifier, 
+				DiscordIdentifier, 
 				GetPlayerEndpoint(src), 
 				"user",
 				"rpfrogs-"..math.random(1111, 9999),
 			})
         else
-            DatabaseModule.Update("UPDATE server_users SET name = ?, ip = ? WHERE steam = ? ", {GetPlayerName(src), GetPlayerEndpoint(src), SteamIdentifier})
+            DatabaseModule.Update("UPDATE server_users SET name = ?, ip = ? WHERE discord = ? ", {GetPlayerName(src), GetPlayerEndpoint(src), DiscordIdentifier})
         end
     end)
 end)
