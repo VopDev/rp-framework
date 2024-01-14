@@ -54,7 +54,7 @@ let currentNode: number | null = null;
 function initTrainSystem(): void {
     SwitchTrainTrack(0, true);
     SwitchTrainTrack(3, true);
-
+    SetTrainTrackSpawnFrequency(3, 120000);
     SetTrainTrackSpawnFrequency(0, 120000);
     SetRandomTrains(true);
 
