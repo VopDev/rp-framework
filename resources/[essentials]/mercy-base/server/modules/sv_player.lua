@@ -146,7 +146,7 @@ PlayerModule = {
         Database.Execute("SELECT * FROM players WHERE Identifiers LIKE ? AND Cid = ? ", {"%"..Discord.."%", Cid}, function(DeleteData)
             if DeleteData[1] ~= nil then
                 local Identifiers = json.decode(DeleteData[1].Identifiers)
-                if Identifiers.steam == Steam then
+                if Identifiers.discord == Steam then
                     -- Character Housing, Vehicles,..
                     local LowerTables = { 
                         'player_skins', 
@@ -221,8 +221,8 @@ PlayerModule = {
         local Functions = exports[GetCurrentResourceName()]:FetchModule('Functions')
         if Source ~= nil then
             if Cid then
-                local Steam = Functions.GetIdentifier(Source, "steam")
-                Database.Execute( "SELECT * FROM players WHERE Identifiers LIKE ? AND Cid = ? ", {"%"..Steam.."%", Cid}, function(CharData)
+                local Discord = Functions.GetIdentifier(Source, "discord")
+                Database.Execute( "SELECT * FROM players WHERE Identifiers LIKE ? AND Cid = ? ", {"%"..Discord.."%", Cid}, function(CharData)
                     local PlayerData = CharData[1]
                     if PlayerData ~= nil then
                         PlayerData.CitizenId = PlayerData.CitizenId
