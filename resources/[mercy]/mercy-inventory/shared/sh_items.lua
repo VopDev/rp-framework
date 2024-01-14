@@ -44,21 +44,17 @@ end
 Shared.ItemList['weapon_digiscanner'] = {
     ['ItemName'] = "weapon_digiscanner",
 	['Label'] = "Digital Scanner",
-	['Weight'] = 14.0,
+	['Weight'] = 17.0,
 	['Type'] = "Weapon",
 	['Metal'] = true,
 	['Melee'] = true,
 	['Image'] = "digiscanner.png",
 	['Unique'] = true,
 	['Combinable'] = nil,
-	['Description'] = "This seems to scan signials and is able to copy them.",
+	['Description'] = "To chop down trees?",
 	['DecayRate'] = 2.0,
 	['RemoveWhenDecayed'] = false,
-	['Price'] = 5500,
-	['Cost'] = {
-		{ Item = 'aluminum', Amount = 75 },
-		{ Item = 'scrapmetal',  Amount = 75 },
-	}
+	['Price'] = 1,
 }
 
 Shared.ItemList['weapon_rocketlauncher'] = {
