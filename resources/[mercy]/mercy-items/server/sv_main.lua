@@ -467,14 +467,7 @@ Citizen.CreateThread(function()
         end
     end)
 
-    -- Chop
 
-    FunctionsModule.CreateUseableItem("digiscanner", function(Source, Item)
-        local Player = PlayerModule.GetPlayerBySource(Source)
-        if Player.Functions.GetItemBySlot(Item.Slot) ~= nil then
-            TriggerClientEvent('mercy-illegal/use-scanner', Source)
-        end
-    end)
 
     -- Misc
 
