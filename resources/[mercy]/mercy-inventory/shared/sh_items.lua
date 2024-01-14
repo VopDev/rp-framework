@@ -41,9 +41,9 @@ end
 
 -- [ Weapons ] --
 
-Shared.ItemList['digiscanner'] = {
-    ['ItemName'] = "digiscanner",
-	['Label'] = "DigiScanner",
+Shared.ItemList['weapon_digiscanner'] = {
+    ['ItemName'] = "weapon_digiscanner",
+	['Label'] = "Digital Scanner",
 	['Weight'] = 14.0,
 	['Type'] = "Item",
 	['Metal'] = true,

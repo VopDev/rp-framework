@@ -389,6 +389,13 @@ Shared.Weapons = {
         ['Modifier'] = 0.5,
         ['MaxAmmo'] = 0,
     },
+    [GetHashKey('weapon_digiscanner')] = {
+        ['WeaponID'] = 'weapon_digiscanner',  
+        ['AmmoType'] = 'AMMO_NONE',
+        ['SelectFire'] = false,
+        ['Modifier'] = 0.3,
+        ['MaxAmmo'] = 0,
+    },
     [GetHashKey('weapon_wrench')] = {
         ['WeaponID'] = 'weapon_wrench',  
         ['AmmoType'] = 'AMMO_NONE',
