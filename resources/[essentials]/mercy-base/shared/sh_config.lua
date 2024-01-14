@@ -2,7 +2,7 @@ Config = {}
 
 Config.Server = {
     ['Debug'] = true,
-    ['IdentifierType'] = "steam",
+    ['IdentifierType'] = "discord",
     -- Don't touch
     ['PermissionList'] = {}
 }
