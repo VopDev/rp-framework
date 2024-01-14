@@ -50,8 +50,8 @@ Citizen.CreateThread(function()
 
     CallbackModule.CreateCallback('mercy-ui/server/characters-get', function(source, Cb)
         local CharactersTable = {}
-        local Steam = FunctionsModule.GetIdentifier(source, "steam")
-        DatabaseModule.Execute("SELECT * FROM players WHERE Identifiers LIKE ? ", {"%"..Steam.."%"}, function(CharData)
+        local Discord = FunctionsModule.GetIdentifier(source, "discord")
+        DatabaseModule.Execute("SELECT * FROM players WHERE Identifiers LIKE ? ", {"%"..Discord.."%"}, function(CharData)
             for k, v in pairs(CharData) do
                 local CharInfo = json.decode(v.CharInfo)
                 local Job = json.decode(v.Job)
@@ -69,13 +69,13 @@ Citizen.CreateThread(function()
     end)
 
     CallbackModule.CreateCallback('mercy-ui/server/characters/get-skin', function(Source, Cb, Cid)
-        local Steam = FunctionsModule.GetIdentifier(Source, "steam")
+        local Discord = FunctionsModule.GetIdentifier(Source, "discord")
         local SkinData = {
             ['Model'] = nil,
             ['Tattoos'] = nil,
             ['Skin'] = nil
         }
-        DatabaseModule.Execute("SELECT * FROM players WHERE  Cid = ? AND Identifiers LIKE ? ", {Cid, "%"..Steam.."%"}, function(CharData)
+        DatabaseModule.Execute("SELECT * FROM players WHERE  Cid = ? AND Identifiers LIKE ? ", {Cid, "%"..Discord.."%"}, function(CharData)
             if CharData[1] == nil then return Cb({}) end
             DatabaseModule.Execute("SELECT * FROM player_skins WHERE citizenid = ? ", {CharData[1].CitizenId}, function(Data)
                 if Data[1] == nil then return Cb({}) end
@@ -89,8 +89,8 @@ Citizen.CreateThread(function()
 
     CallbackModule.CreateCallback('mercy-ui/server/characters/get-character-name-by-cid', function(source, Cb, Cid)
         local CharInfo = {}
-        local SteamIdentifier = FunctionsModule.GetIdentifier(source, "steam")
-        DatabaseModule.Execute("SELECT * FROM players WHERE Identifiers LIKE ? AND Cid = ? ", {"%"..SteamIdentifier.."%", Cid}, function(CharData)
+        local Discord = FunctionsModule.GetIdentifier(source, "discord")
+        DatabaseModule.Execute("SELECT * FROM players WHERE Identifiers LIKE ? AND Cid = ? ", {"%"..Discord.."%", Cid}, function(CharData)
             if CharData[1] ~= nil then
                 for k, v in pairs(CharData) do
                     CharInfo = json.decode(v.CharInfo)
