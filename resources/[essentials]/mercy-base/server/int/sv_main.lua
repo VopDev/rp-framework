@@ -80,7 +80,7 @@ AddEventHandler('Modules/server/ready', function()
                 local Player = {}
                 Player['ServerId'] = v
                 Player['Name'] = GetPlayerName(v)
-                Player['Steam'] = FunctionsModule.GetIdentifier(v, "steam")
+                Player['Discord'] = FunctionsModule.GetIdentifier(v, "discord")
                 Players[#Players+1] = Player
             end
             Cb(Players)
