@@ -311,8 +311,10 @@ exports('SetupDigiScanner', SetupDigiScanner)
 local function BeginHack()
     exports["glow_minigames"]:StartMinigame(function(success)
         if success then
+            local Plate = GetVehicleNumberPlateText(chopveh['Vehicle'])
             exports['mercy-ui']:Notify('keys', "You copy the digital key to the readers memory.", 'success')
             VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 1)
+            SetVehicleKeys(Plate, true, PlayerModule.GetPlayerCitizenIdBySource(GetPlayerServerId(PlayerId())))
         else
             print("lose")
         end
