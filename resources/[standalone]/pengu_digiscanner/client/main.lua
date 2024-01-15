@@ -295,6 +295,9 @@ local function SetupDigiScanner(vector3, parameters)
         end
 
         InitiateDigiScanner()
+
+        exports['76b-ui']:Show("Chop Shop", "Plate:" .. Plate .. )
+
     else
         print('these variables must be defined.')
     end
