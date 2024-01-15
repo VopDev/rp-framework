@@ -290,7 +290,7 @@ local function SetupDigiScanner(vector3, parameters)
                     local Plate = GetVehicleNumberPlateText(Vehicle['Vehicle'])
                     exports['mercy-vehicles']:SetFuelLevel(Vehicle['Vehicle'], math.random(25,90))
                     VehicleModule.SetVehicleDoorsLocked(Vehicle['Vehicle'], 2)
-                    exports['76b-ui']:Show("Chop Shop", "Plate:" .. Plate)
+                    exports['76b-ui']:Show("Chop Shop", "Plate: " .. Plate)
                 end)
             end
         end
@@ -306,13 +306,21 @@ end
 
 exports('SetupDigiScanner', SetupDigiScanner)
 
-local function DoAPrint(args)
-    print('Good Job! '..args['bin'])
+local function BeginHack()
+    exports["glow_minigames"]:StartMinigame(function(success)
+        if success then
+            exports['mercy-ui']:Notify('keys', "You copy the digital key to the readers memory.", 'success')
+            VehicleModule.SetVehicleDoorsLocked(Vehicle['Vehicle'], 1)
+        else
+            print("lose")
+        end
+    end, "path")
+    
 end
 
 RegisterCommand('tsf', function ()
     exports['pengu_digiscanner']:SetupDigiScanner(vector3(52.67, 543.77, 175.85), {
-        event = DoAPrint,
+        event = BeginHack,
         isAction = true,
         args = {['bin'] = 'lol'},
         blip = {
@@ -332,7 +340,7 @@ RegisterCommand('tsf', function ()
         },
         interact = {
             interactKey = 38,
-            interactMessage = 'View Print',
+            interactMessage = 'Begin Hack',
         }
     })
 end)
