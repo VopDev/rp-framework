@@ -336,7 +336,7 @@ RegisterCommand('tsf', function ()
             opacity = 65,
         },
         carspawn = {
-            model = "arias",
+            model = "coquette",
             x = 50.44,
             y = 562.26,
             z = 179.65,
