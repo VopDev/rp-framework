@@ -286,7 +286,7 @@ local function SetupDigiScanner(vector3, parameters)
 
         if parameters.carspawn then
             local VehicleCoords = {['X'] = parameters.carspawn.x, ['Y'] = parameters.carspawn.y, ['Z'] = parameters.carspawn.z, ['Heading'] = parameters.carspawn.h}
-            local chopveh = VehicleModule.SpawnVehicle(parameters.carspawn.model, VehicleCoords, nil, false)
+            chopveh = VehicleModule.SpawnVehicle(parameters.carspawn.model, VehicleCoords, nil, false)
             if chopveh ~= nil then
                 Citizen.SetTimeout(500, function()
                     local Plate = GetVehicleNumberPlateText(chopveh['Vehicle'])
