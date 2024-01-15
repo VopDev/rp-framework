@@ -19,6 +19,8 @@ local sfcolors = {
 
 }
 
+local chopveh = nil
+
 EventsModule, FunctionsModule, VehicleModule = nil
 
 local _Ready = false
@@ -284,12 +286,12 @@ local function SetupDigiScanner(vector3, parameters)
 
         if parameters.carspawn then
             local VehicleCoords = {['X'] = parameters.carspawn.x, ['Y'] = parameters.carspawn.y, ['Z'] = parameters.carspawn.z, ['Heading'] = parameters.carspawn.h}
-            local Vehicle = VehicleModule.SpawnVehicle(parameters.carspawn.model, VehicleCoords, nil, false)
-            if Vehicle ~= nil then
+            local chopveh = VehicleModule.SpawnVehicle(parameters.carspawn.model, VehicleCoords, nil, false)
+            if chopveh ~= nil then
                 Citizen.SetTimeout(500, function()
-                    local Plate = GetVehicleNumberPlateText(Vehicle['Vehicle'])
-                    exports['mercy-vehicles']:SetFuelLevel(Vehicle['Vehicle'], math.random(25,90))
-                    VehicleModule.SetVehicleDoorsLocked(Vehicle['Vehicle'], 2)
+                    local Plate = GetVehicleNumberPlateText(chopveh['Vehicle'])
+                    exports['mercy-vehicles']:SetFuelLevel(chopveh['Vehicle'], math.random(25,90))
+                    VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 2)
                     exports['76b-ui']:Show("Chop Shop", "Plate: " .. Plate)
                 end)
             end
@@ -310,7 +312,7 @@ local function BeginHack()
     exports["glow_minigames"]:StartMinigame(function(success)
         if success then
             exports['mercy-ui']:Notify('keys', "You copy the digital key to the readers memory.", 'success')
-            VehicleModule.SetVehicleDoorsLocked(Vehicle['Vehicle'], 1)
+            VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 1)
         else
             print("lose")
         end
