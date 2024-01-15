@@ -314,7 +314,7 @@ local function BeginHack()
             local Plate = GetVehicleNumberPlateText(chopveh['Vehicle'])
             exports['mercy-ui']:Notify('keys', "You copy the digital key to the readers memory.", 'success')
             VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 1)
-            SetVehicleKeys(Plate, true, PlayerModule.GetPlayerCitizenIdBySource(GetPlayerServerId(PlayerId())))
+            exports['mercy-vehicles']:SetVehicleKeys(Plate, true, false)
         else
             print("lose")
         end
