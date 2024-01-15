@@ -290,13 +290,14 @@ local function SetupDigiScanner(vector3, parameters)
                     local Plate = GetVehicleNumberPlateText(Vehicle['Vehicle'])
                     exports['mercy-vehicles']:SetFuelLevel(Vehicle['Vehicle'], math.random(25,90))
                     VehicleModule.SetVehicleDoorsLocked(Vehicle['Vehicle'], 2)
+                    exports['76b-ui']:Show("Chop Shop", "Plate:" .. Plate)
                 end)
             end
         end
 
         InitiateDigiScanner()
 
-        exports['76b-ui']:Show("Chop Shop", "Plate:" .. Plate)
+      
 
     else
         print('these variables must be defined.')
