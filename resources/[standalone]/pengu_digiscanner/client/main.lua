@@ -289,6 +289,7 @@ local function SetupDigiScanner(vector3, parameters)
                 Citizen.SetTimeout(500, function()
                     local Plate = GetVehicleNumberPlateText(Vehicle['Vehicle'])
                     exports['mercy-vehicles']:SetFuelLevel(Vehicle['Vehicle'], math.random(25,90))
+                    VehicleModule.SetVehicleDoorsLocked(Vehicle['Vehicle'], 2)
                 end)
             end
         end
