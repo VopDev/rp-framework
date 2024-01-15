@@ -19,6 +19,25 @@ local sfcolors = {
 
 }
 
+EventsModule, FunctionsModule, VehicleModule = nil
+
+local _Ready = false
+AddEventHandler('Modules/client/ready', function()
+    if not _Ready then
+        _Ready = true
+    end
+    TriggerEvent('Modules/client/request-dependencies', {
+        'Events',
+        'Functions',
+        'Vehicle',
+    }, function(Succeeded)
+        if not Succeeded then return end
+        EventsModule = exports['mercy-base']:FetchModule('Events')
+        FunctionsModule = exports['mercy-base']:FetchModule('Functions')
+        VehicleModule = exports['mercy-base']:FetchModule('Vehicle')
+    end)
+end)
+
 local function ScaleformMethod(sf, name, data)
     BeginScaleformMovieMethod(sf, name)
         for _,v in ipairs(data or {}) do
