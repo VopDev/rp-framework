@@ -311,12 +311,14 @@ exports('SetupDigiScanner', SetupDigiScanner)
 local function BeginHack()
     exports["glow_minigames"]:StartMinigame(function(success)
         if success then
+            EventsModule.TriggerServer('mercy-inventory/server/degen-item', exports['mercy-inventory']:GetSlotForItem('digiscanner'), 10.0)
             local Plate = GetVehicleNumberPlateText(chopveh['Vehicle'])
-            exports['mercy-ui']:Notify('keys', "You copy the digital key to the readers memory.", 'success')
+            exports['mercy-ui']:Notify('keys', "You copy the digital key to the scanners memory.", 'success')
             VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 1)
             exports['mercy-vehicles']:SetVehicleKeys(Plate, true, false)
         else
-            print("lose")
+            EventsModule.TriggerServer('mercy-inventory/server/degen-item', exports['mercy-inventory']:GetSlotForItem('digiscanner'), 10.0)
+            exports['mercy-ui']:Notify('keys', "The scanner fails to capture the digital signal.", 'success')
         end
     end, "path")
     
@@ -328,7 +330,7 @@ RegisterCommand('tsf', function ()
         isAction = true,
         args = {['bin'] = 'lol'},
         blip = {
-            text = "Assigned Location",
+            text = "Scout Area",
             sprite = 9,
             display = 2,
             scale = 0.7,
