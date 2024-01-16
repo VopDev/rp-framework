@@ -317,7 +317,7 @@ end
 -- Distance Check
 Citizen.CreateThread(function()
     while true do
-            local parameters = parameters
+            local params = parameters
             local PlayerCoords = GetEntityCoords(PlayerPedId())
             local Distance = #(PlayerCoords - targetCoords)
             if Distance > 45.0 then
