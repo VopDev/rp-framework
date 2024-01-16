@@ -309,6 +309,8 @@ end
 exports('SetupDigiScanner', SetupDigiScanner)
 
 local function BeginHack()
+    local StreetLabel = FunctionsModule.GetStreetName()
+    EventsModule.TriggerServer('mercy-ui/server/send-boosting-alert', StreetLabel)
     exports["glow_minigames"]:StartMinigame(function(success)
         if success then
             EventsModule.TriggerServer('mercy-inventory/server/degen-item', exports['mercy-inventory']:GetSlotForItem('digiscanner'), 10.0)
@@ -323,6 +325,10 @@ local function BeginHack()
     end, "path")
     
 end
+
+RegisterCommand('testt', function()
+    GetPlayerCurrentStealthNoise(PlayerId())
+end)
 
 RegisterCommand('tsf', function ()
     exports['pengu_digiscanner']:SetupDigiScanner(vector3(52.67, 543.77, 175.85), {

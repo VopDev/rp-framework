@@ -661,7 +661,7 @@ Citizen.CreateThread(function()
             ['AlertId'] = AlertId,
             ['AlertType'] = 'alert-red',
             ['AlertCode'] = '10-99',
-            ['AlertName'] = 'Tracker Device Manipulation',
+            ['AlertName'] = 'Digital Key Alert',
             ['AlertCoords'] = GetEntityCoords(GetPlayerPed(src)),
             ['AlertArea'] = false,
             ['AlertTime'] = os.date(),
