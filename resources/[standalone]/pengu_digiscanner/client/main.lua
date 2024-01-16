@@ -384,3 +384,31 @@ end)
 
 ----- CHOP START
 
+function SetupPeds()
+    while not _Ready do
+        Citizen.Wait(150)
+    end
+    exports['mercy-ui']:AddEyeEntry("payment_ped", {
+        Type = 'Entity',
+        EntityType = 'Ped',
+        SpriteDistance = 10.0,
+        Distance = 5.0,
+        Position = vector4(-603.8, -1598.7, 30.41, 157.13),
+        Model = 'a_m_m_eastsa_01',
+        Options = {
+            {
+                Name = 'getjob',
+                Icon = 'fas fa-circle',
+                Label = 'Get Assignment',
+                EventType = 'Client',
+                EventName = '',
+                EventParams = {},
+                Enabled = function(Entity)
+                    return true
+                end,
+            }
+        }
+    })
+
+end
+
