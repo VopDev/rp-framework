@@ -3,6 +3,7 @@ local scaleform = RequestScaleformMovie("DIGISCANNER")
 local inScaleform = false
 local ped = PlayerPedId()
 local targetCoords = vector3(0,0,0)
+local chopyard = vector3(-540.67, -1625.21, 17.8)
 local params = {}
 local sfpos = {
     x = 0.1,
@@ -309,7 +310,7 @@ local function BeginHack()
             exports['mercy-ui']:Notify('keys', "You copy the digital key to the scanners memory.", 'success')
             VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 1)
             exports['mercy-vehicles']:SetVehicleKeys(Plate, true, false)
-            exports['76b-ui']:Show("Chop Shop", "Find a secluded area to dismantle the vehicle.")
+            exports['76b-ui']:Show("Chop Shop", "Deliver the vehicle back to the chop yard.")
         else
             EventsModule.TriggerServer('mercy-inventory/server/degen-item', exports['mercy-inventory']:GetSlotForItem('digiscanner'), 10.0)
             exports['mercy-ui']:Notify('keys', "The scanner fails to capture the digital signal.", 'success')
@@ -361,6 +362,7 @@ Citizen.CreateThread(function()
             local parameters = params
             local PlayerCoords = GetEntityCoords(PlayerPedId())
             local Distance = #(PlayerCoords - targetCoords)
+            local ChopDist = #(PlayerCoords - chopyard)
             if Distance < 200.0 and not spawned then
                 SpawnCar()
             end
@@ -370,6 +372,29 @@ Citizen.CreateThread(function()
                     SpawnDog()
                 end
             end
+           
+            exports['mercy-ui']:AddEyeEntry(GetHashKey(parameters.carspawn.model), {
+                Type = 'Model',
+                Model = parameters.carspawn.model,
+                SpriteDistance = 3.0,
+                Options = {
+                    {
+                        Name = 'chopvehicle',
+                        Icon = 'fas fa-search',
+                        Label = 'Chop',
+                        EventType = 'Client',
+                        EventName = '',
+                        EventParams = '',
+                        Enabled = function(Entity)
+                            if ChopDist < 5 then
+                                return true
+                            else
+                                return false
+
+                        end,
+                    },
+                }
+            })
             Citizen.Wait(1000)
 
     end
