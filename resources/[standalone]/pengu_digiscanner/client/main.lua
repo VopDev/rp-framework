@@ -355,7 +355,7 @@ RegisterNetEvent('mercy-threads/entered-vehicle', function()
     local parameters = params
     local Vehicle = GetVehiclePedIsIn(PlayerPedId())
     if GetEntityModel(Vehicle) ~= GetHashKey(parameters.carspawn.model) then return end
-        exports['76b-ui']:Show("Chop Shop", "Find a seculded area to dismantle the vehicle.")
+        exports['76b-ui']:Show("Chop Shop", "Find a secluded area to dismantle the vehicle.")
 end)
 
 
