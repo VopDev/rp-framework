@@ -306,6 +306,7 @@ local function BeginHack()
             exports['mercy-ui']:Notify('keys', "You copy the digital key to the scanners memory.", 'success')
             VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 1)
             exports['mercy-vehicles']:SetVehicleKeys(Plate, true, false)
+            exports['76b-ui']:Show("Chop Shop", "Find a secluded area to dismantle the vehicle.")
         else
             EventsModule.TriggerServer('mercy-inventory/server/degen-item', exports['mercy-inventory']:GetSlotForItem('digiscanner'), 10.0)
             exports['mercy-ui']:Notify('keys', "The scanner fails to capture the digital signal.", 'success')
@@ -351,12 +352,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('mercy-threads/entered-vehicle', function()
-    local parameters = params
-    local Vehicle = GetVehiclePedIsIn(PlayerPedId())
-    if GetEntityModel(Vehicle) ~= GetHashKey(parameters.carspawn.model) then return end
-        exports['76b-ui']:Show("Chop Shop", "Find a secluded area to dismantle the vehicle.")
-end)
 
 
 RegisterCommand('tsf', function ()
@@ -368,8 +363,8 @@ RegisterCommand('tsf', function ()
             text = "Scout Area",
             sprite = 9,
             display = 2,
-            scale = 0.7,
-            color = 2,
+            scale = 1.0,
+            color = 27,
             opacity = 65,
         },
         carspawn = {
@@ -385,3 +380,7 @@ RegisterCommand('tsf', function ()
         }
     })
 end)
+
+
+----- CHOP START
+
