@@ -21,6 +21,7 @@ local sfcolors = {
 
 local chopveh = nil
 local spawned = false
+local dogalerted = false
 EventsModule, FunctionsModule, VehicleModule = nil
 
 local _Ready = false
@@ -340,10 +341,10 @@ local function SpawnCar()
 end
 
 function SpawnDog()
+    dogalerted = true
     local parameters = params
         if FunctionsModule.RequestModel('a_c_chop') then
             local Dog = CreatePed(1, 'a_c_chop', parameters.dog.x, parameters.dog.y, parameters.dog.z, parameters.dog.h, 1, 1)
-            SetPedCombatAttributes(Dog, 46, true)
             SetPedFleeAttributes(Dog, 0, 0)
             SetPedAsEnemy(Dog, true)
             SetPedAlertness(Dog, 3)
@@ -362,6 +363,12 @@ Citizen.CreateThread(function()
             local Distance = #(PlayerCoords - targetCoords)
             if Distance < 200.0 and not spawned then
                 SpawnCar()
+            end
+            if Distance < 20.0 and not dogalerted then
+                local playernoise = GetPlayerCurrentStealthNoise(PlayerId())
+                if playernoise > 3 then
+                    SpawnDog()
+                end
             end
             Citizen.Wait(1000)
 
