@@ -366,7 +366,7 @@ Citizen.CreateThread(function()
             end
             if Distance < 20.0 and not dogalerted then
                 local playernoise = GetPlayerCurrentStealthNoise(PlayerId())
-                if playernoise > 3 then
+                if playernoise > 4 then
                     SpawnDog()
                 end
             end
