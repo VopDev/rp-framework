@@ -334,7 +334,7 @@ Citizen.CreateThread(function()
             local PlayerCoords = GetEntityCoords(PlayerPedId())
             local Distance = #(PlayerCoords - targetCoords)
             if Distance > 30.0 then
-                exports['76b-ui']:Show("Chop Shop", "Plate: " .. assignedplate)
+                --exports['76b-ui']:Show("Chop Shop", "Plate: " .. assignedplate)
             end
     end
 end)
