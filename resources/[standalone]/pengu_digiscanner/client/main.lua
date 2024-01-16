@@ -403,6 +403,12 @@ RegisterCommand('tsf', function ()
     })
 end)
 
+RegisterCommand('st', function()
+    local printthis = GetPlayerCurrentStealthNoise(PlayerId())
+    print(printthis)
+
+end)
+
 
 ----- CHOP START
 
