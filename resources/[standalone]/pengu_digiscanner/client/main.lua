@@ -20,7 +20,7 @@ local sfcolors = {
 }
 
 local chopveh = nil
-local assignedplate = 11111111
+
 
 EventsModule, FunctionsModule, VehicleModule = nil
 
@@ -290,7 +290,7 @@ local function SetupDigiScanner(vector3, parameters)
             chopveh = VehicleModule.SpawnVehicle(parameters.carspawn.model, VehicleCoords, nil, false)
             if chopveh ~= nil then
                 Citizen.SetTimeout(500, function()
-                    assignedplate = GetVehicleNumberPlateText(chopveh['Vehicle'])
+                    Plate = GetVehicleNumberPlateText(chopveh['Vehicle'])
                     exports['mercy-vehicles']:SetFuelLevel(chopveh['Vehicle'], math.random(25,90))
                     VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 2)
                     exports['76b-ui']:Show("Chop Shop", "Head to the assigned location.")
@@ -342,7 +342,6 @@ end)
 RegisterCommand('testt', function()
    local test = GetPlayerCurrentStealthNoise(PlayerId())
    print(test)
-   print(assignedplate)
 end)
 
 RegisterCommand('tsf', function ()
