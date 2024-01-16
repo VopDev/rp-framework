@@ -384,31 +384,28 @@ end)
 
 ----- CHOP START
 
-function SetupPeds()
-    exports['mercy-ui']:AddEyeEntry("payment_ped", {
+CreateThread(function()
+    exports['mercy-ui']:AddEyeEntry("vehicle-rentals", {
         Type = 'Entity',
         EntityType = 'Ped',
         SpriteDistance = 10.0,
         Distance = 5.0,
-        Position = vector4(-603.8, -1598.7, 30.41, 157.13),
-        Model = 'a_m_m_eastsa_01',
+        Position = vector4(-603.89, -1599.0, 30.41, 170.16),
+        Model = 'a_m_y_genstreet_01',
+        Anim = {},
+        Props = {},
         Options = {
             {
-                Name = 'getjob',
-                Icon = 'fas fa-circle',
-                Label = 'Get Assignment',
+                Name = 'rent_vehicle',
+                Icon = 'fas fa-car',
+                Label = 'Rent Vehicle',
                 EventType = 'Client',
-                EventName = '',
-                EventParams = {},
+                EventName = 'mercy-vehicles/client/try-rent',
+                EventParams = { Type = "Cars" },
                 Enabled = function(Entity)
                     return true
                 end,
             }
         }
     })
-
-end
-
-RegisterNetEvent('mercy-base/client/on-login', function()
-    SetupPeds()
 end)
