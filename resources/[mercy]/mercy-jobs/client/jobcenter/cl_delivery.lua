@@ -53,6 +53,8 @@ end)
 RegisterNetEvent('mercy-jobs/client/delivery/return-veh', function(Data, Entity)
     --VehicleModule.DeleteVehicle(Entity)
     TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 5, true)
+    Wait(1000)
+    TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 1, true) -- Start Next Job Run
 end)
 
 RegisterNetEvent('mercy-phone/client/jobcenter/on-job-start', function(Job, Leader)
