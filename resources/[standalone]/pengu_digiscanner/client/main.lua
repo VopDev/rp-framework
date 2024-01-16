@@ -314,6 +314,29 @@ local function BeginHack()
     
 end
 
+
+local function SpawnCar()
+    spawned = true
+    local parameters = params
+    local PlayerCoords = GetEntityCoords(PlayerPedId())
+    local Distance = #(PlayerCoords - targetCoords)
+    if parameters.carspawn then
+        local VehicleCoords = {['X'] = parameters.carspawn.x, ['Y'] = parameters.carspawn.y, ['Z'] = parameters.carspawn.z, ['Heading'] = parameters.carspawn.h}
+        chopveh = VehicleModule.SpawnVehicle(parameters.carspawn.model, VehicleCoords, nil, false)
+        if chopveh ~= nil then
+            Citizen.SetTimeout(500, function()
+                local Plate = GetVehicleNumberPlateText(chopveh['Vehicle'])
+                exports['mercy-vehicles']:SetFuelLevel(chopveh['Vehicle'], math.random(25,90))
+                VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 2)
+                exports['76b-ui']:Show("Chop Shop", "Plate: " .. Plate)
+               
+            end)
+        end
+    end
+    
+end
+
+
 -- Distance Check
 Citizen.CreateThread(function()
     while true do
@@ -321,20 +344,7 @@ Citizen.CreateThread(function()
             local PlayerCoords = GetEntityCoords(PlayerPedId())
             local Distance = #(PlayerCoords - targetCoords)
             if Distance > 45.0 and not spawned then
-                if parameters.carspawn then
-                    local VehicleCoords = {['X'] = parameters.carspawn.x, ['Y'] = parameters.carspawn.y, ['Z'] = parameters.carspawn.z, ['Heading'] = parameters.carspawn.h}
-                    chopveh = VehicleModule.SpawnVehicle(parameters.carspawn.model, VehicleCoords, nil, false)
-                    if chopveh ~= nil then
-                        Citizen.SetTimeout(500, function()
-                            local Plate = GetVehicleNumberPlateText(chopveh['Vehicle'])
-                            exports['mercy-vehicles']:SetFuelLevel(chopveh['Vehicle'], math.random(25,90))
-                            VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 2)
-                            exports['76b-ui']:Show("Chop Shop", "Plate: " .. Plate)
-                            spawned = true
-                        end)
-                    end
-                end
-        
+                SpawnCar()
             end
             Citizen.Wait(1000)
 
