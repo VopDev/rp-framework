@@ -412,3 +412,6 @@ function SetupPeds()
 
 end
 
+RegisterNetEvent('mercy-base/client/on-login', function()
+    SetupPeds()
+end)
