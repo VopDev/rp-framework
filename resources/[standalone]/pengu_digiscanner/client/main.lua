@@ -336,10 +336,6 @@ Citizen.CreateThread(function()
             if Distance > 30.0 then
                 exports['76b-ui']:Show("Chop Shop", "Plate: " .. assignedplate)
             end
-            Citizen.Wait(2000)
-        else
-            Citizen.Wait(450)
-        end
     end
 end)
 
