@@ -311,6 +311,10 @@ local function BeginHack()
             VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 1)
             exports['mercy-vehicles']:SetVehicleKeys(Plate, true, false)
             exports['76b-ui']:Show("Chop Shop", "Deliver the vehicle back to the chop yard.")
+            FunctionsModule.CreateCustomGpsRoute({
+                { Coords = GetEntityCoords(PlayerPedId()) },
+                { Coords = vector3(-540.67, -1625.21, 17.8) }
+            }, true)
         else
             EventsModule.TriggerServer('mercy-inventory/server/degen-item', exports['mercy-inventory']:GetSlotForItem('digiscanner'), 10.0)
             exports['mercy-ui']:Notify('keys', "The scanner fails to capture the digital signal.", 'success')
@@ -355,6 +359,29 @@ function SpawnDog()
         end
 end
 
+function ChopCheck()
+    local parameters = params
+    exports['mercy-ui']:AddEyeEntry(GetHashKey(parameters.carspawn.model), {
+        Type = 'Model',
+        Model = parameters.carspawn.model,
+        SpriteDistance = 9.5,
+        Options = {
+            {
+                Name = 'chopvehcile',
+                Icon = 'fas fa-male',
+                Label = 'Test',
+                EventType = 'Client',
+                EventName = '',
+                EventParams = '',
+                Enabled = function(Entity)
+                    return true
+                end,
+            },
+        }
+    })
+
+end
+
 
 -- Distance Check
 Citizen.CreateThread(function()
@@ -372,30 +399,10 @@ Citizen.CreateThread(function()
                     SpawnDog()
                 end
             end
-           if parameters.carspawn.model then
-            exports['mercy-ui']:AddEyeEntry(GetHashKey(parameters.carspawn.model), {
-                Type = 'Model',
-                Model = parameters.carspawn.model,
-                SpriteDistance = 3.0,
-                Options = {
-                    {
-                        Name = 'chopvehicle',
-                        Icon = 'fas fa-search',
-                        Label = 'Chop',
-                        EventType = 'Client',
-                        EventName = '',
-                        EventParams = '',
-                        Enabled = function(Entity)
-                            if ChopDist < 5 then
-                                return true
-                            else
-                                return false
-                            end
-                        end,
-                    },
-                }
-            })
-        end
+            if ChopDist < 5 and IsPedInAnyVehicle(PlayerPedId()) then
+                ChopCheck()
+            end
+                
             Citizen.Wait(1000)
 
     end
