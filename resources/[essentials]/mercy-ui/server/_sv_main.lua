@@ -413,6 +413,27 @@ Citizen.CreateThread(function()
         TriggerClientEvent('mercy-ui/client/send-emergency-alert', -1, AlertList[AlertId], false)
     end)
 
+    EventsModule.RegisterServer("mercy-ui/server/send-digitalkey-rob", function(Source, StreetLabel)
+        local src = Source
+        local AlertId = #AlertList + 1
+        AlertList[AlertId] = {
+            ['AlertId'] = AlertId,
+            ['AlertType'] = 'alert-red',
+            ['AlertCode'] = '10-86A',
+            ['AlertName'] = 'Digital Keyfob Interference Alarm',
+            ['AlertCoords'] = GetEntityCoords(GetPlayerPed(src)),
+            ['AlertArea'] = true,
+            ['AlertTime'] = os.date(),
+            ['AlertItems'] = {
+                [1] = {
+                    ['Icon'] = '<i class="fas fa-globe-europe"></i>',
+                    ['Text'] = StreetLabel,
+                },
+            },
+        }
+        TriggerClientEvent('mercy-ui/client/send-emergency-alert', -1, AlertList[AlertId], false)
+    end)
+
 
     EventsModule.RegisterServer("mercy-ui/server/send-houses-rob", function(Source, StreetLabel)
         local src = Source

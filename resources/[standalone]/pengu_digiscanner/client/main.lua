@@ -299,7 +299,7 @@ exports('SetupDigiScanner', SetupDigiScanner)
 local function BeginHack()
     local StreetLabel = FunctionsModule.GetStreetName()
     --EventsModule.TriggerServer('mercy-ui/server/send-boosting-alert', FunctionsModule.GetStreetName())
-    EventsModule.TriggerServer('mercy-ui/server/send-banktruck-rob', FunctionsModule.GetStreetName())
+    EventsModule.TriggerServer('mercy-ui/server/send-digitalkey-rob', FunctionsModule.GetStreetName())
     --SpawnDog()
     exports["glow_minigames"]:StartMinigame(function(success)
         if success then
