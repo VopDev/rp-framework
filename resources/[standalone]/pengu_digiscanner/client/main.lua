@@ -388,19 +388,19 @@ CreateThread(function()
     exports['mercy-ui']:AddEyeEntry("vehicle-rentals", {
         Type = 'Entity',
         EntityType = 'Ped',
-        SpriteDistance = 10.0,
+        SpriteDistance = 5.0,
         Distance = 5.0,
         Position = vector4(-603.89, -1599.0, 29.41, 170.16),
-        Model = 'a_m_y_genstreet_01',
+        Model = 'g_m_y_salvagoon_02',
         Anim = {},
         Props = {},
         Options = {
             {
-                Name = 'rent_vehicle',
+                Name = 'chop_guy',
                 Icon = 'fas fa-car',
-                Label = 'Rent Vehicle',
+                Label = '???',
                 EventType = 'Client',
-                EventName = 'mercy-vehicles/client/try-rent',
+                EventName = '',
                 EventParams = { Type = "Cars" },
                 Enabled = function(Entity)
                     return true
