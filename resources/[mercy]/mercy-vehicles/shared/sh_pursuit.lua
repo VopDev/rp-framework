@@ -59,4 +59,24 @@ Config.PursuitVehicles = {
         ['A'] = { DriveForce = 0.275000, DriveInertia = 1.100000 },
         ['S'] = { DriveForce = 0.315000, DriveInertia = 1.200000 },
     },
+    ['polvstr'] = {
+        ['B'] = { DriveForce = 0.235000, DriveInertia = 1.000000 },
+        ['A'] = { DriveForce = 0.275000, DriveInertia = 1.100000 },
+        ['S'] = { DriveForce = 0.315000, DriveInertia = 1.200000 },
+    },
+    ['polcaracara'] = {
+        ['B'] = { DriveForce = 0.235000, DriveInertia = 1.000000 },
+        ['A'] = { DriveForce = 0.275000, DriveInertia = 1.100000 },
+        ['S'] = { DriveForce = 0.315000, DriveInertia = 1.200000 },
+    },
+    ['polpenumbra'] = {
+        ['B'] = { DriveForce = 0.235000, DriveInertia = 1.000000 },
+        ['A'] = { DriveForce = 0.275000, DriveInertia = 1.100000 },
+        ['S'] = { DriveForce = 0.315000, DriveInertia = 1.200000 },
+    },
+    ['polscout2'] = {
+        ['B'] = { DriveForce = 0.235000, DriveInertia = 1.000000 },
+        ['A'] = { DriveForce = 0.275000, DriveInertia = 1.100000 },
+        ['S'] = { DriveForce = 0.315000, DriveInertia = 1.200000 },
+    },
 }

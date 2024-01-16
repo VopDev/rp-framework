@@ -50,6 +50,15 @@ Config.SirenData = {
     [GetHashKey("polcoq4")] = {
         SirenSounds = { "VEHICLES_HORNS_SIREN_1", "VEHICLES_HORNS_SIREN_2", "VEHICLES_HORNS_POLICE_WARNING" },
     },
+    [GetHashKey("polcaracara")] = {
+        SirenSounds = { "VEHICLES_HORNS_SIREN_1", "VEHICLES_HORNS_SIREN_2", "VEHICLES_HORNS_POLICE_WARNING" },
+    },
+    [GetHashKey("polvstr")] = {
+        SirenSounds = { "VEHICLES_HORNS_SIREN_1", "VEHICLES_HORNS_SIREN_2", "VEHICLES_HORNS_POLICE_WARNING" },
+    },
+    [GetHashKey("polscout2")] = {
+        SirenSounds = { "VEHICLES_HORNS_SIREN_1", "VEHICLES_HORNS_SIREN_2", "VEHICLES_HORNS_POLICE_WARNING" },
+    },
     [GetHashKey("polvic")] = {
         SirenSounds = { "VEHICLES_HORNS_SIREN_1", "VEHICLES_HORNS_SIREN_2", "VEHICLES_HORNS_POLICE_WARNING" },
     },

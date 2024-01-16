@@ -1752,6 +1752,17 @@ Shared.Vehicles = {
         ['Siren'] = 'VEHICLES_HORNS_SIREN_1',
         ['Price'] = 100000,
     },
+    [GetHashKey('polpenumbra')] = {
+        ['Vehicle'] = 'polpenumbra',
+        ['Model'] = 'Vapid',
+        ['Name'] = 'Pol Penumbra',
+        ['ShopClass'] = 'Police',
+        ['Class'] = 'A',
+        ['Picture'] = 'None',
+        ['Type'] = 'Car',
+        ['Siren'] = 'VEHICLES_HORNS_SIREN_1',
+        ['Price'] = 185000,
+    },
     [GetHashKey('polcomet')] = {
         ['Vehicle'] = 'polcomet',
         ['Model'] = 'Vapid',
