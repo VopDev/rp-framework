@@ -283,20 +283,8 @@ local function SetupDigiScanner(vector3, parameters)
                 EndTextCommandSetBlipName(blip)
             end
         end
-
-        if parameters.carspawn then
-            local VehicleCoords = {['X'] = parameters.carspawn.x, ['Y'] = parameters.carspawn.y, ['Z'] = parameters.carspawn.z, ['Heading'] = parameters.carspawn.h}
-            chopveh = VehicleModule.SpawnVehicle(parameters.carspawn.model, VehicleCoords, nil, false)
-            if chopveh ~= nil then
-                Citizen.SetTimeout(500, function()
-                    local Plate = GetVehicleNumberPlateText(chopveh['Vehicle'])
-                    exports['mercy-vehicles']:SetFuelLevel(chopveh['Vehicle'], math.random(25,90))
-                    VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 2)
-                    exports['76b-ui']:Show("Chop Shop", "Plate: " .. Plate)
-                end)
-            end
-        end
-
+        exports['76b-ui']:Show("Chop Shop", "Head to the assigned location")
+       
         InitiateDigiScanner()
 
       
@@ -325,6 +313,33 @@ local function BeginHack()
     end, "path")
     
 end
+
+-- Distance Check
+Citizen.CreateThread(function()
+    while true do
+            local parameters = parameters
+            local PlayerCoords = GetEntityCoords(PlayerPedId())
+            local Distance = #(PlayerCoords - targetCoords)
+            if Distance > 45.0 then
+                if parameters.carspawn then
+                    local VehicleCoords = {['X'] = parameters.carspawn.x, ['Y'] = parameters.carspawn.y, ['Z'] = parameters.carspawn.z, ['Heading'] = parameters.carspawn.h}
+                    chopveh = VehicleModule.SpawnVehicle(parameters.carspawn.model, VehicleCoords, nil, false)
+                    if chopveh ~= nil then
+                        Citizen.SetTimeout(500, function()
+                            local Plate = GetVehicleNumberPlateText(chopveh['Vehicle'])
+                            exports['mercy-vehicles']:SetFuelLevel(chopveh['Vehicle'], math.random(25,90))
+                            VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 2)
+                            exports['76b-ui']:Show("Chop Shop", "Plate: " .. Plate)
+                        end)
+                    end
+                end
+        
+            end
+            Citizen.Wait(1000)
+
+    end
+end)
+
 
 RegisterCommand('tsf', function ()
     exports['pengu_digiscanner']:SetupDigiScanner(vector3(52.67, 543.77, 175.85), {
