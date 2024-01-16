@@ -351,6 +351,14 @@ Citizen.CreateThread(function()
     end
 end)
 
+RegisterNetEvent('mercy-threads/entered-vehicle', function()
+    local parameters = params
+    local Vehicle = GetVehiclePedIsIn(PlayerPedId())
+    if GetEntityModel(Vehicle) ~= GetHashKey(parameters.carspawn.model) then return end
+        exports['76b-ui']:Show("Chop Shop", "Find a seculded area to dismantle the vehicle.")
+    end
+end)
+
 
 RegisterCommand('tsf', function ()
     exports['pengu_digiscanner']:SetupDigiScanner(vector3(52.67, 543.77, 175.85), {
