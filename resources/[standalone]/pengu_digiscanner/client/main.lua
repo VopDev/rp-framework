@@ -20,7 +20,7 @@ local sfcolors = {
 }
 
 local chopveh = nil
-
+local spawned = false
 EventsModule, FunctionsModule, VehicleModule = nil
 
 local _Ready = false
@@ -320,7 +320,7 @@ Citizen.CreateThread(function()
             local parameters = params
             local PlayerCoords = GetEntityCoords(PlayerPedId())
             local Distance = #(PlayerCoords - targetCoords)
-            if Distance > 45.0 then
+            if Distance > 45.0 and not spawned then
                 if parameters.carspawn then
                     local VehicleCoords = {['X'] = parameters.carspawn.x, ['Y'] = parameters.carspawn.y, ['Z'] = parameters.carspawn.z, ['Heading'] = parameters.carspawn.h}
                     chopveh = VehicleModule.SpawnVehicle(parameters.carspawn.model, VehicleCoords, nil, false)
@@ -330,6 +330,7 @@ Citizen.CreateThread(function()
                             exports['mercy-vehicles']:SetFuelLevel(chopveh['Vehicle'], math.random(25,90))
                             VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 2)
                             exports['76b-ui']:Show("Chop Shop", "Plate: " .. Plate)
+                            spawned = true
                         end)
                     end
                 end
