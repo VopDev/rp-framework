@@ -20,7 +20,7 @@ local sfcolors = {
 }
 
 local chopveh = nil
-local assignedplate = nil
+local assignedplate = 0
 
 EventsModule, FunctionsModule, VehicleModule = nil
 
