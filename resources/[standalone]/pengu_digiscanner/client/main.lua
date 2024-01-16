@@ -20,6 +20,7 @@ local sfcolors = {
 }
 
 local chopveh = nil
+local assignedplate = nil
 
 EventsModule, FunctionsModule, VehicleModule = nil
 
@@ -289,10 +290,10 @@ local function SetupDigiScanner(vector3, parameters)
             chopveh = VehicleModule.SpawnVehicle(parameters.carspawn.model, VehicleCoords, nil, false)
             if chopveh ~= nil then
                 Citizen.SetTimeout(500, function()
-                    local Plate = GetVehicleNumberPlateText(chopveh['Vehicle'])
+                    assignedplate = GetVehicleNumberPlateText(chopveh['Vehicle'])
                     exports['mercy-vehicles']:SetFuelLevel(chopveh['Vehicle'], math.random(25,90))
                     VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 2)
-                    exports['76b-ui']:Show("Chop Shop", "Plate: " .. Plate)
+                    exports['76b-ui']:Show("Chop Shop", "Head to the assigned location.")
                 end)
             end
         end
@@ -326,8 +327,25 @@ local function BeginHack()
     
 end
 
+
+-- Distance Check
+Citizen.CreateThread(function()
+    while true do
+            local PlayerCoords = GetEntityCoords(PlayerPedId())
+            local Distance = #(PlayerCoords - targetCoords)
+            if Distance > 30.0 then
+                exports['76b-ui']:Show("Chop Shop", "Plate: " .. assignedplate)
+            end
+            Citizen.Wait(2000)
+        else
+            Citizen.Wait(450)
+        end
+    end
+end)
+
 RegisterCommand('testt', function()
-    GetPlayerCurrentStealthNoise(PlayerId())
+   local test = GetPlayerCurrentStealthNoise(PlayerId())
+   print(test)
 end)
 
 RegisterCommand('tsf', function ()
