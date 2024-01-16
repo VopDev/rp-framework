@@ -332,7 +332,7 @@ local function SpawnCar()
                 local Plate = GetVehicleNumberPlateText(chopveh['Vehicle'])
                 exports['mercy-vehicles']:SetFuelLevel(chopveh['Vehicle'], math.random(25,90))
                 VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 2)
-                 exports['76b-ui']:Show("Chop Shop", "Plate: " .. Plate)
+                 exports['76b-ui']:Show("Chop Shop", "Use scanner to find the digital signal.     Plate: " .. Plate)
                
             end)
         end
