@@ -298,8 +298,8 @@ exports('SetupDigiScanner', SetupDigiScanner)
 
 local function BeginHack()
     local StreetLabel = FunctionsModule.GetStreetName()
-    EventsModule.TriggerServer('mercy-ui/server/send-boosting-alert', StreetLabel)
-    SpawnDog()
+    EventsModule.TriggerServer('mercy-ui/server/send-boosting-alert', FunctionsModule.GetStreetName())
+    --SpawnDog()
     exports["glow_minigames"]:StartMinigame(function(success)
         if success then
             EventsModule.TriggerServer('mercy-inventory/server/degen-item', exports['mercy-inventory']:GetSlotForItem('digiscanner'), 10.0)
@@ -312,7 +312,7 @@ local function BeginHack()
             EventsModule.TriggerServer('mercy-inventory/server/degen-item', exports['mercy-inventory']:GetSlotForItem('digiscanner'), 10.0)
             exports['mercy-ui']:Notify('keys', "The scanner fails to capture the digital signal.", 'success')
         end
-    end, "path")
+    end, "path") 
     
 end
 
