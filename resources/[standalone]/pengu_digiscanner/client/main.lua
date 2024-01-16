@@ -394,7 +394,7 @@ RegisterCommand('tsf', function ()
             y = 542.79,
             z = 175.85,
             h = 126.65,
-        }
+        },
         interact = {
             interactKey = 38,
             interactMessage = 'Begin Hack',
