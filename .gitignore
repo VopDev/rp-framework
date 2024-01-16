@@ -12,3 +12,4 @@
 *.rar
 \txData
 start_6683_default.bat
+cfg/mysql.cfg
