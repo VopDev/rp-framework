@@ -372,7 +372,7 @@ Citizen.CreateThread(function()
                     SpawnDog()
                 end
             end
-           
+           if parameters.carspawn.model then
             exports['mercy-ui']:AddEyeEntry(GetHashKey(parameters.carspawn.model), {
                 Type = 'Model',
                 Model = parameters.carspawn.model,
@@ -395,6 +395,7 @@ Citizen.CreateThread(function()
                     },
                 }
             })
+        end
             Citizen.Wait(1000)
 
     end
