@@ -302,7 +302,7 @@ local function SetupDigiScanner(vector3, parameters)
       
 
     else
-        print('these variables must be defined.')
+        print('Variables must be defined for this to work.')
     end
 end
 
