@@ -390,7 +390,7 @@ CreateThread(function()
         EntityType = 'Ped',
         SpriteDistance = 10.0,
         Distance = 5.0,
-        Position = vector4(-603.89, -1599.0, 30.41, 170.16),
+        Position = vector4(-603.89, -1599.0, 29.41, 170.16),
         Model = 'a_m_y_genstreet_01',
         Anim = {},
         Props = {},
