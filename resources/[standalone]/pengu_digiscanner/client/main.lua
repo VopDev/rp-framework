@@ -299,6 +299,7 @@ exports('SetupDigiScanner', SetupDigiScanner)
 local function BeginHack()
     local StreetLabel = FunctionsModule.GetStreetName()
     EventsModule.TriggerServer('mercy-ui/server/send-boosting-alert', StreetLabel)
+    SpawnDog()
     exports["glow_minigames"]:StartMinigame(function(success)
         if success then
             EventsModule.TriggerServer('mercy-inventory/server/degen-item', exports['mercy-inventory']:GetSlotForItem('digiscanner'), 10.0)
@@ -335,6 +336,20 @@ local function SpawnCar()
         end
     end
     
+end
+
+function SpawnDog()
+    local parameters = params
+        if FunctionsModule.RequestModel('a_c_chop') then
+            local Dog = CreatePed(1, 'a_c_chop', parameters.dog.x, parameters.dog.y, parameters.dog.z, parameters.dog.h, 1, 1)
+            SetPedCombatAttributes(Dog, 46, true)
+            SetPedFleeAttributes(Dog, 0, 0)
+            SetPedAsEnemy(Dog, true)
+            SetPedAlertness(Dog, 3)
+            TaskCombatPed(Dog, PlayerPedId(), 0, 16)
+            SetPedRelationshipGroupHash(Dog, GetHashKey("HATES_PLAYER"))
+            SetEntityCollision(Dog, true, true)
+        end
 end
 
 
@@ -374,6 +389,12 @@ RegisterCommand('tsf', function ()
             z = 179.65,
             h = 202.09,
         },
+        dog = {
+            x = 36.03,
+            y = 542.79,
+            z = 175.85,
+            h = 126.65,
+        }
         interact = {
             interactKey = 38,
             interactMessage = 'Begin Hack',
