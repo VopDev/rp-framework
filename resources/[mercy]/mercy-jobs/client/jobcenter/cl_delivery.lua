@@ -4,7 +4,7 @@
 
 RegisterNetEvent('mercy-threads/entered-vehicle', function()
     local Vehicle = GetVehiclePedIsIn(PlayerPedId())
-    if GetEntityModel(Vehicle) ~= GetHashKey("nspeedo") then return end
+    if GetEntityModel(Vehicle) ~= GetHashKey("Boxville2") then return end
 
     if exports['mercy-phone']:IsJobCenterTaskActive('delivery', 2) then
         TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 2, true)
@@ -159,11 +159,10 @@ function SpawnDeliveryVehicle()
     exports['mercy-ui']:HideInteraction()
     TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 1, true)
     exports['76b-ui']:Show("Delivery Driver", "Get in your delivery vehicle.")
-    if FunctionsModule.RequestModel('nspeedo') then
+    if FunctionsModule.RequestModel('Boxville2') then
         local Coords = { X = 911.99, Y = -1220.71, Z = 25.32, Heading = 182.96 }
         local Plate = 'DELIV' .. math.random(111, 999)
-        local Vehicle = VehicleModule.SpawnVehicle('nspeedo', Coords, Plate, false)
-        SetVehicleLivery(Vehicle['Vehicle'], 12)
+        local Vehicle = VehicleModule.SpawnVehicle('Boxville2', Coords, Plate, false)
         if Vehicle ~= nil then
             Citizen.SetTimeout(500, function()
                 exports['mercy-vehicles']:SetVehicleKeys(Plate, true, false)

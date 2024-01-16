@@ -224,7 +224,7 @@ Config.EyeEntries = {
                 EventName = 'mercy-jobs/client/delivery/grab-goods',
                 EventParams = {},
                 Enabled = function(Entity)
-                    if GetEntityModel(Entity) == GetHashKey("nspeedo") and exports['mercy-phone']:IsJobCenterTaskActive('delivery', 4) then
+                    if GetEntityModel(Entity) == GetHashKey("Boxville2") and exports['mercy-phone']:IsJobCenterTaskActive('delivery', 4) then
                         return true
                     else
                         return false
@@ -241,7 +241,7 @@ Config.EyeEntries = {
                 Enabled = function(Entity)
                     if not exports['mercy-phone']:IsJobCenterTaskActive('delivery', 5) then return false end
 
-                    if GetEntityModel(Entity) == GetHashKey("nspeedo") and #(GetEntityCoords(Entity) - vector3(929.94, -1249.29, 25.5)) < 25.0 then
+                    if GetEntityModel(Entity) == GetHashKey("Boxville2") and #(GetEntityCoords(Entity) - vector3(929.94, -1249.29, 25.5)) < 25.0 then
                         return true
                     else
                         return false
