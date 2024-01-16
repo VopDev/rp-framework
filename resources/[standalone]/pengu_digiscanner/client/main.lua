@@ -327,8 +327,8 @@ local function SpawnCar()
             Citizen.SetTimeout(500, function()
                 local Plate = GetVehicleNumberPlateText(chopveh['Vehicle'])
                 exports['mercy-vehicles']:SetFuelLevel(chopveh['Vehicle'], math.random(25,90))
-                VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 2)
-                exports['76b-ui']:Show("Chop Shop", "Plate: " .. Plate)
+                VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 
+                 exports['76b-ui']:Show("Chop Shop", "Plate: " .. Plate)
                
             end)
         end
@@ -343,7 +343,7 @@ Citizen.CreateThread(function()
             local parameters = params
             local PlayerCoords = GetEntityCoords(PlayerPedId())
             local Distance = #(PlayerCoords - targetCoords)
-            if Distance < 50.0 and not spawned then
+            if Distance < 200.0 and not spawned then
                 SpawnCar()
             end
             Citizen.Wait(1000)
