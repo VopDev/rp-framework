@@ -343,7 +343,7 @@ Citizen.CreateThread(function()
             local parameters = params
             local PlayerCoords = GetEntityCoords(PlayerPedId())
             local Distance = #(PlayerCoords - targetCoords)
-            if Distance > 15.0 and not spawned then
+            if Distance < 15.0 and not spawned then
                 SpawnCar()
             end
             Citizen.Wait(1000)
