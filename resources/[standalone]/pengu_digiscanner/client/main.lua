@@ -453,7 +453,7 @@ end)
 ----- CHOP START
 
 CreateThread(function()
-    exports['mercy-ui']:AddEyeEntry("vehicle-rentals", {
+    exports['mercy-ui']:AddEyeEntry("chopguy", {
         Type = 'Entity',
         EntityType = 'Ped',
         SpriteDistance = 5.0,
