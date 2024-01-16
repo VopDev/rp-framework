@@ -385,9 +385,6 @@ end)
 ----- CHOP START
 
 function SetupPeds()
-    while not _Ready do
-        Citizen.Wait(150)
-    end
     exports['mercy-ui']:AddEyeEntry("payment_ped", {
         Type = 'Entity',
         EntityType = 'Ped',
