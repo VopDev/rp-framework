@@ -327,7 +327,7 @@ local function SpawnCar()
             Citizen.SetTimeout(500, function()
                 local Plate = GetVehicleNumberPlateText(chopveh['Vehicle'])
                 exports['mercy-vehicles']:SetFuelLevel(chopveh['Vehicle'], math.random(25,90))
-                VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 
+                VehicleModule.SetVehicleDoorsLocked(chopveh['Vehicle'], 2)
                  exports['76b-ui']:Show("Chop Shop", "Plate: " .. Plate)
                
             end)
