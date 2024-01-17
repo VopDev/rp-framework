@@ -363,7 +363,7 @@ Config.Menu = {
         Icon = '#global-car',
         Close = true,
         FunctionType = 'Client',
-        FunctionName = 'mercy-vehicles/client/open-vehicle-menu',
+        FunctionName = 'bl_vehiclemenu:client:open', 
         FunctionParameters = '',
         EnableMenu = function()
             if not exports['mercy-hospital']:IsDead() and IsPedInAnyVehicle(PlayerPedId()) then
