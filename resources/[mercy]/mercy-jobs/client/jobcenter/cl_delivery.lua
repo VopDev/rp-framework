@@ -66,7 +66,7 @@ RegisterNetEvent('mercy-phone/client/jobcenter/on-job-start', function(Job, Lead
     Citizen.CreateThread(function()
         local ShowingAnything = false
         while exports['mercy-phone']:IsJobCenterTaskActive('delivery', 1) do
-            if not spawnedveh then
+        if not spawnedveh then
             DrawMarker(20, 929.94, -1249.29, 26.7, 0, 0, 0, 180.0, 0, 0, 0.5, 0.5, 0.5, 138, 43, 226, 150, true, true, false, false, false, false, false)
             if #(GetEntityCoords(PlayerPedId()) - vector3(929.94, -1249.29, 26.7)) < 30 then
                 if not ShowingAnything then
@@ -85,7 +85,7 @@ RegisterNetEvent('mercy-phone/client/jobcenter/on-job-start', function(Job, Lead
         else
             TriggerEvent('mercy-phone/client/jobcenter/request-task-success', 1, true)
             exports['76b-ui']:Show("Delivery Driver", "Get in your delivery vehicle.")
-
+        end
             Citizen.Wait(4)
         end
     end)
