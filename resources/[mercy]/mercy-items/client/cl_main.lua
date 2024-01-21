@@ -275,6 +275,7 @@ RegisterNetEvent('mercy-items/client/used-toolbox', function()
         if EntityType == 2 then
             VehicleModule.SetVehicleDoorOpen(Entity, 4)
             local Outcome = exports['bl_ui']:Progress(math.random(4, 6), 70)
+            exports['mercy-inventory']:SetBusyState(true)
             if Outcome then
                 local CurrentEngineHealth = GetVehicleEngineHealth(Entity)
                 local NewEngineHealth = CurrentEngineHealth + 250.0 < 1000.0 and CurrentEngineHealth + 250.0 or 1000.0
@@ -282,6 +283,7 @@ RegisterNetEvent('mercy-items/client/used-toolbox', function()
             else
                 TriggerEvent('mercy-ui/client/notify', "item-error", "Failed attempt..", 'error')
             end
+            exports['mercy-inventory']:SetBusyState(false)
             SetVehicleDoorShut(Entity, 4, false)
         else
             TriggerEvent('mercy-ui/client/notify', "item-error", "No vehicle found..", 'error')
