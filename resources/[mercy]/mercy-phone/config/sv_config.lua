@@ -59,7 +59,7 @@ ServerConfig.Jobs = {
         ["Name"] = "sanitation",
         ["Location"] = vector4(-352.17, -1545.7, 26.72, 269.89),
         ["RequiresVPN"] = false,
-        ['Money'] = math.random(200, 300),
+        ['Money'] = math.random(150, 225),
         ['MaxGroupCount'] = 5, -- Max group count for job
         ['MaxMembers'] = 4, -- Max members per group for job
         -- Don't touch
@@ -136,7 +136,7 @@ ServerConfig.Jobs = {
         ["Name"] = "delivery",
         ["Location"] = vector4(929.94, -1249.29, 24.5, 34.17),
         ["RequiresVPN"] = false,
-        ['Money'] = math.random(200, 300),
+        ['Money'] = math.random(250, 350),
         ['MaxGroupCount'] = 5,
         ['MaxMembers'] = 2,
         -- Don't touch
