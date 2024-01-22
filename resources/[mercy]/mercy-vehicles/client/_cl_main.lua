@@ -229,9 +229,9 @@ function InitMain()
         end
     
         if CurrentLimitData.Enabled then
-            SetEntityMaxSpeed(CurrentVehicleData.Vehicle, 200)
+            SetEntityMaxSpeed(CurrentVehicleData.Vehicle, 200.0)
             exports['mercy-ui']:Notify('limiter-toggled', "Limiter disabled", 'error')
-            CurrentLimitData.Enabled, CurrentLimitData.SpeedLimit = false, 200
+            CurrentLimitData.Enabled, CurrentLimitData.SpeedLimit = false, 200.0
         else
             CurrentLimitData.Enabled = true
             SetEntityMaxSpeed(CurrentVehicleData.Vehicle, Speed)
