@@ -274,8 +274,8 @@ RegisterNetEvent('mercy-items/client/used-toolbox', function()
         local Entity, EntityType, EntityCoords = FunctionsModule.GetEntityPlayerIsLookingAt(3.0, 0.2, 286, PlayerPedId())
         if EntityType == 2 then
             VehicleModule.SetVehicleDoorOpen(Entity, 4)
-            local Outcome = exports['bl_ui']:Progress(math.random(4, 6), 70)
             exports['mercy-inventory']:SetBusyState(true)
+            local Outcome = exports['bl_ui']:Progress(math.random(4, 6), 70)
             if Outcome then
                 local CurrentEngineHealth = GetVehicleEngineHealth(Entity)
                 local NewEngineHealth = CurrentEngineHealth + 250.0 < 1000.0 and CurrentEngineHealth + 250.0 or 1000.0
