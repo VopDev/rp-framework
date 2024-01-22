@@ -192,6 +192,8 @@ RegisterNetEvent('mercy-items/client/used-evidence', function()
     else
         TriggerEvent('mercy-ui/client/notify', 'evidence-error', "An error occured! (You can\'t use this in this state)", 'error')
     end
+    Wait(30000)
+    CanCollect = true
 end)
 
 RegisterNetEvent('mercy-police/client/set-evidence', function(EvidenceId, EvidenceData)
