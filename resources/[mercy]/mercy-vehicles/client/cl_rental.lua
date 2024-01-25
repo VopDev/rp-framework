@@ -106,7 +106,7 @@ end)
 RegisterNetEvent('mercy-vehicles/client/rent-vehicle-motel', function(Data)
     local RandomPlate = ('RE'..Shared.RandomInt(3)..Shared.RandomStr(3)):upper()
 
-    local CanSpawn = VehicleModule.CanVehicleSpawnAtCoords(vector3(-696.89, -2315.5, 12.81)), 1.85)
+    local CanSpawn = VehicleModule.CanVehicleSpawnAtCoords(vector3(-696.89, -2315.5, 12.81), 1.85)
     if not CanSpawn then
         return exports['mercy-ui']:Notify('blocking', "There is a vehicle blocking the spot..", "error")
     end
