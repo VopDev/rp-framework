@@ -21,7 +21,6 @@ AddEventHandler('Modules/client/ready', function()
         CallbackModule = exports['mercy-base']:FetchModule('Callback')
 		EntityModule = exports['mercy-base']:FetchModule("Entity")
 		KeybindsModule = exports['mercy-base']:FetchModule("Keybinds")
-		InitHelicam() InitAlpr()
     end)
 end)
 
