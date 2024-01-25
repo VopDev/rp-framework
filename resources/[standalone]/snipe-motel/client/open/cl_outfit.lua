@@ -8,6 +8,6 @@ function OpenOutfit()
     elseif Config.Clothing == "rcore" then
         TriggerEvent("rcore_clothes:openOutfits")
     elseif Config.Clothing == "other" then
-        TriggerEvent("mercy-clothing/client/open-wardrobe")
+        TriggerEvent('mercy-clothing/client/open-wardrobe', true)
     end
 end
