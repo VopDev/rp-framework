@@ -129,6 +129,7 @@ function ListenForKeypress(DoorId)
                         exports['mercy-ui']:SetInteraction((HasAccess and "[E] %s" or "%s"):format(LockState and 'Locked' or 'Unlocked'), LockState and 'error' or 'success')
                         SetDrawOrigin(Config.Doors[CurrentDoorId].Coords + 0.4)
                         DrawSprite(Sprites["door_locked"].textDict, Sprites["door_locked"].textName, 0, 0, Sprites["door_locked"].width, Sprites["door_locked"].height, 0, 255, 255,255, 500)
+                        ClearDrawOrigin()
                     end
                 end
                 if IsControlJustReleased(0, 38) or IsControlJustReleased(0, 246) then
