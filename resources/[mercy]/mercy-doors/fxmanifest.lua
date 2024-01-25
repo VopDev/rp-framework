@@ -5,6 +5,7 @@ lua54 'yes'
 
 shared_scripts {
     'shared/sh_*.lua',
+    'shared/sprites.lua',
 }
 
 client_script {

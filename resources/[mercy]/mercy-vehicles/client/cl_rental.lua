@@ -41,6 +41,32 @@ RegisterNetEvent('mercy-vehicles/client/try-rent', function(Data)
     exports['mercy-ui']:OpenContext({ ['MainMenuItems'] = MenuItems })
 end)
 
+RegisterNetEvent('mercy-vehicles/client/try-rent-motel', function(Data)
+    local MenuItems = {}
+    for k, v in pairs(Config.Rentals[Data.Type]) do
+        local MenuData = {}
+        MenuData['Title'] = v.Label
+        MenuData['Desc'] = ("Rent Price: $%s"):format(FunctionsModule.GetTaxPrice(v.Price, 'Vehicle'))
+        MenuData['Data'] = { ['Event'] = '', ['Type'] = '' }
+        MenuData['SecondMenu'] = {
+            {
+                ['Title'] = 'Confirm',
+                ['Type'] = 'Click',
+                ['CloseMenu'] = true,
+                ['Data'] = { 
+                    ['Event'] = 'mercy-vehicles/client/rent-vehicle-motel', 
+                    ['Type'] = 'Client', 
+                    ['RentalType'] = Data.Type,
+                    ['Model'] = v.Model,
+                    ['Price'] = FunctionsModule.GetTaxPrice(v.Price, 'Vehicle') },
+            },
+        }
+        table.insert(MenuItems, MenuData)
+    end
+    exports['mercy-ui']:OpenContext({ ['MainMenuItems'] = MenuItems })
+end)
+
+
 RegisterNetEvent('mercy-vehicles/client/rent-vehicle', function(Data)
     local RandomPlate = ('RE'..Shared.RandomInt(3)..Shared.RandomStr(3)):upper()
 
@@ -77,6 +103,42 @@ RegisterNetEvent('mercy-vehicles/client/rent-vehicle', function(Data)
     end
 end)
 
+RegisterNetEvent('mercy-vehicles/client/rent-vehicle-motel', function(Data)
+    local RandomPlate = ('RE'..Shared.RandomInt(3)..Shared.RandomStr(3)):upper()
+
+    local CanSpawn = VehicleModule.CanVehicleSpawnAtCoords(vector3(-696.89, -2315.5, 12.81)), 1.85)
+    if not CanSpawn then
+        return exports['mercy-ui']:Notify('blocking', "There is a vehicle blocking the spot..", "error")
+    end
+
+    local HasPaid = CallbackModule.SendCallback("mercy-base/server/remove-cash", Data.Price)
+    if HasPaid then
+        exports['mercy-ui']:ProgressBar('Fixing up papers.. (Don\'t move)', 15000, {}, false, true, true, function(DidComplete)
+            if DidComplete then
+                local StartRentCoords = GetEntityCoords(PlayerPedId())
+                if #(GetEntityCoords(PlayerPedId()) - StartRentCoords) > 2.0 then
+                    return exports['mercy-ui']:Notify('too-far', "Idiot, you went too far..", "error")
+                end
+                local LoadedVehicle = FunctionsModule.RequestModel(Data.Model)  --vector4(-696.89, -2315.5, 12.81, 189.37)
+                if LoadedVehicle then
+                    local VehicleCoords = {['X'] = -696.89, ['Y'] = -2315.5, ['Z'] = 12.81 - 1.0, ['Heading'] = 189.37}
+                    local Vehicle = VehicleModule.SpawnVehicle(Data.Model, VehicleCoords, RandomPlate, false)
+                    if Vehicle ~= nil then        
+                        SetTimeout(650, function()
+                            EventsModule.TriggerServer('mercy-vehicles/server/receive-rental-papers', RandomPlate)
+                            exports['mercy-vehicles']:SetVehicleKeys(RandomPlate, true, false)
+                            exports['mercy-vehicles']:SetFuelLevel(Vehicle['Vehicle'], 100)
+                            SetVehicleDirtLevel(Vehicle['Vehicle'], 0.0)
+                        end)
+                    end
+                end
+            end
+        end)
+    else
+        exports['mercy-ui']:Notify('rental-error', "Need more money than that..", 'error')
+    end
+end)
+
 -- [ Threads ] --
 
 CreateThread(function()
@@ -96,6 +158,29 @@ CreateThread(function()
                 Label = 'Rent Vehicle',
                 EventType = 'Client',
                 EventName = 'mercy-vehicles/client/try-rent',
+                EventParams = { Type = "Cars" },
+                Enabled = function(Entity)
+                    return true
+                end,
+            }
+        }
+    })
+    exports['mercy-ui']:AddEyeEntry("vehicle-rentals-motel", {
+        Type = 'Entity',
+        EntityType = 'Ped',
+        SpriteDistance = 10.0,
+        Distance = 5.0,
+        Position = vector4(-707.66, -2315.26, 12.06, 265.85),
+        Model = 'a_m_y_genstreet_01',
+        Anim = {},
+        Props = {},
+        Options = {
+            {
+                Name = 'rent_vehicle_motel',
+                Icon = 'fas fa-car',
+                Label = 'Rent Vehicle',
+                EventType = 'Client',
+                EventName = 'mercy-vehicles/client/try-rent-motel',
                 EventParams = { Type = "Cars" },
                 Enabled = function(Entity)
                     return true
