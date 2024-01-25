@@ -5,14 +5,14 @@ Config.RentalSpawn = {
 
 Config.Rentals = {
     Cars = {
-     { Label = "Glendale", Model = "glendale", Price = 1000 },
-     { Label = "Seminole", Model = "seminole", Price = 1500 },
+     { Label = "Glendale", Model = "glendale", Price = 650 },
+     { Label = "Seminole", Model = "seminole", Price = 850 },
         --{ Label = "Enus", Model = "cog55", Price = 1500 },
         --{ Label = "Futo", Model = "Futo", Price = 600 },
         --{ Label = "Buccaneer", Model = "buccaneer", Price = 625},
-     { Label = "Ingot", Model = "ingot", Price = 1500 },
+     { Label = "Ingot", Model = "ingot", Price = 850 },
         -- { Label = "Buffalo S", Model = "buffalo2", Price = 725),
-     { Label = "Blista Compact", Model = "blista", Price = 1000 },
+     { Label = "Blista Compact", Model = "blista", Price = 800 },
        -- { Label = "Sanchez", Model = "sanchez", Price = 10000 },
         --{ Label = "Coach", Model = "coach", Price = 800 },
         --{ Label = "Shuttle Bus", Model = "rentalbus", Price = 800 },
