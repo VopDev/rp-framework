@@ -9,6 +9,7 @@ var Licenses = {
 Phone.addNuiListener("RenderDetailsApp", (Data) => {
     let Cid = Data.Cid == undefined ? "N/A" : Data.Cid;
     let BankNumber = Data.BankNumber == undefined ? "N/A" : Data.BankNumber;
+    let HotelRoom = Data.HotelRoom == undefined ? "N/A" : Data.HotelRoom;
     let PhoneNumber = Data.PhoneNumber == undefined ? "N/A" : FormatPhone(Data.PhoneNumber);
     let CashBalance = Data.CashBalance == undefined ? 0.00 :AddCommas(parseInt(Data.CashBalance).toFixed(2));
     let BankBalance = Data.BankBalance == undefined ? 0.00 : AddCommas(parseInt(Data.BankBalance).toFixed(2));
@@ -16,6 +17,7 @@ Phone.addNuiListener("RenderDetailsApp", (Data) => {
 
     $("#phone-details-stateid").find(".details-item-text").html(Cid);
     $("#phone-details-banknumber").find(".details-item-text").html(BankNumber);
+    $("#phone-details-hotelroom").find(".details-item-text").html(HotelRoom);
     $("#phone-details-phonenumber").find(".details-item-text").html(PhoneNumber);
     $("#phone-details-cashbalance").find(".details-item-text").html(`$${CashBalance}`);
     $("#phone-details-bankbalance").find(".details-item-text").html(`$${BankBalance}`);

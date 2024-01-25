@@ -9,6 +9,7 @@ function Details.Render()
     exports['mercy-ui']:SendUIMessage("Phone", "RenderDetailsApp", {
         Cid = PlayerData["CitizenId"],
         BankNumber = PlayerData.CharInfo["BankNumber"],
+        HotelRoom = exports['snipe-motel']:currentPlayerRoom()
         PhoneNumber = PlayerData.CharInfo["PhoneNumber"],
         CashBalance = PlayerData.Money["Cash"],
         BankBalance = PlayerData.Money["Bank"],
