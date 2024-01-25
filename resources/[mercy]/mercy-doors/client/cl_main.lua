@@ -160,7 +160,7 @@ function ListenForKeypress(DoorId)
             end
             Citizen.Wait(35)
            -- exports["mercy-ui"]:HideInteraction()
-           ClearDrawOrigin() -- new
+           --ClearDrawOrigin() -- new
         end)
     end 
 end
