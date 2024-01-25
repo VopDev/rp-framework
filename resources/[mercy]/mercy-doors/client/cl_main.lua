@@ -126,7 +126,14 @@ function ListenForKeypress(DoorId)
                 if CurrentDoorLockState ~= LockState and not IsHidden then
                     if #(GetEntityCoords(PlayerPedId()) - Config.Doors[CurrentDoorId].Coords) < Distance then
                         LockState = CurrentDoorLockState
-                        exports['mercy-ui']:SetInteraction((HasAccess and "[E] %s" or "%s"):format(LockState and 'Locked' or 'Unlocked'), LockState and 'error' or 'success')
+                        if LockState then
+                        SetDrawOrigin(Config.Doors[CurrentDoorId].Coords + 0.4)
+                        DrawSprite(Sprites["door_locked"].textDict, Sprites["door_locked"].textName, 0, 0, Sprites["door_locked"].width, Sprites["door_locked"].height, 0, 255, 255,255, 500)
+                        else
+                            SetDrawOrigin(Config.Doors[CurrentDoorId].Coords + 0.4)
+                        DrawSprite(Sprites["door_unlocked"].textDict, Sprites["door_unlocked"].textName, 0, 0, Sprites["door_unlocked"].width, Sprites["door_unlocked"].height, 0, 255, 255,255, 500)
+                        end
+                    --exports['mercy-ui']:SetInteraction((HasAccess and "[E] %s" or "%s"):format(LockState and 'Locked' or 'Unlocked'), LockState and 'error' or 'success')
                     end
                 end
                 if IsControlJustReleased(0, 38) or IsControlJustReleased(0, 246) then
@@ -152,7 +159,8 @@ function ListenForKeypress(DoorId)
                 end
             end
             Citizen.Wait(35)
-            exports["mercy-ui"]:HideInteraction()
+           -- exports["mercy-ui"]:HideInteraction()
+           ClearDrawOrigin() -- new
         end)
     end 
 end
