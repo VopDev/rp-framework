@@ -503,10 +503,10 @@ Config.Locations = {
         Hidden = false,
     },
     {
-        Id = "airport",
-        Name = 'Airport',
+        Id = "motel",
+        Name = 'Opium Nights',
         Icon = 'fas fa-map-marker-alt',
-        Coords = { X = -1037.67, Y = -2737.61, Z = 20.16 },
+        Coords = { X = -711.91, Y = -2267.6, Z = 13.46 },
         Type = 'Location',
         Hidden = false,
     },
