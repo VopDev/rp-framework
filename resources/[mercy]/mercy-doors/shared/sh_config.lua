@@ -3425,37 +3425,6 @@ Config.Doors = {
         },
     },
 
-    {
-        Info = 'motel-lobby-1',
-        Coords = vector3(-702.73, -2273.82, 14.01),
-        Model = -1102197583,
-        Locked = 1,
-        IsGate = false,
-        CanDetcord = true,
-        Disabled = false,
-        Connected = {'motel-lobby-2'},
-        Access = {
-            Job = {},
-            CitizenId = {'8334'},
-            Business = {},
-        },
-    },
-    {
-        Info = 'motel-lobby-2',
-        Coords = vector3(-705.49, -2276.58, 14.01),
-        Model = -1102197583,
-        Locked = 1,
-        IsGate = false,
-        CanDetcord = true,
-        Disabled = false,
-        Connected = {'motel-lobby-1'},
-        Access = {
-            Job = {},
-            CitizenId = {'8334'},
-            Business = {},
-        },
-    },
-
 }
 
 Config.Elevators = {
