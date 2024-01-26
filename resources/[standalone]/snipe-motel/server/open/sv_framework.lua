@@ -47,7 +47,15 @@ function RemoveMoney(source, amount)
             end
         end
     elseif Config.Framework == "other" then
-        return true
+        if amount == 'washingmachine' then
+             if exports["mercy-inventory"]:HasEnoughOfItem(amount, 1, false, true) then
+             return true
+             else
+             return false
+             end
+        else
+            return true
+        end
     end
 end
 

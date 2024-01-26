@@ -811,9 +811,9 @@ Furnitures = {
 	{
 		categoryName = 'Kitchen',
 		items = {
-			{ name = 'prop_washer_01', price = 150, label = 'Washer 1' },
-			{ name = 'prop_washer_02', price = 150, label = 'Washer 2' },
-			{ name = 'prop_washer_03', price = 150, label = 'Washer 3' },
+			{ name = 'prop_washer_01', price = 'washingmachine', label = 'Washer 1' },
+			{ name = 'prop_washer_02', price = 'washingmachine', label = 'Washer 2' },
+			{ name = 'prop_washer_03', price = 'washingmachine', label = 'Washer 3' },
 			{ name = 'prop_washing_basket_01', price = 150, label = 'Washing Basket' },
 			{ name = 'v_res_fridgemoda', price = 150, label = 'Fridge 1' },
 			{ name = 'v_res_fridgemodsml', price = 150, label = 'Fridge 2' },
