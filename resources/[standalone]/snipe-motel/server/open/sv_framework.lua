@@ -3,32 +3,23 @@ CallbackModule, PlayerModule, FunctionsModule, DatabaseModule, EventsModule = ni
 -- [ Code ] --
 
 local _Ready = false
-
-Citizen.CreateThread(function()
-    TriggerEvent('Modules/server/ready')
-	_Ready = true
-end)
-
-AddEventHandler('onResourceStart', function()
-	if not _Ready then return end
-    TriggerEvent('Modules/server/ready')
-end)
-
 AddEventHandler('Modules/server/ready', function()
     TriggerEvent('Modules/server/request-dependencies', {
         'Callback',
         'Player',
         'Functions',
         'Database',
+        'Commands',
         'Events',
     }, function(Succeeded)
         if not Succeeded then return end
-        CallbackModule = exports[GetCurrentResourceName()]:FetchModule('Callback')
-        PlayerModule = exports[GetCurrentResourceName()]:FetchModule('Player')
-        FunctionsModule = exports[GetCurrentResourceName()]:FetchModule('Functions')
-        DatabaseModule = exports[GetCurrentResourceName()]:FetchModule('Database')
-        EventsModule = exports[GetCurrentResourceName()]:FetchModule('Events')
-        
+        CallbackModule = exports['mercy-base']:FetchModule('Callback')
+        PlayerModule = exports['mercy-base']:FetchModule('Player')
+        FunctionsModule = exports['mercy-base']:FetchModule('Functions')
+        DatabaseModule = exports['mercy-base']:FetchModule('Database')
+        CommandsModule = exports['mercy-base']:FetchModule('Commands')
+        EventsModule = exports['mercy-base']:FetchModule('Events')
+        _Ready = true
     end)
 end)
 
