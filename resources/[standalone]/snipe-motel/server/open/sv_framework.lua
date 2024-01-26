@@ -73,7 +73,7 @@ function RemoveMoney(source, amount)
             end
         end
     elseif Config.Framework == "other" then
-        local Player = PlayerModule.GetPlayerBySource(Source)
+        local Player = PlayerModule.GetPlayerBySource(source)
         if Player.Functions.RemoveMoney("Cash", amount) then
             return true
         else
