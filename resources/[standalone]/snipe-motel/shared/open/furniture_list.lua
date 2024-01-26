@@ -977,6 +977,8 @@ Furnitures = {
 	{
 		categoryName = 'Useable',
 		items = {
+			{ name = 'bkr_prop_gunlocker_01a', price = 10000, label = 'Gun Locker' },
+			{ name = 'xm_prop_base_staff_desk_02', price = 10000, label = 'Computer Desk' },
 			{ name = 'gr_prop_gr_bench_04b', price = 15000, label = 'Basic Crafting Bench' },
 			{ name = 'gr_prop_gr_bench_01b', price = 25000, label = 'Advanced Crafting Bench' },
 			
