@@ -14,7 +14,7 @@ Config.GracePeriod = 3
 Config.GraceAmount = 1000 -- amount to charge the player for the grace period
 
 
-Config.RequireMoneyToBuyFurniture = true
+Config.RequireMoneyToBuyFurniture = false
 Config.DefaultFurniturePrice = 100 -- if you have set the above to true and you have missed to set the price for the furniture in furniture_list.lua, it will use this price
 
 Config.LobbyCoords = vector4(-701.84, -2267.54, 13.46, 142.5) -- if a player leaves the server while being in a room, he will be teleported to this location

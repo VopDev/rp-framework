@@ -540,7 +540,7 @@ Furnitures = {
 			{ name = 'prop_mil_crate_01', price = 100, label = 'Mil Crate 1' },
 			{ name = 'prop_mil_crate_02', price = 100, label = 'Mil Crate 2' },
 			{ name = 'prop_ld_int_safe_01', price = 1100, label = 'Safe' },
-			{ name = 'prop_toolchest_05', price = 5000, label = 'Crafting Bench' },
+			{ name = 'prop_toolchest_05', price = 25000, label = 'Crafting Bench' },
 			{ name = 'v_corp_filecablow', price = 500, label = 'Filing cabinet Low' },
 			{ name = 'v_corp_filecabtall', price = 500, label = 'Filing cabinet High' },
 			{ name = 'apa_mp_h_str_shelffloorm_02', price = 500, label = 'Large modern cupboard' },
@@ -811,9 +811,9 @@ Furnitures = {
 	{
 		categoryName = 'Kitchen',
 		items = {
-			{ name = 'prop_washer_01', price = 'washingmachine', label = 'Washer 1' },
-			{ name = 'prop_washer_02', price = 'washingmachine', label = 'Washer 2' },
-			{ name = 'prop_washer_03', price = 'washingmachine', label = 'Washer 3' },
+			{ name = 'prop_washer_01', price = 150, label = 'Washer 1' },
+			{ name = 'prop_washer_02', price = 150, label = 'Washer 2' },
+			{ name = 'prop_washer_03', price = 150, label = 'Washer 3' },
 			{ name = 'prop_washing_basket_01', price = 150, label = 'Washing Basket' },
 			{ name = 'v_res_fridgemoda', price = 150, label = 'Fridge 1' },
 			{ name = 'v_res_fridgemodsml', price = 150, label = 'Fridge 2' },

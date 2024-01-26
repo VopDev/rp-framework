@@ -1,3 +1,38 @@
+CallbackModule, PlayerModule, FunctionsModule, DatabaseModule, EventsModule = nil, nil, nil, nil, nil
+
+-- [ Code ] --
+
+local _Ready = false
+
+Citizen.CreateThread(function()
+    TriggerEvent('Modules/server/ready')
+	_Ready = true
+end)
+
+AddEventHandler('onResourceStart', function()
+	if not _Ready then return end
+    TriggerEvent('Modules/server/ready')
+end)
+
+AddEventHandler('Modules/server/ready', function()
+    TriggerEvent('Modules/server/request-dependencies', {
+        'Callback',
+        'Player',
+        'Functions',
+        'Database',
+        'Events',
+    }, function(Succeeded)
+        if not Succeeded then return end
+        CallbackModule = exports[GetCurrentResourceName()]:FetchModule('Callback')
+        PlayerModule = exports[GetCurrentResourceName()]:FetchModule('Player')
+        FunctionsModule = exports[GetCurrentResourceName()]:FetchModule('Functions')
+        DatabaseModule = exports[GetCurrentResourceName()]:FetchModule('Database')
+        EventsModule = exports[GetCurrentResourceName()]:FetchModule('Events')
+        
+    end)
+end)
+
+
 QBCore, ESX = nil, nil
 if Config.Framework == "qb" then
     QBCore = exports['qb-core']:GetCoreObject()
@@ -47,14 +82,12 @@ function RemoveMoney(source, amount)
             end
         end
     elseif Config.Framework == "other" then
-        if amount == 'washingmachine' then
-             if exports["mercy-inventory"]:HasEnoughOfItem(amount, 1, false, true) then
-             return true
-             else
-             return false
-             end
-        else
+        local Player = PlayerModule.GetPlayerBySource(Source)
+        if Player.Functions.RemoveMoney("Cash", amount) then
             return true
+        else 
+            exports['mercy-ui']:Notify('nomoney-motel', "You do not have enough money to purchase this item.", 'error')
+            return false
         end
     end
 end
@@ -72,7 +105,10 @@ function AddMoney(source, amount)
             Player.addMoney(amount)
         end
     elseif Config.Framework == "other" then
-        return true
+        local Player = PlayerModule.GetPlayerBySource(Source)
+        if Player ~= nil then
+        Player.Functions.AddMoney("Cash", amount)
+        end
     end
 end
 
