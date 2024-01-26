@@ -19,5 +19,6 @@
     "place_objects": "Place Object",
 
     "collapse": "Collapse",
-    "expand": "Expand"
+    "expand": "Expand",
+    "amount_icon": "$"
 }

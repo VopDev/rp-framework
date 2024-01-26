@@ -3,15 +3,16 @@
 Citizen.CreateThread(function()
 while true do
         Citizen.Wait(4)
-    exports['mercy-ui']:AddEyeEntry(GetHashKey("Prop_toolchest_05"), {
+
+    exports['mercy-ui']:AddEyeEntry(GetHashKey("gr_prop_gr_bench_04b"), {
     Type = 'Model',
-    Model = 'Prop_toolchest_05',
+    Model = 'gr_prop_gr_bench_04b',
     SpriteDistance = 10.0,
     Distance = 5.0,
     Options = {
         {
-            Name = 'motel_crafting',
-            Label = 'Motel Crafting',
+            Name = 'motel_basic_crafting',
+            Label = 'Access Bench',
             EventType = 'Client',
             EventName = 'mercy-ui:Client:EyeTest',
             EventParams = {},
@@ -24,18 +25,18 @@ while true do
     }
     })
 
-    exports['mercy-ui']:AddEyeEntry(GetHashKey("Prop_tv_flat_01"), {
+    exports['mercy-ui']:AddEyeEntry(GetHashKey("gr_prop_gr_bench_01b"), {
         Type = 'Model',
-        Model = 'Prop_tv_flat_01',
-        SpriteDistance = 5.0,
+        Model = 'gr_prop_gr_bench_01b',
+        SpriteDistance = 10.0,
+        Distance = 5.0,
         Options = {
             {
-                Name = 'motel_tv_big',
-                Icon = 'far fa-file-code',
-                Label = 'Change Picture',
+                Name = 'motel_basic_crafting',
+                Label = 'Access Bench',
                 EventType = 'Client',
-                EventName = 'mercy-assets/client/change-dui-url',
-                EventParams = 'motel-big-tv',
+                EventName = 'mercy-ui:Client:EyeTest',
+                EventParams = {},
                 Enabled = function(Entity)
                     if exports['snipe-motel']:isInRoom() then
                         return true
@@ -43,26 +44,7 @@ while true do
                 end,
             }
         }
-    })
-
-
-
-    if exports['snipe-motel']:isInRoom() then
-        local DuiData = exports['mercy-assets']:GenerateNewDui('https://i.imgur.com/5Ust2GQ.jpg', 1920, 1080, 'motel-big-tv')
-                AddReplaceTexture('prop_tv_flat_01', 'tvscreen', DuiData['TxdDictName'], DuiData['TxdName'])
-        else
-            RemoveReplaceTexture('prop_tv_flat_01', 'tvscreen')
-            exports['mercy-assets']:DeactivateDui('motel-big-tv')
-        end
-    end
-
-
-
-
-
-
-
-
+        })
 
 
 end
