@@ -22,7 +22,41 @@ while true do
             end,
         }
     }
-})
+    })
+
+    exports['mercy-ui']:AddEyeEntry(GetHashKey("v_res_lest_bigscreen"), {
+        Type = 'Model',
+        Model = 'v_res_lest_bigscreen',
+        SpriteDistance = 5.0,
+        Options = {
+            {
+                Name = 'motel_tv_big',
+                Icon = 'far fa-file-code',
+                Label = 'Change Picture',
+                EventType = 'Client',
+                EventName = 'mercy-assets/client/change-dui-url',
+                Enabled = function(Entity)
+                    if exports['snipe-motel']:isInRoom() then
+                        return true
+                    end
+                end,
+            }
+        }
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
 Citizen.Wait(4)
 end)

@@ -540,8 +540,6 @@ Furnitures = {
 			{ name = 'prop_mil_crate_01', price = 50, label = 'Mil Crate 1 - $50' },
 			{ name = 'prop_mil_crate_02', price = 50, label = 'Mil Crate 2 - $50' },
 			{ name = 'prop_ld_int_safe_01', price = 50, label = 'Safe - $50' },
-			{ name = 'gr_prop_gr_bench_04b', price = 15000, label = 'Basic Crafting Bench - $15000' },
-			{ name = 'gr_prop_gr_bench_01b', price = 25000, label = 'Advanced Crafting Bench - $25000' },
 			{ name = 'v_corp_filecablow', price = 50, label = 'Filing cabinet Low - $50' },
 			{ name = 'v_corp_filecabtall', price = 50, label = 'Filing cabinet High - $50' },
 			{ name = 'apa_mp_h_str_shelffloorm_02', price = 50, label = 'Large modern cupboard - $50' },
@@ -974,6 +972,13 @@ Furnitures = {
 			{ name = 'hei_heist_acc_artgolddisc_03', price = 50, label = 'wall deco 4 - $50' },
 			{ name = 'hei_heist_acc_artgolddisc_04', price = 50, label = 'wall deco 5 - $50' },
 			{ name = 'v_ilev_ra_doorsafe', price = 50, label = 'Luxury deco' }
+		},
+	},
+	{
+		categoryName = 'Useable',
+		items = {
+			{ name = 'gr_prop_gr_bench_04b', price = 15000, label = 'Basic Crafting Bench - $15000' },
+			{ name = 'gr_prop_gr_bench_01b', price = 25000, label = 'Advanced Crafting Bench - $25000' },
 		},
 	},
 }
