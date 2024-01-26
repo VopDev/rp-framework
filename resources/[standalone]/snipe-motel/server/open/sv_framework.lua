@@ -76,8 +76,7 @@ function RemoveMoney(source, amount)
         local Player = PlayerModule.GetPlayerBySource(Source)
         if Player.Functions.RemoveMoney("Cash", amount) then
             return true
-        else 
-            exports['mercy-ui']:Notify('nomoney-motel', "You do not have enough money to purchase this item.", 'error')
+        else
             return false
         end
     end
