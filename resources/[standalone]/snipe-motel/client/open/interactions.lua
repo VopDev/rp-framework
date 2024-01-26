@@ -3,9 +3,9 @@
 Citizen.CreateThread(function()
 while true do
         Citizen.Wait(4)
-    exports['mercy-ui']:AddEyeEntry(GetHashKey("rop_toolchest_05"), {
+    exports['mercy-ui']:AddEyeEntry(GetHashKey("Prop_toolchest_05"), {
     Type = 'Model',
-    Model = 'rop_toolchest_05',
+    Model = 'Prop_toolchest_05',
     SpriteDistance = 10.0,
     Distance = 5.0,
     Options = {
