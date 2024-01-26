@@ -24,9 +24,9 @@ while true do
     }
     })
 
-    exports['mercy-ui']:AddEyeEntry(GetHashKey("v_res_lest_bigscreen"), {
+    exports['mercy-ui']:AddEyeEntry(GetHashKey("Prop_tv_flat_01"), {
         Type = 'Model',
-        Model = 'v_res_lest_bigscreen',
+        Model = 'Prop_tv_flat_01',
         SpriteDistance = 5.0,
         Options = {
             {
