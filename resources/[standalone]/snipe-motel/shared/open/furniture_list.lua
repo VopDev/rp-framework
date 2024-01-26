@@ -979,6 +979,7 @@ Furnitures = {
 		items = {
 			{ name = 'gr_prop_gr_bench_04b', price = 15000, label = 'Basic Crafting Bench - $15000' },
 			{ name = 'gr_prop_gr_bench_01b', price = 25000, label = 'Advanced Crafting Bench - $25000' },
+			
 		},
 	},
 }

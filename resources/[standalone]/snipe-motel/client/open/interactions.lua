@@ -35,6 +35,7 @@ while true do
                 Label = 'Change Picture',
                 EventType = 'Client',
                 EventName = 'mercy-assets/client/change-dui-url',
+                EventParams = 'motel-big-tv',
                 Enabled = function(Entity)
                     if exports['snipe-motel']:isInRoom() then
                         return true
@@ -46,7 +47,21 @@ while true do
 
 
 
-
+    if exports['snipe-motel']:isInRoom() then
+        local DuiData = exports['mercy-assets']:GenerateNewDui('https://i.imgur.com/5Ust2GQ.jpg', 1920, 1080, 'motel-big-tv')
+        if Bool then
+            if DuiData == false then
+                local SecondDuiData = exports['mercy-assets']:GetDuiData('motel-big-tv')
+                AddReplaceTexture('prop_tv_flat_01', 'tvscreen', SecondDuiData['TxdDictName'], SecondDuiData['TxdName'])
+                exports['mercy-assets']:ActivateDui('motel-big-tv')
+            else
+                AddReplaceTexture('prop_tv_flat_01', 'tvscreen', DuiData['TxdDictName'], DuiData['TxdName'])
+            end
+        else
+            RemoveReplaceTexture('prop_tv_flat_01', 'tvscreen')
+            exports['mercy-assets']:DeactivateDui('motel-big-tv')
+        end
+    end
 
 
 
